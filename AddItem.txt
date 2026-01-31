@@ -1,0 +1,4 @@
+aws dynamodb put-item
+ --table-name NombreItem
+ --item file://fichero.json
+ --endpoint-url http://localhost:8000

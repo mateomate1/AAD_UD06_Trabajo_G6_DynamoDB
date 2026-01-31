@@ -1,0 +1,60 @@
+{
+    "nombre": {
+        "Tipo(S/N/B/BOOL/NULL/L/M/SS/NS": "valor"
+    },
+    "id": {
+        "S": "item1"
+    },
+    "texto": {
+        "S": "hola mundo"
+    },
+    "numero": {
+        "N": "25"
+    },
+    "decimal": {
+        "N": "19.99"
+    },
+    "booleano": {
+        "BOOL": true
+    },
+    "nulo": {
+        "NULL": true
+    },
+    "lista": {
+        "L": [
+            {
+                "S": "uno"
+            },
+            {
+                "N": "2"
+            },
+            {
+                "BOOL": false
+            }
+        ]
+    },
+    "mapa": {
+        "M": {
+            "campo1": {
+                "S": "valor"
+            },
+            "campo2": {
+                "N": "10"
+            }
+        }
+    },
+    "stringSet": {
+        "SS": [
+            "a",
+            "b",
+            "c"
+        ]
+    },
+    "numberSet": {
+        "NS": [
+            "1",
+            "2",
+            "3"
+        ]
+    }
+}
