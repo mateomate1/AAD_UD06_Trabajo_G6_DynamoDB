@@ -78,8 +78,6 @@ aws dynamodb scan
   --endpoint-url http://localhost:8000
 ````
 
-**En servidor de AWS:**
-
 ## Update
 
 ````bash
@@ -88,6 +86,8 @@ aws dynamodb update-item
   --key file://updates/key.json
   --update-expression "SET atributo = :a"
   --expression-attribute-values file://updates/values.json
+# En caso de usar una DynamoDB en local añadir:
+  --endpoint-url http://localhost:8000
 ````
 
 Es importante que el fichero values.json contenga un contenido tal que:
@@ -111,9 +111,8 @@ El fichero key.json solo debe contener la clave de esta manera:
 ### Eliminar Tabla
 
 ````bash
-aws dynamodb delete-item
-  --table-name Usuarios
-  --key file://deletes/fichero.json
+aws dynamodb delete-table
+--table-name Usuarios
 # En caso de usar una DynamoDB en local añadir:
   --endpoint-url http://localhost:8000
 ````

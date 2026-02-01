@@ -1,12 +1,12 @@
 {
     "id": {
-        "S": "USER2"
+        "S": "USER1"
     },
     "name": {
-        "S": "MARIO"
+        "S": "Mateo"
     },
     "surname": {
-        "S": "GARCIA"
+        "S": "Ayarra"
     },
     "password": {
         "S": "CONTRASENA"
