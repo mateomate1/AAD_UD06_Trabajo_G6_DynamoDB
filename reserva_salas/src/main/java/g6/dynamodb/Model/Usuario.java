@@ -4,7 +4,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
-@DynamoDBTable(tableName = "Usuario")
+@DynamoDBTable(tableName = "Usuarios")
 public class Usuario {
     String id;
     String name;
@@ -35,6 +35,11 @@ public class Usuario {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario [id=" + id + ", name=" + name + ", surname=" + surname + "]";
     }
 
 }

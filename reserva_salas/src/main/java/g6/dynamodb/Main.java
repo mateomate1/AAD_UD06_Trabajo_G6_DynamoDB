@@ -8,6 +8,7 @@ import java.util.Map;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 
 import g6.dynamodb.Model.Test;
+import g6.dynamodb.Model.Usuario;
 import g6.dynamodb.Util.AWSClient;
 
 public class Main {
@@ -25,6 +26,10 @@ public class Main {
             aws.scanTable("Usuarios").stream().forEach(System.out::println);
 
             aws.generateTable(Test.class);
+
+            aws.scanTable(Usuario.class).stream().forEach(System.out::println);
+
+            aws.getItemById();
 
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block

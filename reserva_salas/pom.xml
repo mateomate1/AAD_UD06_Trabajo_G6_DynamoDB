@@ -16,6 +16,7 @@
             <url>https://opensource.org/licenses/MIT</url>
         </license>
     </licenses>
+
     <developers>
         <developer>
             <id>mateomate1</id>
@@ -26,6 +27,16 @@
             <id>marioo27</id>
             <name>Mario García</name>
             <email>mariogarrod@gmail.com</email>
+        </developer>
+        <developer>
+            <id>zacariadm </id>
+            <name>Zacaria</name>
+            <email>Zacariadm@gmail.com</email>
+        </developer>
+        <developer>
+            <id>SamuelCobreros</id>
+            <name>Samuel Cobreros</name>
+            <email>cobrerosamuel@gmail.com</email>
         </developer>
     </developers>
 
