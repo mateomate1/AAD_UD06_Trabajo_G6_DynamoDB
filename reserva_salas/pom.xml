@@ -10,6 +10,7 @@
 
     <name>Reserva Salas</name>
     <description>Aplicacion enfocada a demostrar el uso de DynamoDB</description>
+    
     <licenses>
         <license>
             <name>MIT License</name>
@@ -68,11 +69,30 @@
             <artifactId>logback-classic</artifactId>
             <version>1.5.19</version>
         </dependency>
+
+        <!-- Dependencias de JavaFX -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>25.0.2</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
+
+    <!-- Plugins para JavaFX  -->
+    <plugins>
+        <plugin>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-maven-plugin</artifactId>
+            <version>0.0.8</version>
+            <configuration>
+                <mainClass>App</mainClass>
+            </configuration>
+        </plugin>
+    </plugins>
 
 </project>
