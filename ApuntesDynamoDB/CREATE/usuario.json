@@ -1,0 +1,14 @@
+{
+    "id": {
+        "S": "USER1"
+    },
+    "name": {
+        "S": "Mateo"
+    },
+    "surname": {
+        "S": "Ayarra"
+    },
+    "password": {
+        "S": "CONTRASENA"
+    }
+}
