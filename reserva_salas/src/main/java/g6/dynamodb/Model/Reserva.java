@@ -1,5 +1,6 @@
 package g6.dynamodb.Model;
 
+import java.util.Date;
 import java.time.LocalDateTime;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
@@ -10,15 +11,15 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 public class Reserva {
 
     private String id;
-    private LocalDateTime fechaInicio;
-    private LocalDateTime fechaFin;
+    private Date fechaInicio; // hay que usar date que dynamo no entiende localdatetime
+    private Date fechaFin;
     private Integer nPersonas;
     private Aula aula;
     private Usuario usuario;
 
     public Reserva() {}
 
-    public Reserva(String id, LocalDateTime fechaInicio, LocalDateTime fechaFin, Integer nPersonas, Aula aula, Usuario usuario) {
+    public Reserva(String id, Date fechaInicio, Date fechaFin, Integer nPersonas, Aula aula, Usuario usuario) {
         this.id = id;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
@@ -37,20 +38,20 @@ public class Reserva {
     }
 
     @DynamoDBAttribute(attributeName = "fechaInicio")
-    public LocalDateTime getFechaInicio() {
+    public Date getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(LocalDateTime fechaInicio) {
+    public void setFechaInicio(Date fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
     @DynamoDBAttribute(attributeName = "fechaFin")
-    public LocalDateTime getFechaFin() {
+    public Date getFechaFin() {
         return fechaFin;
     }
 
-    public void setFechaFin(LocalDateTime fechaFin) {
+    public void setFechaFin(Date fechaFin) {
         this.fechaFin = fechaFin;
     }
 
