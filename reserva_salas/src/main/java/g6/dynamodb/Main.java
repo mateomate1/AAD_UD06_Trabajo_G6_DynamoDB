@@ -1,6 +1,10 @@
 package g6.dynamodb;
 
-import g6.dynamodb.Model.Test;
+import java.util.HashMap;
+import java.util.Map;
+
+import com.amazonaws.services.dynamodbv2.model.AttributeValue;
+
 import g6.dynamodb.Util.AWSClient;
 
 public class Main {
@@ -10,14 +14,14 @@ public class Main {
             aws = new AWSClient(true);
             aws.listTables().stream().forEach(System.out::println);
 
-            // Map<String, AttributeValue> item = new HashMap<>();
-            // item.put("id", new AttributeValue("USER3"));
-            // item.put("name", new AttributeValue("MARIO"));
+            Map<String, AttributeValue> item = new HashMap<>();
+            item.put("id", new AttributeValue().withS("UserZaca2"));
+            item.put("name", new AttributeValue().withN("1234"));
 
-            // // aws.insertItem(item);
+            aws.insertItem(item);
             // aws.scanTable("Usuarios").stream().forEach(System.out::println);
 
-            aws.generateTable(Test.class);
+            // aws.generateTable(Test.class);
 
             // aws.scanTable(Usuario.class).stream().forEach(System.out::println);
 
