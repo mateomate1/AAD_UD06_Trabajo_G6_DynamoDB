@@ -30,8 +30,10 @@ public class Usuario {
 
     @DynamoDBAttribute(attributeName = "surname")
     public String getSurname() {
-        return surname;
+    return surname;
     }
+
+    
 
     public void setSurname(String surname) {
         this.surname = surname;
