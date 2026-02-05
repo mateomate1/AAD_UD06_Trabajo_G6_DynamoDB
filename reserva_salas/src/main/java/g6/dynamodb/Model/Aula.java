@@ -1,5 +1,8 @@
 package g6.dynamodb.Model;
 
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
+
 public class Aula {
 
     private String id;
@@ -12,6 +15,7 @@ public class Aula {
         this.tamano = tamano;
     }
 
+    @DynamoDBAttribute(attributeName = "id")
     public String getId() {
         return id;
     }
@@ -20,6 +24,7 @@ public class Aula {
         this.id = id;
     }
 
+    @DynamoDBAttribute(attributeName = "tamano")
     public Integer getTamano() {
         return tamano;
     }
