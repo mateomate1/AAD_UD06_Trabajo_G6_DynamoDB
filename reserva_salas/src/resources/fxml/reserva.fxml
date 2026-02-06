@@ -32,10 +32,11 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import com.gluonhq.charm.glisten.control.CharmListView?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -44,16 +45,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.web.WebView?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ResservaController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
-        <Menu mnemonicParsing="false" text="Inicio" />
-        <Menu mnemonicParsing="false" text="Help">
+        <Menu fx:id="botonInicioPReservas" mnemonicParsing="false" text="Inicio" />
+        <Menu fx:id="botonAuyudaPReservas" mnemonicParsing="false" text="Help">
           <items>
             <MenuItem mnemonicParsing="false" text="About Reservas Aulas">
                      <graphic>
-                        <WebView prefHeight="200.0" prefWidth="200.0" />
+                        <WebView fx:id="WebViewPReservas" prefHeight="200.0" prefWidth="200.0" />
                      </graphic></MenuItem>
           </items>
         </Menu>
@@ -63,17 +64,19 @@
          <children>
             <SplitPane dividerPositions="0.4" prefHeight="372.5" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="338.0" prefWidth="252.0">
                      <children>
-                        <CharmListView prefHeight="370.5" prefWidth="187.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <ListView fx:id="listAulasDisponibles" prefHeight="371.0" prefWidth="252.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Label layoutX="14.0" layoutY="6.0" text="Aulas disponibles" />
                      </children>
                   </AnchorPane>
                 <AnchorPane prefHeight="371.0" prefWidth="380.0">
                      <children>
                         <Label layoutX="140.0" layoutY="94.0" text="Seleciona la fecha" />
-                        <DatePicker layoutX="107.0" layoutY="127.0" prefHeight="28.0" prefWidth="166.0" promptText="Days" AnchorPane.bottomAnchor="216.0" AnchorPane.leftAnchor="107.0" AnchorPane.rightAnchor="106.0" AnchorPane.topAnchor="127.0" />
-                        <ComboBox accessibleRole="CHECK_BOX" layoutX="106.0" layoutY="224.0" prefHeight="26.0" prefWidth="166.0" promptText="Times" />
+                        <DatePicker fx:id="calendarioPReservas" layoutX="107.0" layoutY="127.0" prefHeight="26.0" prefWidth="167.0" promptText="Days" AnchorPane.bottomAnchor="218.0" AnchorPane.leftAnchor="107.0" AnchorPane.rightAnchor="106.0" AnchorPane.topAnchor="127.0" />
+                        <ComboBox fx:id="boxHorasPReservas" accessibleRole="CHECK_BOX" layoutX="106.0" layoutY="224.0" prefHeight="26.0" prefWidth="166.0" promptText="Times" />
                         <Label layoutX="130.0" layoutY="185.0" text="Elije la hora de reserva" />
+                        <Button fx:id="botonReservaPReserva" layoutX="264.0" layoutY="306.0" mnemonicParsing="false" text="Reservar" />
                      </children>
                   </AnchorPane>
               </items>
