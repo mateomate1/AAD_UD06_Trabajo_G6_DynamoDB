@@ -38,8 +38,6 @@ import com.amazonaws.services.dynamodbv2.model.CreateTableRequest;
 import com.amazonaws.services.dynamodbv2.model.ListTablesResult;
 import com.amazonaws.services.dynamodbv2.util.TableUtils;
 
-import g6.dynamodb.Model.Usuario;
-
 /**
  * Cliente AWS DynamoDB para operaciones CRUD y gestión de tablas.
  * 
@@ -108,47 +106,6 @@ public class AWSClient {
     }
 
     /**
-     * Recupera un Usuario específico por ID fijo "USER1" (método de ejemplo).
-     * 
-     * @return Usuario encontrado (actualmente retorna null - pendiente
-     *         implementación)
-     */
-    public Usuario getItemById() {
-        Map<String, AttributeValue> key = new HashMap<>();
-        key.put("id", new AttributeValue("USER1"));
-
-        GetItemRequest request = new GetItemRequest()
-                .withTableName("Usuarios")
-                .withKey(key);
-
-        GetItemResult result = dynamoDB.getItem(request);
-        System.out.println(result.getItem());
-        Map<String, AttributeValue> salida = result.getItem();
-
-        return null; // Pendiente: convertir AttributeValue a Usuario
-    }
-
-    /**
-     * Escanea tabla filtrando por nombre usando expresiones nativas.
-     * 
-     * @param client cliente DynamoDB
-     * @param tabla  nombre de la tabla
-     * @param nombre valor a buscar en atributo "name"
-     * @return lista de items que coinciden
-     */
-    public List<Map<String, AttributeValue>> scanPorNombre(AmazonDynamoDB client, String tabla, String nombre) {
-        Map<String, AttributeValue> values = new HashMap<>();
-        values.put(":n", new AttributeValue().withS(nombre));
-
-        ScanRequest request = new ScanRequest()
-                .withTableName(tabla)
-                .withFilterExpression("name = :n")
-                .withExpressionAttributeValues(values);
-
-        return client.scan(request).getItems();
-    }
-
-    /**
      * Busca items por atributo usando DynamoDBMapper (genérico).
      * 
      * @param <T>       tipo de la clase modelo anotada
@@ -169,30 +126,6 @@ public class AWSClient {
     }
 
     /**
-     * Escanea tabla completa con paginación (método nativo).
-     * 
-     * @param tableName nombre de la tabla
-     * @return todos los items de la tabla como mapas de atributos
-     */
-    public List<java.util.Map<String, AttributeValue>> scanTable(String tableName) {
-        ScanRequest request = new ScanRequest()
-                .withTableName(tableName);
-
-        ScanResult result = dynamoDB.scan(request);
-
-        List<java.util.Map<String, AttributeValue>> items = new ArrayList<>();
-        items.addAll(result.getItems());
-
-        while (result.getLastEvaluatedKey() != null) {
-            request = request.withExclusiveStartKey(result.getLastEvaluatedKey());
-            result = dynamoDB.scan(request);
-            items.addAll(result.getItems());
-        }
-
-        return items;
-    }
-
-    /**
      * Escanea tabla completa usando DynamoDBMapper.
      * 
      * @param <T> tipo de la clase modelo
@@ -203,19 +136,6 @@ public class AWSClient {
         DynamoDBMapper mapper = new DynamoDBMapper(dynamoDB);
         DynamoDBScanExpression scanExpresion = new DynamoDBScanExpression();
         return mapper.scan(c, scanExpresion);
-    }
-
-    /**
-     * Inserta un item en la tabla "Usuarios".
-     * 
-     * @param item mapa con atributos y valores del item
-     */
-    public void insertItem(Map<String, AttributeValue> item) {
-        PutItemRequest request = new PutItemRequest()
-                .withTableName("Usuarios")
-                .withItem(item);
-
-        dynamoDB.putItem(request);
     }
 
     /**
@@ -231,23 +151,5 @@ public class AWSClient {
 
         request.setBillingMode(BillingMode.PAY_PER_REQUEST.toString());
         TableUtils.createTableIfNotExists(dynamoDB, request);
-    }
-
-    /**
-     * Método de prueba para creación manual de tabla (ejemplo).
-     */
-    public void test() {
-        CreateTableRequest request = new CreateTableRequest()
-                .withTableName("Usuarios")
-                .withKeySchema(
-                        new KeySchemaElement("id", KeyType.HASH))
-                .withAttributeDefinitions(
-                        new AttributeDefinition("id", ScalarAttributeType.S))
-                .withBillingMode(BillingMode.PAY_PER_REQUEST.toString());
-
-        // Ejemplo de items (comentado)
-        Map<String, AttributeValue> item = new HashMap<>();
-        item.put("id", new AttributeValue().withS("1"));
-        // item.put("name", new AttributeValue().withS("Test"));
     }
 }

@@ -87,7 +87,12 @@ public class AWSClient_SinAnotaciones {
     }
 
     /**
-     * Recuperar item por id
+     * Recupera un Usuario específico por ID fijo "USER1" (método de ejemplo).
+     *
+     * @param id
+     * @param table
+     * @return Usuario encontrado (actualmente retorna null - pendiente
+     *         implementación)
      */
     public Usuario getItemById(String id, Tablas table) {
         Map<String, AttributeValue> key = new HashMap<>();
@@ -106,6 +111,14 @@ public class AWSClient_SinAnotaciones {
         return null;
     }
 
+    /**
+     * Escanea tabla filtrando por nombre usando expresiones nativas.
+     *
+     * @param client cliente DynamoDB
+     * @param tabla  nombre de la tabla
+     * @param nombre valor a buscar en atributo "name"
+     * @return lista de items que coinciden
+     */
     public List<Map<String, AttributeValue>> scanByAttribute(AmazonDynamoDB client, String tabla, String nombre) {
         Map<String, AttributeValue> values = new HashMap<>();
         values.put(":n", new AttributeValue().withS(nombre));
@@ -118,6 +131,12 @@ public class AWSClient_SinAnotaciones {
         return client.scan(request).getItems();
     }
 
+    /**
+     * Escanea tabla completa con paginación (método nativo).
+     * 
+     * @param tableName nombre de la tabla
+     * @return todos los items de la tabla como mapas de atributos
+     */
     public List<java.util.Map<String, AttributeValue>> scanTable(String tableName) {
 
         ScanRequest request = new ScanRequest()
@@ -137,6 +156,11 @@ public class AWSClient_SinAnotaciones {
         return items;
     }
 
+    /**
+     * Inserta un item en la tabla "Usuarios".
+     * 
+     * @param item mapa con atributos y valores del item
+     */
     public void insertItem(Map<String, AttributeValue> item) {
         PutItemRequest request = new PutItemRequest()
                 .withTableName("Usuarios")
@@ -146,6 +170,9 @@ public class AWSClient_SinAnotaciones {
 
     }
 
+    /**
+     * Método de prueba para creación manual de tabla (ejemplo).
+     */
     public void generateTable() {
         CreateTableRequest request = new CreateTableRequest()
                 // Nombre de la clase
