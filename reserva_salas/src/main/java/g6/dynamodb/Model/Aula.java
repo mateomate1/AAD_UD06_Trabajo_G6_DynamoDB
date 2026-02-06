@@ -20,7 +20,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
 @DynamoDBTable(tableName = "Aulas")
 public class Aula {
-    
+
     private String id;
     private String nombre;
     private Integer capacidad;
@@ -109,7 +109,7 @@ public class Aula {
      */
     @Override
     public String toString() {
-        return "Aula [id=" + id + ", nombre=" + nombre + ", capacidad=" + capacidad + 
-               ", edificio=" + edificio + "]";
+        return "Aula [id=" + id + ", nombre=" + nombre + ", capacidad=" + capacidad +
+                ", edificio=" + edificio + "]";
     }
 }

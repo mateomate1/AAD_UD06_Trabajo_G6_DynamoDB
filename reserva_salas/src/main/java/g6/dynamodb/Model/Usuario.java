@@ -19,7 +19,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
 @DynamoDBTable(tableName = "Usuarios")
 public class Usuario {
-    
+
     private String id;
     private String name;
     private String surname;

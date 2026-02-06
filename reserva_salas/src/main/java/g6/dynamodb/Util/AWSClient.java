@@ -1,5 +1,18 @@
 package g6.dynamodb.Util;
 
+/**
+ * Cliente AWS DynamoDB para operaciones CRUD y gestión de tablas.
+ * 
+ * Proporciona métodos para conectar con DynamoDB (local/remoto), listar tablas,
+ * escanear/buscar items, insertar datos y crear tablas automáticamente desde clases anotadas.
+ * 
+ * @author Mario Garcia
+ * @author Mateo Ayarra  
+ * @author Samuel Cobreros
+ * @author Zacaria Daghri
+ * @version 0.5
+ * @since 0.1
+ */
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -44,11 +57,15 @@ public class AWSClient {
     private final Logger log = LoggerFactory.getLogger(AWSClient.class);
 
     /**
-     * Inicializar cliente
+     * Inicializa el cliente DynamoDB (local o AWS real).
      * 
-     * @param local
-     * @throws FileNotFoundException
-     * @throws IOException
+     * Carga credenciales desde DynamoDBCredentials.properties. Para modo local usa
+     * endpoint específico, para AWS real usa región us-east-1 con credenciales por
+     * defecto.
+     * 
+     * @param local true para DynamoDB Local, false para AWS real
+     * @throws FileNotFoundException si no encuentra el archivo de credenciales
+     * @throws IOException           si hay error leyendo el archivo de propiedades
      */
     public AWSClient(boolean local) throws FileNotFoundException, IOException {
         p.load(new FileInputStream(fichProperties));
@@ -72,14 +89,13 @@ public class AWSClient {
             this.dynamoDB = AmazonDynamoDBClientBuilder.standard()
                     .withRegion("us-east-1")
                     .build();
-
         }
     }
 
     /**
-     * Listar tablas
-     *
-     * @return
+     * Lista todas las tablas disponibles en DynamoDB.
+     * 
+     * @return lista de nombres de tablas
      */
     public List<String> listTables() {
         ListTablesResult resultado = dynamoDB.listTables();
@@ -89,7 +105,10 @@ public class AWSClient {
     }
 
     /**
-     * Recuperar item por id
+     * Recupera un Usuario específico por ID fijo "USER1" (método de ejemplo).
+     * 
+     * @return Usuario encontrado (actualmente retorna null - pendiente
+     *         implementación)
      */
     public Usuario getItemById() {
         Map<String, AttributeValue> key = new HashMap<>();
@@ -98,16 +117,22 @@ public class AWSClient {
         GetItemRequest request = new GetItemRequest()
                 .withTableName("Usuarios")
                 .withKey(key);
-        // Solo sirve para especificar que atributos devolver
-        // .withAttributesToGet("name")
 
         GetItemResult result = dynamoDB.getItem(request);
         System.out.println(result.getItem());
         Map<String, AttributeValue> salida = result.getItem();
 
-        return null;
+        return null; // Pendiente: convertir AttributeValue a Usuario
     }
 
+    /**
+     * Escanea tabla filtrando por nombre usando expresiones nativas.
+     * 
+     * @param client cliente DynamoDB
+     * @param tabla  nombre de la tabla
+     * @param nombre valor a buscar en atributo "name"
+     * @return lista de items que coinciden
+     */
     public List<Map<String, AttributeValue>> scanPorNombre(AmazonDynamoDB client, String tabla, String nombre) {
         Map<String, AttributeValue> values = new HashMap<>();
         values.put(":n", new AttributeValue().withS(nombre));
@@ -121,17 +146,15 @@ public class AWSClient {
     }
 
     /**
-     * Buscar un item por un atributo, en este caso nombre, de una con anotaciones
-     * de dynamodb
+     * Busca items por atributo usando DynamoDBMapper (genérico).
      * 
-     * @param <T>
-     * @param clazz
-     * @param attribute
-     * @param value
-     * @return
+     * @param <T>       tipo de la clase modelo anotada
+     * @param clazz     clase modelo (ej: Usuario.class)
+     * @param attribute nombre del atributo a filtrar
+     * @param value     valor a buscar
+     * @return lista de objetos que coinciden con el filtro
      */
     public <T> List<T> scanByAttribute(Class<T> clazz, String attribute, String value) {
-
         DynamoDBMapper mapper = new DynamoDBMapper(dynamoDB);
 
         DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
@@ -142,8 +165,13 @@ public class AWSClient {
         return mapper.scan(clazz, scanExpression);
     }
 
+    /**
+     * Escanea tabla completa con paginación (método nativo).
+     * 
+     * @param tableName nombre de la tabla
+     * @return todos los items de la tabla como mapas de atributos
+     */
     public List<java.util.Map<String, AttributeValue>> scanTable(String tableName) {
-
         ScanRequest request = new ScanRequest()
                 .withTableName(tableName);
 
@@ -161,21 +189,39 @@ public class AWSClient {
         return items;
     }
 
+    /**
+     * Escanea tabla completa usando DynamoDBMapper.
+     * 
+     * @param <T> tipo de la clase modelo
+     * @param c   clase modelo anotada (ej: Usuario.class)
+     * @return lista de objetos de la clase
+     */
     public <T> List<T> scanTable(Class<T> c) {
         DynamoDBMapper mapper = new DynamoDBMapper(dynamoDB);
         DynamoDBScanExpression scanExpresion = new DynamoDBScanExpression();
         return mapper.scan(c, scanExpresion);
     }
 
+    /**
+     * Inserta un item en la tabla "Usuarios".
+     * 
+     * @param item mapa con atributos y valores del item
+     */
     public void insertItem(Map<String, AttributeValue> item) {
         PutItemRequest request = new PutItemRequest()
                 .withTableName("Usuarios")
                 .withItem(item);
 
         dynamoDB.putItem(request);
-
     }
 
+    /**
+     * Crea tabla automáticamente desde clase modelo anotada.
+     * 
+     * Configura modo PAY_PER_REQUEST automáticamente.
+     * 
+     * @param c clase modelo con anotaciones @DynamoDBTable
+     */
     public void generateTable(Class<?> c) {
         DynamoDBMapper mapper = new DynamoDBMapper(dynamoDB);
         CreateTableRequest request = mapper.generateCreateTableRequest(c);
@@ -184,23 +230,21 @@ public class AWSClient {
         TableUtils.createTableIfNotExists(dynamoDB, request);
     }
 
+    /**
+     * Método de prueba para creación manual de tabla (ejemplo).
+     */
     public void test() {
         CreateTableRequest request = new CreateTableRequest()
-                // Nombre de la clase
                 .withTableName("Usuarios")
-                // Aqui se define el atributo clave de la tabla
                 .withKeySchema(
                         new KeySchemaElement("id", KeyType.HASH))
-                // Definicion del atributo clave(el tipo de clave S/N/B)
                 .withAttributeDefinitions(
                         new AttributeDefinition("id", ScalarAttributeType.S))
-                //
                 .withBillingMode(BillingMode.PAY_PER_REQUEST.toString());
 
+        // Ejemplo de items (comentado)
         Map<String, AttributeValue> item = new HashMap<>();
         item.put("id", new AttributeValue().withS("1"));
-        Map<String, AttributeValue> items = new HashMap<>();
-        item.put("id", new AttributeValue().withN("1"));
+        // item.put("name", new AttributeValue().withS("Test"));
     }
-
 }
