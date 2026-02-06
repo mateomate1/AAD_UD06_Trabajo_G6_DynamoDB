@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -20,19 +19,10 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
-import com.amazonaws.services.dynamodbv2.model.AttributeDefinition;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.BillingMode;
 import com.amazonaws.services.dynamodbv2.model.CreateTableRequest;
-import com.amazonaws.services.dynamodbv2.model.GetItemRequest;
-import com.amazonaws.services.dynamodbv2.model.GetItemResult;
-import com.amazonaws.services.dynamodbv2.model.KeySchemaElement;
-import com.amazonaws.services.dynamodbv2.model.KeyType;
 import com.amazonaws.services.dynamodbv2.model.ListTablesResult;
-import com.amazonaws.services.dynamodbv2.model.PutItemRequest;
-import com.amazonaws.services.dynamodbv2.model.ScalarAttributeType;
-import com.amazonaws.services.dynamodbv2.model.ScanRequest;
-import com.amazonaws.services.dynamodbv2.model.ScanResult;
 import com.amazonaws.services.dynamodbv2.util.TableUtils;
 
 import g6.dynamodb.Model.Usuario;
@@ -89,38 +79,6 @@ public class AWSClient {
     }
 
     /**
-     * Recuperar item por id
-     */
-    public Usuario getItemById() {
-        Map<String, AttributeValue> key = new HashMap<>();
-        key.put("id", new AttributeValue("USER1"));
-
-        GetItemRequest request = new GetItemRequest()
-                .withTableName("Usuarios")
-                .withKey(key);
-        // Solo sirve para especificar que atributos devolver
-        // .withAttributesToGet("name")
-
-        GetItemResult result = dynamoDB.getItem(request);
-        System.out.println(result.getItem());
-        Map<String, AttributeValue> salida = result.getItem();
-
-        return null;
-    }
-
-    public List<Map<String, AttributeValue>> scanPorNombre(AmazonDynamoDB client, String tabla, String nombre) {
-        Map<String, AttributeValue> values = new HashMap<>();
-        values.put(":n", new AttributeValue().withS(nombre));
-
-        ScanRequest request = new ScanRequest()
-                .withTableName(tabla)
-                .withFilterExpression("name = :n")
-                .withExpressionAttributeValues(values);
-
-        return client.scan(request).getItems();
-    }
-
-    /**
      * Buscar un item por un atributo, en este caso nombre, de una con anotaciones
      * de dynamodb
      * 
@@ -142,38 +100,19 @@ public class AWSClient {
         return mapper.scan(clazz, scanExpression);
     }
 
-    public List<java.util.Map<String, AttributeValue>> scanTable(String tableName) {
-
-        ScanRequest request = new ScanRequest()
-                .withTableName(tableName);
-
-        ScanResult result = dynamoDB.scan(request);
-
-        List<java.util.Map<String, AttributeValue>> items = new ArrayList<>();
-        items.addAll(result.getItems());
-
-        while (result.getLastEvaluatedKey() != null) {
-            request = request.withExclusiveStartKey(result.getLastEvaluatedKey());
-            result = dynamoDB.scan(request);
-            items.addAll(result.getItems());
-        }
-
-        return items;
-    }
-
     public <T> List<T> scanTable(Class<T> c) {
         DynamoDBMapper mapper = new DynamoDBMapper(dynamoDB);
         DynamoDBScanExpression scanExpresion = new DynamoDBScanExpression();
         return mapper.scan(c, scanExpresion);
     }
 
-    public void insertItem(Map<String, AttributeValue> item) {
-        PutItemRequest request = new PutItemRequest()
-                .withTableName("Usuarios")
-                .withItem(item);
-
-        dynamoDB.putItem(request);
-
+    /**
+     * En caso de ya existir la clase el metodo funciona como un update
+     * @param usuario
+     */
+    public void insertItem(Usuario usuario) {
+        DynamoDBMapper mapper = new DynamoDBMapper(dynamoDB);
+        mapper.save(usuario);
     }
 
     public void generateTable(Class<?> c) {
@@ -184,23 +123,6 @@ public class AWSClient {
         TableUtils.createTableIfNotExists(dynamoDB, request);
     }
 
-    public void test() {
-        CreateTableRequest request = new CreateTableRequest()
-                // Nombre de la clase
-                .withTableName("Usuarios")
-                // Aqui se define el atributo clave de la tabla
-                .withKeySchema(
-                        new KeySchemaElement("id", KeyType.HASH))
-                // Definicion del atributo clave(el tipo de clave S/N/B)
-                .withAttributeDefinitions(
-                        new AttributeDefinition("id", ScalarAttributeType.S))
-                //
-                .withBillingMode(BillingMode.PAY_PER_REQUEST.toString());
-
-        Map<String, AttributeValue> item = new HashMap<>();
-        item.put("id", new AttributeValue().withS("1"));
-        Map<String, AttributeValue> items = new HashMap<>();
-        item.put("id", new AttributeValue().withN("1"));
-    }
+    
 
 }
