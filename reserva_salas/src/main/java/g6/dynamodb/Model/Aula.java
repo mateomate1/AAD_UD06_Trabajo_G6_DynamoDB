@@ -2,13 +2,13 @@ package g6.dynamodb.Model;
 
 /**
  * Modelo de entidad para representar aulas en DynamoDB.
- * 
+ *
  * Almacena información de las aulas disponibles para reserva: identificador único,
  * nombre/código del aula, capacidad máxima y ubicación/edificio.
  * Utilizado como parte del sistema de reservas de aulas.
- * 
+ *
  * @author Mario Garcia
- * @author Mateo Ayarra  
+ * @author Mateo Ayarra
  * @author Samuel Cobreros
  * @author Zacaria Daghri
  * @version 0.3
@@ -28,7 +28,7 @@ public class Aula {
 
     /**
      * Obtiene el identificador único del aula.
-     * 
+     *
      * @return id del aula (DynamoDB Hash Key)
      */
     @DynamoDBHashKey(attributeName = "id")
@@ -38,7 +38,7 @@ public class Aula {
 
     /**
      * Establece el identificador único del aula.
-     * 
+     *
      * @param id nuevo identificador único
      */
     public void setId(String id) {
@@ -47,7 +47,7 @@ public class Aula {
 
     /**
      * Obtiene el nombre/código del aula.
-     * 
+     *
      * @return nombre del aula (ej: "A-101", "Lab1")
      */
     @DynamoDBAttribute(attributeName = "nombre")
@@ -57,7 +57,7 @@ public class Aula {
 
     /**
      * Establece el nombre/código del aula.
-     * 
+     *
      * @param nombre nuevo nombre del aula
      */
     public void setNombre(String nombre) {
@@ -66,7 +66,7 @@ public class Aula {
 
     /**
      * Obtiene la capacidad máxima del aula.
-     * 
+     *
      * @return capacidad en número de personas
      */
     @DynamoDBAttribute(attributeName = "capacidad")
@@ -76,7 +76,7 @@ public class Aula {
 
     /**
      * Establece la capacidad máxima del aula.
-     * 
+     *
      * @param capacidad nueva capacidad máxima
      */
     public void setCapacidad(Integer capacidad) {
@@ -85,7 +85,7 @@ public class Aula {
 
     /**
      * Obtiene el edificio/ubicación del aula.
-     * 
+     *
      * @return edificio o ala donde se encuentra (ej: "Edificio A", "Planta 1")
      */
     @DynamoDBAttribute(attributeName = "edificio")
@@ -95,7 +95,7 @@ public class Aula {
 
     /**
      * Establece el edificio/ubicación del aula.
-     * 
+     *
      * @param edificio nuevo edificio/ubicación
      */
     public void setEdificio(String edificio) {
@@ -104,7 +104,7 @@ public class Aula {
 
     /**
      * Genera representación en String del aula para debugging/logging.
-     * 
+     *
      * @return String con todos los campos del aula
      */
     @Override

@@ -7,13 +7,12 @@ package g6.dynamodb.Model;
  * número de personas, aula reservada y usuario que realiza la reserva.
  * 
  * @author Mario Garcia
- * @author Mateo Ayarra  
+ * @author Mateo Ayarra
  * @author Samuel Cobreros
  * @author Zacaria Daghri
  * @version 0.3
  * @since 0.1
  */
-import java.util.Date;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
@@ -22,12 +21,13 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 public class Reserva {
 
     private String id;
-    // Para fechas usaremos Date ya que DynamoDB no soporta LocalDateTime
-    private Date fechaInicio;
-    private Date fechaFin;
+    // Se usara String para que el mapper pueda parsear de manera automatica el LocalDateTime
+    private String fechaInicio;
+    private String fechaFin;
     private Integer nPersonas;
     private Aula aula;
     private Usuario usuario;
+    private String estado;
 
     /**
      * Constructor vacío requerido por DynamoDB Mapper.
@@ -45,7 +45,7 @@ public class Reserva {
      * @param aula        objeto Aula reservada
      * @param usuario     objeto Usuario que realiza la reserva
      */
-    public Reserva(String id, Date fechaInicio, Date fechaFin, Integer nPersonas,
+    public Reserva(String id, String fechaInicio, String fechaFin, Integer nPersonas,
             Aula aula, Usuario usuario) {
         this.id = id;
         this.fechaInicio = fechaInicio;
@@ -80,7 +80,7 @@ public class Reserva {
      * @return fechaInicio como objeto Date
      */
     @DynamoDBAttribute(attributeName = "fechaInicio")
-    public Date getFechaInicio() {
+    public String getFechaInicio() {
         return fechaInicio;
     }
 
@@ -89,7 +89,7 @@ public class Reserva {
      * 
      * @param fechaInicio nueva fecha de inicio
      */
-    public void setFechaInicio(Date fechaInicio) {
+    public void setFechaInicio(String fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
@@ -99,7 +99,7 @@ public class Reserva {
      * @return fechaFin como objeto Date
      */
     @DynamoDBAttribute(attributeName = "fechaFin")
-    public Date getFechaFin() {
+    public String getFechaFin() {
         return fechaFin;
     }
 
@@ -108,7 +108,7 @@ public class Reserva {
      * 
      * @param fechaFin nueva fecha de fin
      */
-    public void setFechaFin(Date fechaFin) {
+    public void setFechaFin(String fechaFin) {
         this.fechaFin = fechaFin;
     }
 
@@ -169,6 +169,15 @@ public class Reserva {
         this.usuario = usuario;
     }
 
+    @DynamoDBAttribute(attributeName="estado_reserva")
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
     /**
      * Genera representación en String de la reserva para debugging/logging.
      * 
@@ -178,6 +187,7 @@ public class Reserva {
     public String toString() {
         return "Reserva [id=" + id + ", fechaInicio=" + fechaInicio +
                 ", fechaFin=" + fechaFin + ", nPersonas=" + nPersonas +
-                ", aula=" + aula + ", usuario=" + usuario + "]";
+                ", aula=" + aula + ", usuario=" + usuario + ", estado=" + estado + "]";
     }
+
 }

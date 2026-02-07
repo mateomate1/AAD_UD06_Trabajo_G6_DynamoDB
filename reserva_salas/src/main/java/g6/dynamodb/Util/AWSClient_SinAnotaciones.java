@@ -37,7 +37,7 @@ import com.amazonaws.services.dynamodbv2.model.ScanRequest;
 import com.amazonaws.services.dynamodbv2.model.ScanResult;
 import com.amazonaws.services.dynamodbv2.model.UpdateItemRequest;
 
-import g6.dynamodb.Model.Tablas;
+import g6.dynamodb.Dictionary;
 import g6.dynamodb.Model.Usuario;
 
 public class AWSClient_SinAnotaciones {
@@ -77,27 +77,28 @@ public class AWSClient_SinAnotaciones {
 		}
 	}
 
+	public AmazonDynamoDB getDB(){
+		return this.dynamoDB;
+	}
+
 	// METODOS CRUD:
 	// ---------------------CREATE---------------------------
 	/**
 	 * Método de prueba para creación manual de tabla (ejemplo).
 	 */
-	public void generateTable() {
+	public void generateTable(String nombreTabla, String nombreAtrClave) {
 		CreateTableRequest request = new CreateTableRequest()
 				// Nombre de la clase
-				.withTableName("Usuarios")
+				.withTableName(nombreTabla)
 				// Aqui se define el atributo clave de la tabla
 				.withKeySchema(
-						new KeySchemaElement("id", KeyType.HASH))
+						new KeySchemaElement(nombreAtrClave, KeyType.HASH))
 				// Definicion del atributo clave(el tipo de clave S/N/B)
 				.withAttributeDefinitions(
-						new AttributeDefinition("id", ScalarAttributeType.S))
-				//
+						new AttributeDefinition(nombreAtrClave, ScalarAttributeType.S))
+				// Anadir un metodo de pago, en este caso es un metodo dummy
 				.withBillingMode(BillingMode.PAY_PER_REQUEST.toString());
-		Map<String, AttributeValue> item = new HashMap<>();
-		item.put("id", new AttributeValue().withS("1"));
-		Map<String, AttributeValue> items = new HashMap<>();
-		item.put("id", new AttributeValue().withN("1"));
+		dynamoDB.createTable(request);
 	}
 
 	/**
@@ -133,7 +134,7 @@ public class AWSClient_SinAnotaciones {
 	 * @return Usuario encontrado (actualmente retorna null - pendiente
 	 *         implementación)
 	 */
-	public Usuario getItemById(String id, Tablas table) {
+	public Usuario getItemById(String id, Dictionary.Tablas table) {
 		Map<String, AttributeValue> key = new HashMap<>();
 		key.put("id", new AttributeValue(id));
 		GetItemRequest request = new GetItemRequest()

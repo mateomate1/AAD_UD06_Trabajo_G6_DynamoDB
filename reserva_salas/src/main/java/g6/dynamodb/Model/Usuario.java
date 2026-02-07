@@ -7,7 +7,7 @@ package g6.dynamodb.Model;
  * Utilizado como parte del sistema de reservas de aulas.
  * 
  * @author Mario Garcia
- * @author Mateo Ayarra  
+ * @author Mateo Ayarra
  * @author Samuel Cobreros
  * @author Zacaria Daghri
  * @version 0.3
