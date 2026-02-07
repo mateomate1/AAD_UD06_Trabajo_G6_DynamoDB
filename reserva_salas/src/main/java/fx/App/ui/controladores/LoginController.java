@@ -3,6 +3,7 @@ package fx.App.ui.controladores;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class LoginController {
@@ -16,7 +17,10 @@ public class LoginController {
 
     @FXML
     private TextField Usuario;
-
+    
+    @FXML
+    private PasswordField contrasenia;
+    
     @FXML
     void IniciarSesion(ActionEvent event) {
 
@@ -24,6 +28,16 @@ public class LoginController {
 
     @FXML
     void RegistrarUsuario(ActionEvent event) {
+
+    }
+
+    @FXML
+    void verificarContrasenia(ActionEvent event) {
+
+    }
+
+    @FXML
+    void verificarUsuario(ActionEvent event) {
 
     }
 }

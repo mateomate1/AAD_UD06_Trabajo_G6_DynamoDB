@@ -24,6 +24,7 @@ public class Main extends Application {
         Scene scene = new Scene(cargar.load());
         stage.setTitle("Reserva de Salas");
         stage.setScene(scene);
+        scene.getStylesheets().add(getClass().getResource("/css/styles.css").toExternalForm());
         stage.show();
     }
     public static void main(String[] args) {

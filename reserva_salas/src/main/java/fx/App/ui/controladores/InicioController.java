@@ -1,5 +1,20 @@
 package fx.App.ui.controladores;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+
 public class InicioController {
-// TODO: Implementar la lógica de control para la pantalla de inicio, incluyendo la gestión de eventos y la interacción con el modelo de datos.
+
+    @FXML
+    private Button botonPinicio;
+
+    @FXML
+    private Label tituloPInicio;
+
+    @FXML
+    void entrarAPP(ActionEvent event) {
+
+    }
 }
