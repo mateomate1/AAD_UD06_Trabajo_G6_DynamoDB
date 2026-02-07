@@ -18,10 +18,14 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
+import com.amazonaws.services.dynamodbv2.model.AttributeAction;
 import com.amazonaws.services.dynamodbv2.model.AttributeDefinition;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
+import com.amazonaws.services.dynamodbv2.model.AttributeValueUpdate;
 import com.amazonaws.services.dynamodbv2.model.BillingMode;
 import com.amazonaws.services.dynamodbv2.model.CreateTableRequest;
+import com.amazonaws.services.dynamodbv2.model.DeleteItemRequest;
+import com.amazonaws.services.dynamodbv2.model.DeleteTableRequest;
 import com.amazonaws.services.dynamodbv2.model.GetItemRequest;
 import com.amazonaws.services.dynamodbv2.model.GetItemResult;
 import com.amazonaws.services.dynamodbv2.model.KeySchemaElement;
@@ -31,6 +35,7 @@ import com.amazonaws.services.dynamodbv2.model.PutItemRequest;
 import com.amazonaws.services.dynamodbv2.model.ScalarAttributeType;
 import com.amazonaws.services.dynamodbv2.model.ScanRequest;
 import com.amazonaws.services.dynamodbv2.model.ScanResult;
+import com.amazonaws.services.dynamodbv2.model.UpdateItemRequest;
 
 import g6.dynamodb.Model.Tablas;
 import g6.dynamodb.Model.Usuario;
@@ -73,6 +78,48 @@ public class AWSClient_SinAnotaciones {
 
         }
     }
+
+    // METODOS CRUD:
+
+    // ---------------------CREATE---------------------------
+
+    /**
+     * Método de prueba para creación manual de tabla (ejemplo).
+     */
+    public void generateTable() {
+        CreateTableRequest request = new CreateTableRequest()
+                // Nombre de la clase
+                .withTableName("Usuarios")
+                // Aqui se define el atributo clave de la tabla
+                .withKeySchema(
+                        new KeySchemaElement("id", KeyType.HASH))
+                // Definicion del atributo clave(el tipo de clave S/N/B)
+                .withAttributeDefinitions(
+                        new AttributeDefinition("id", ScalarAttributeType.S))
+                //
+                .withBillingMode(BillingMode.PAY_PER_REQUEST.toString());
+
+        Map<String, AttributeValue> item = new HashMap<>();
+        item.put("id", new AttributeValue().withS("1"));
+        Map<String, AttributeValue> items = new HashMap<>();
+        item.put("id", new AttributeValue().withN("1"));
+    }
+
+    /**
+     * Inserta un item en la tabla "Usuarios".
+     * 
+     * @param item mapa con atributos y valores del item
+     */
+    public void insertItem(Map<String, AttributeValue> item) {
+        PutItemRequest request = new PutItemRequest()
+                .withTableName("Usuarios")
+                .withItem(item);
+
+        dynamoDB.putItem(request);
+
+    }
+
+    // ----------------------READ----------------------------
 
     /**
      * Listar tablas
@@ -156,40 +203,52 @@ public class AWSClient_SinAnotaciones {
         return items;
     }
 
-    /**
-     * Inserta un item en la tabla "Usuarios".
-     * 
-     * @param item mapa con atributos y valores del item
-     */
-    public void insertItem(Map<String, AttributeValue> item) {
-        PutItemRequest request = new PutItemRequest()
-                .withTableName("Usuarios")
-                .withItem(item);
+    // ---------------------UPDATE---------------------------
+    public void updateAttribute(
+            String tableName,
+            String keyName,
+            String keyValue,
+            String attributeName,
+            AttributeValue newValue) {
 
-        dynamoDB.putItem(request);
+        Map<String, AttributeValue> key = Map.of(
+                keyName, new AttributeValue().withS(keyValue));
 
+        Map<String, AttributeValueUpdate> updates = Map.of(
+                attributeName,
+                new AttributeValueUpdate()
+                        .withValue(newValue)
+                        .withAction(AttributeAction.PUT));
+
+        UpdateItemRequest request = new UpdateItemRequest()
+                .withTableName(tableName)
+                .withKey(key)
+                .withAttributeUpdates(updates);
+
+        dynamoDB.updateItem(request);
     }
 
-    /**
-     * Método de prueba para creación manual de tabla (ejemplo).
-     */
-    public void generateTable() {
-        CreateTableRequest request = new CreateTableRequest()
-                // Nombre de la clase
-                .withTableName("Usuarios")
-                // Aqui se define el atributo clave de la tabla
-                .withKeySchema(
-                        new KeySchemaElement("id", KeyType.HASH))
-                // Definicion del atributo clave(el tipo de clave S/N/B)
-                .withAttributeDefinitions(
-                        new AttributeDefinition("id", ScalarAttributeType.S))
-                //
-                .withBillingMode(BillingMode.PAY_PER_REQUEST.toString());
+    // ---------------------DELETE---------------------------
 
-        Map<String, AttributeValue> item = new HashMap<>();
-        item.put("id", new AttributeValue().withS("1"));
-        Map<String, AttributeValue> items = new HashMap<>();
-        item.put("id", new AttributeValue().withN("1"));
+    public void deleteTable(String tableName) {
+        DeleteTableRequest request = new DeleteTableRequest()
+                .withTableName(tableName);
+
+        dynamoDB.deleteTable(request);
     }
 
+    public void deleteByKey(
+            String tableName,
+            String keyName,
+            String keyValue) {
+
+        Map<String, AttributeValue> key = Map.of(
+                keyName, new AttributeValue().withS(keyValue));
+
+        DeleteItemRequest request = new DeleteItemRequest()
+                .withTableName(tableName)
+                .withKey(key);
+
+        dynamoDB.deleteItem(request);
+    }
 }

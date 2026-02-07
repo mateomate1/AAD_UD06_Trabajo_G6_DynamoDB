@@ -7,7 +7,7 @@ package g6.dynamodb.Util;
  * escanear/buscar items, insertar datos y crear tablas automáticamente desde clases anotadas.
  * 
  * @author Mario Garcia
- * @author Mateo Ayarra  
+ * @author Mateo Ayarra
  * @author Samuel Cobreros
  * @author Zacaria Daghri
  * @version 0.5
@@ -35,6 +35,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.BillingMode;
 import com.amazonaws.services.dynamodbv2.model.CreateTableRequest;
+import com.amazonaws.services.dynamodbv2.model.DeleteTableRequest;
 import com.amazonaws.services.dynamodbv2.model.ListTablesResult;
 import com.amazonaws.services.dynamodbv2.util.TableUtils;
 
@@ -42,10 +43,11 @@ import com.amazonaws.services.dynamodbv2.util.TableUtils;
  * Cliente AWS DynamoDB para operaciones CRUD y gestión de tablas.
  * 
  * Proporciona métodos para conectar con DynamoDB (local/remoto), listar tablas,
- * escanear/buscar items, insertar datos y crear tablas automáticamente desde clases anotadas.
+ * escanear/buscar items, insertar datos y crear tablas automáticamente desde
+ * clases anotadas.
  * 
  * @author Mario Garcia
- * @author Mateo Ayarra  
+ * @author Mateo Ayarra
  * @author Samuel Cobreros
  * @author Zacaria Daghri
  * @version 0.5
@@ -93,6 +95,32 @@ public class AWSClient {
         }
     }
 
+    // METODOS CRUD:
+
+    // ---------------------CREATE---------------------------
+
+    /**
+     * Crea tabla automáticamente desde clase modelo anotada.
+     * 
+     * Configura modo PAY_PER_REQUEST automáticamente.
+     * 
+     * @param c clase modelo con anotaciones @DynamoDBTable
+     */
+    public void generateTable(Class<?> c) {
+        DynamoDBMapper mapper = new DynamoDBMapper(dynamoDB);
+        CreateTableRequest request = mapper.generateCreateTableRequest(c);
+
+        request.setBillingMode(BillingMode.PAY_PER_REQUEST.toString());
+        TableUtils.createTableIfNotExists(dynamoDB, request);
+    }
+
+    public <T> void insertItem(T item) {
+        DynamoDBMapper mapper = new DynamoDBMapper(dynamoDB);
+        mapper.save(item);
+    }
+
+    // ----------------------READ----------------------------
+
     /**
      * Lista todas las tablas disponibles en DynamoDB.
      * 
@@ -138,18 +166,24 @@ public class AWSClient {
         return mapper.scan(c, scanExpresion);
     }
 
-    /**
-     * Crea tabla automáticamente desde clase modelo anotada.
-     * 
-     * Configura modo PAY_PER_REQUEST automáticamente.
-     * 
-     * @param c clase modelo con anotaciones @DynamoDBTable
-     */
-    public void generateTable(Class<?> c) {
-        DynamoDBMapper mapper = new DynamoDBMapper(dynamoDB);
-        CreateTableRequest request = mapper.generateCreateTableRequest(c);
+    // ---------------------UPDATE---------------------------
 
-        request.setBillingMode(BillingMode.PAY_PER_REQUEST.toString());
-        TableUtils.createTableIfNotExists(dynamoDB, request);
+    public <T> void updateItem(T item) {
+        DynamoDBMapper mapper = new DynamoDBMapper(dynamoDB);
+        mapper.save(item);
     }
+
+    // ---------------------DELETE---------------------------
+
+    public <T> void deleteItem(T item) {
+        DynamoDBMapper mapper = new DynamoDBMapper(dynamoDB);
+        mapper.delete(item);
+    }
+
+    public void deleteTable(Class<?> c) {
+        DynamoDBMapper mapper = new DynamoDBMapper(dynamoDB);
+        DeleteTableRequest request = mapper.generateDeleteTableRequest(c);
+        dynamoDB.deleteTable(request);
+    }
+
 }
