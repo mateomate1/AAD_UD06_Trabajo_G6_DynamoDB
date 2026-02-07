@@ -19,9 +19,24 @@ public class Dictionary {
     }
 
     public enum Estado {
-        PENDIENTE,
-        ACEPTADA,
-        RECHAZADA
+        PENDIENTE("Pendiente"),
+        ACEPTADA("Aceptada"),
+        RECHAZADA("Rechazada");
+
+        private final String valor;
+
+        Estado(String valor) {
+            this.valor = valor;
+        }
+
+        public String getValor() {
+            return valor;
+        }
+
+        @Override
+        public String toString() {
+            return valor;
+        }
     }
 
 }

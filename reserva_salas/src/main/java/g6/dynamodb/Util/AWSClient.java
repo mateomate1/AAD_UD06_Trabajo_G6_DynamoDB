@@ -95,6 +95,10 @@ public class AWSClient {
         }
     }
 
+    public AmazonDynamoDB getDynamoDB() {
+        return dynamoDB;
+    }
+
     // METODOS CRUD:
 
     // ---------------------CREATE---------------------------
