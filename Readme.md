@@ -6,22 +6,60 @@ Aplicación **Java 17** para gestión de reservas de aulas usando **Amazon Dynam
 Implementa patrones **DAO**, **Service** y **menú interactivo** con logging profesional **SLF4J**.
 
 ## 📁 Estructura del Proyecto
-
-reserva_salas/ # ✅ APLICACIÓN PRINCIPAL
-├── src/
-│ └── main/
-│ └── java/g6/dynamodb/
-│ ├── DAO/ # Data Access Objects (CRUD)
-│ ├── Model/ # Entidades (@DynamoDBTable)
-│ ├── Service/ # Lógica de negocio
-│ ├── Style/ # Menú interactivo
-│ ├── Util/ # Cliente AWS + Low-Level API
-│ └── Dictionary/ # Enums tablas/estados
-├── resources/ # logback.xml + properties
-├── docker/dynamodb/ # Docker DynamoDB Local
-├── design/ # Diagramas BD y UML
-└── ApuntesDynamoDB/ # Documentación técnica
-
+````
+D:.
+├───.vscode
+├───ApuntesDynamoDB
+│   ├───CREATE
+│   └───UPDATE
+├───design
+├───docker
+│   └───dynamodb
+├───DynamoDB
+│   └───DynamoDBLocal_lib
+└───reserva_salas
+    ├───src
+    │   └───main
+    │       ├───java
+    │       │   ├───fx
+    │       │   │   └───App
+    │       │   │       └───ui
+    │       │   │           ├───controladores
+    │       │   │           └───navegacion
+    │       │   └───g6
+    │       │       └───dynamodb
+    │       │           ├───DAO
+    │       │           ├───Model
+    │       │           ├───Service
+    │       │           ├───Style
+    │       │           └───Util
+    │       └───resources
+    │           ├───css
+    │           ├───fxml
+    │           └───img
+    └───target
+        ├───classes
+        │   ├───css
+        │   ├───fx
+        │   │   └───App
+        │   │       └───ui
+        │   │           ├───controladores
+        │   │           └───navegacion
+        │   ├───fxml
+        │   ├───g6
+        │   │   └───dynamodb
+        │   │       ├───DAO
+        │   │       ├───Model
+        │   │       ├───Service
+        │   │       ├───Style
+        │   │       └───Util
+        │   └───img
+        ├───maven-status
+        │   └───maven-compiler-plugin
+        │       └───compile
+        │           └───default-compile
+        └───test-classes
+````
 ## 📋 Contenido Técnico
 
 | Carpeta     | Funcionalidad |
