@@ -1,54 +1,30 @@
 package g6.dynamodb;
 
-import java.time.LocalDateTime;
-
+import g6.dynamodb.Model.Aula;
 import g6.dynamodb.Model.Reserva;
-import g6.dynamodb.Service.ReservaService;
+import g6.dynamodb.Model.Usuario;
+import g6.dynamodb.Style.Menu;
 import g6.dynamodb.Util.AWSClient;
+import java.io.IOException;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Main {
+    private static final Logger LOG = LoggerFactory.getLogger(Main.class);
+
     public static void main(String[] args) {
-        AWSClient aws;
         try {
-            aws = new AWSClient(true);
-            // Test t = new Test();
-            // t.setClave("clave");
-            // aws.insertItem(t);
+            AWSClient aws = new AWSClient(true);
+            aws.generateTable(Usuario.class);
+            aws.generateTable(Aula.class);
+            aws.generateTable(Reserva.class);
 
-            // aws.generateTable(Reserva.class);
-            // ReservaDAO r = new ReservaDAO(aws.getDynamoDB());
-            // Reserva o = r.findById("id");
-            // System.out.println(o.toString());
+            Menu menu = new Menu(aws);
+            menu.start();
 
-            ReservaService rs = new ReservaService(aws);
-            Reserva reserva = new Reserva();
-            reserva.setFechaInicio(LocalDateTime.of(2026, 2, 7, 9, 0).toString());
-            reserva.setFechaFin(LocalDateTime.of(2026, 2, 7, 10, 20).toString());
-            rs.crearReserva(reserva);
-
-            // aws.listTables().stream().forEach(System.out::println);
-
-            // Map<String, AttributeValue> item = new HashMap<>();
-            // item.put("id", new AttributeValue().withS("UserZaca2"));
-            // item.put("name", new AttributeValue().withN("1234"));
-
-            // aws.insertItem(item);
-            // aws.scanTable("Usuarios").stream().forEach(System.out::println);
-
-            // aws.generateTable(Test.class);
-
-            // aws.scanTable(Usuario.class).stream().forEach(System.out::println);
-
-            // aws.getItemById();
-
-            // YYYY-MM-DDTHH:MM:SS
-            // LocalDateTime time = LocalDateTime.parse("2026-02-07T12:20");
-            // System.out.println(time.toString());
-            // time = LocalDateTime.of(2026, 02, 7, 12, 20);
-            // System.out.println(time.toString());
-        } catch (Exception e){
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+        } catch (IOException e) {
+            LOG.error("ERROR [" + e.getMessage() + "]");
         }
     }
 }
