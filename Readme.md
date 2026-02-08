@@ -69,7 +69,7 @@ src
 | **0**  | **SALIR** Cerrar aplicación limpia | ✅ |
 
 
-📚 Autores
+### 📚 Autores
 Grupo 6 - DAM 2 - 2026
 - Mario Garcia
 - Mateo Ayarra
