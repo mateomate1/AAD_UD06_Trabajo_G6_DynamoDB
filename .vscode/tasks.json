@@ -1,0 +1,18 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run JavaFX",
+            "type": "shell",
+            "command": "mvn javafx:run",
+            "options": {
+                "cwd": "${workspaceFolder}/reserva_salas"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        }
+    ]
+}
