@@ -8,6 +8,38 @@ Implementa patrones **DAO**, **Service** y **menú interactivo** con logging pro
 ## 📁 Estructura del Proyecto
 
 D:.
+├───ApuntesDynamoDB
+│   ├───CREATE
+│   └───UPDATE
+├───design
+├───docker
+│   └───dynamodb
+├───DynamoDB
+│   └───DynamoDBLocal_lib
+└───reserva_salas
+    ├───src
+    │   ├───main
+    │   │   └───java
+    │   │       └───g6
+    │   │           └───dynamodb
+    │   │               ├───DAO
+    │   │               ├───Model
+    │   │               ├───Service
+    │   │               ├───Style
+    │   │               └───Util
+    │   └───resources
+    └───target
+        ├───classes
+        │   └───g6
+        │       └───dynamodb
+        │           ├───DAO
+        │           ├───Model
+        │           ├───Service
+        │           ├───Style
+        │           └───Util
+        └───test-classes
+
+D:.
 ├───ApuntesDynamoDB/ # Documentación técnica DynamoDB
 ├───design/ # Diagramas BD y UML
 ├───docker/dynamodb/ # Docker DynamoDB Local
