@@ -100,9 +100,6 @@ public class Menu {
         log.info("1. Gestionar USUARIOS");
         log.info("2. Gestionar AULAS");
         log.info("3. Gestionar RESERVAS");
-        log.info("4. Crear tabla USUARIOS");
-        log.info("5. Crear tabla AULAS");
-        log.info("6. Crear tabla RESERVAS");
         log.info("0. SALIR");
         log.info("Selecciona opcion: ");
     }
