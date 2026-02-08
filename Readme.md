@@ -22,8 +22,6 @@ reserva_salas/ # ✅ APLICACIÓN PRINCIPAL
 ├── design/ # Diagramas BD y UML
 └── ApuntesDynamoDB/ # Documentación técnica
 
-text
-
 ## 📋 Contenido Técnico
 
 | Carpeta     | Funcionalidad |
@@ -47,11 +45,11 @@ text
 1. Credenciales
 Crea src/main/resources/DynamoDBCredentials.properties:
 
-text
 local.accessKeyId=dummy_access_key
 local.secretAccessKey=dummy_secret_key
 local.region=us-east-1
 endpoint=http://localhost:8000
+
 2. DynamoDB Local
 bash
 cd docker/dynamodb
@@ -59,26 +57,22 @@ docker-compose up -d
 3. Ejecutar
 bash
 mvn clean compile exec:java -Dexec.mainClass="g6.dynamodb.Main"
-🎮 Menú Interactivo
-text
-=== SISTEMA DE RESERVAS DE AULAS ===
-1. Gestionar USUARIOS    ➕ Crear/Buscar/Borrar
-2. Gestionar AULAS       ➕ ID/Nombre/Capacidad/Edificio
-3. Gestionar RESERVAS    ➕ UUID/Fechas/Validación automática
-4-6. Crear tablas        ➕ Usuario/Aula/Reserva
-0. SALIR
-✅ Funcionalidades Implementadas
-Operación	Estado
-CRUD Usuario	✅
-CRUD Aula	✅
-CRUD Reserva	✅
-UUID automático	✅
-Validación fechas	✅
-Detectar solapamientos	✅
-Estados automáticos	✅
-Logging SLF4J	✅
+
+## ✅ Funcionalidades del Menú
+
+
+
+| **1**  | **Gestionar USUARIOS** Crear / Buscar / Borrar | ✅ |
+
+| **2**  | **Gestionar AULAS** ID/Nombre/Capacidad/Edificio | ✅ |
+
+| **3**  | **Gestionar RESERVAS** UUID/Fechas/Validación automática | ✅ |
+
+| **0**  | **SALIR** Cerrar aplicación limpia | ✅ |
+
+
 🧪 Ejemplo de Uso
-text
+
 > Crear Aula: ID=A101, Nombre=A101, Cap=30, Edificio=A
 > Crear Reserva: 5 pers, 2026-02-08T10:00→11:00, Aula=A101
 > Resultado: ACEPTADA ✓
@@ -107,16 +101,10 @@ text
 Main.java → AWSClient → DAOs → Models → Service
          ↓
      generateTable() → [Usuarios,Aulas,Reservas]
+
 📚 Autores
-Equipo G6 - DAM UOC 2026
-
-Mario Garcia
-
-Mateo Ayarra
-
-Samuel Cobreros
-
-Zacaria Daghri
-
-Stack: Java 17 | DynamoDB v1 Mapper | SLF4J/Logback | Maven
-Patrón: DAO + Service + Switch Expressions
+Grupo 6 - DAM 2 - 2026
+- Mario Garcia
+- Mateo Ayarra
+- Samuel Cobreros
+- Zacaria Daghri
