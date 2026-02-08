@@ -1,7 +1,7 @@
 import fx.App.ui.navegacion.SceneManager;
+import g6.dynamodb.Style.Menu;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -29,6 +29,12 @@ public class Main extends Application {
         stage.show();
     }
     public static void main(String[] args) {
+        try {
+            
+            Menu menu = new Menu();
+            menu.start();
+        } catch (Exception e) {
+        }
         
         launch(args);
         

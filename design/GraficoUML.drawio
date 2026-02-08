@@ -1,0 +1,46 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36" version="29.3.8">
+  <diagram name="Pagina-1" id="uml-reserva-salas">
+    <mxGraphModel dx="1570" dy="753" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Usuario" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;b&gt;Usuario&lt;/b&gt;&lt;hr&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;- id: String&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;- nombre: String&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;- apellidos: String&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;- contrasena: String&lt;/p&gt;" vertex="1">
+          <mxGeometry height="160" width="200" x="40" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Reserva" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;b&gt;Reserva&lt;/b&gt;&lt;hr&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;- id: String&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;- fechaInicio: LocalDateTime&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;- fechaFin: LocalDateTime&lt;br&gt;- nPersonas: Integer&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;- aula: Aula&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;- usuario: Usuario&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;- estado: String&lt;/p&gt;" vertex="1">
+          <mxGeometry height="160" width="240" x="20" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="Aula" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" value="&lt;b&gt;Aula&lt;/b&gt;&lt;hr&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;- id: String&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;- nombre: String&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;- capacidad: Integer&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;- edificio: String&lt;/p&gt;" vertex="1">
+          <mxGeometry height="120" width="200" x="40" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="UsuarioDAO" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=#dae8fc;" value="&lt;b&gt;UsuarioDAO&lt;/b&gt;&lt;hr/&gt;+ save(Usuario)&lt;br&gt;+ findById(String)" vertex="1">
+          <mxGeometry height="140" width="220" x="340" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ReservaDAO" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=#dae8fc;" value="&lt;b&gt;ReservaDAO&lt;/b&gt;&lt;hr/&gt;+ save(Reserva)&lt;br&gt;+ findById(String)" vertex="1">
+          <mxGeometry height="140" width="220" x="340" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="AulaDAO" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=#dae8fc;" value="&lt;b&gt;AulaDAO&lt;/b&gt;&lt;hr/&gt;+ save(Aula)&lt;br&gt;+ findById(String)" vertex="1">
+          <mxGeometry height="140" width="220" x="340" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="UsuarioService" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=#d5e8d4;" value="&lt;b&gt;UsuarioService&lt;/b&gt;&lt;hr/&gt;+ crearUsuario()&lt;br&gt;+ obtenerUsuario()" vertex="1">
+          <mxGeometry height="140" width="240" x="650" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ReservaService" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=#d5e8d4;" value="&lt;b&gt;ReservaService&lt;/b&gt;&lt;hr/&gt;+ crearReserva()&lt;br&gt;+ cancelarReserva()" vertex="1">
+          <mxGeometry height="140" width="240" x="650" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="AulaService" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=#d5e8d4;" value="&lt;b&gt;AulaService&lt;/b&gt;&lt;hr/&gt;+ crearAula()&lt;br&gt;+ obtenerAula()" vertex="1">
+          <mxGeometry height="140" width="240" x="650" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="UsuarioService" style="endArrow=block;html=1;" target="UsuarioDAO">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="ReservaService" style="endArrow=block;html=1;" target="ReservaDAO">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="AulaService" style="endArrow=block;html=1;" target="AulaDAO">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

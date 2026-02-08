@@ -43,8 +43,10 @@ public class ReservaService {
     /**
      * Crea una nueva reserva con validaciones completas.
      * 
-     * Genera ID único UUID, valida orden de fechas, verifica solapamientos con otras reservas
-     * del mismo aula y asigna estado automáticamente. Guarda la reserva en DynamoDB.
+     * Genera ID único UUID, valida orden de fechas, verifica solapamientos con
+     * otras reservas
+     * del mismo aula y asigna estado automáticamente. Guarda la reserva en
+     * DynamoDB.
      * 
      * @param reserva reserva con datos completos (aula, fechas, usuario, etc.)
      * @return reserva persistida con ID único y estado asignado
@@ -52,7 +54,7 @@ public class ReservaService {
     public Reserva crearReserva(Reserva reserva) {
         ReservaDAO dao = new ReservaDAO(this.cliente.getDynamoDB());
         boolean es_unica = false;
-        
+
         // Genera ID único UUID hasta encontrar uno disponible
         while (!es_unica) {
             String id = UUID.randomUUID().toString();
@@ -63,15 +65,15 @@ public class ReservaService {
         }
 
         // Validaciones y asignación de estado
-        if (!fechasValidas(LocalDateTime.parse(reserva.getFechaInicio()), 
-                          LocalDateTime.parse(reserva.getFechaFin()))) {
+        if (!fechasValidas(LocalDateTime.parse(reserva.getFechaInicio()),
+                LocalDateTime.parse(reserva.getFechaFin()))) {
             reserva.setEstado(Dictionary.Estado.RECHAZADA.toString());
         } else if (existeSolapamiento(reserva)) {
             reserva.setEstado(Dictionary.Estado.RECHAZADA.toString());
         } else {
             reserva.setEstado(Dictionary.Estado.ACEPTADA.toString());
         }
-        
+
         // Persiste la reserva
         mapper.save(reserva);
         return reserva;
@@ -81,7 +83,7 @@ public class ReservaService {
      * Valida que la fecha de inicio sea anterior a la fecha de fin.
      * 
      * @param inicio fecha/hora de inicio
-     * @param fin fecha/hora de fin
+     * @param fin    fecha/hora de fin
      * @return true si inicio < fin
      */
     private boolean fechasValidas(LocalDateTime inicio, LocalDateTime fin) {
@@ -91,7 +93,8 @@ public class ReservaService {
     /**
      * Detecta si la nueva reserva solapa con reservas existentes del mismo aula.
      * 
-     * Ignora reservas RECHAZADAS y aulas diferentes. Verifica solapamiento temporal:
+     * Ignora reservas RECHAZADAS y aulas diferentes. Verifica solapamiento
+     * temporal:
      * nueva.inicio < existente.fin && nueva.fin > existente.inicio
      * 
      * @param nueva reserva a validar
@@ -106,7 +109,7 @@ public class ReservaService {
             if (!r.getAula().getId().equals(nueva.getAula().getId())) {
                 continue;
             }
-            
+
             // Ignorar reservas rechazadas
             if (r.getEstado().equals(Dictionary.Estado.RECHAZADA.toString())) {
                 continue;

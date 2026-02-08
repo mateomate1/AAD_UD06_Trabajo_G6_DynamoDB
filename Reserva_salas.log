@@ -1,0 +1,9 @@
+2026-02-08 18:07:13,266 [main] TRACE g6.dynamodb.Util.AWSClient               - Fichero cargado con exito
+2026-02-08 18:07:13,932 [main] INFO  g6.dynamodb.Style.Menu                   - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-08 18:07:14,061 [main] INFO  g6.dynamodb.Style.Menu                   - Tablas cargadas: [Test, reserva]
+2026-02-08 18:07:14,063 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-08 18:07:14,063 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-08 18:07:14,063 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-08 18:07:14,063 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-08 18:07:14,063 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-08 18:07:14,063 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 

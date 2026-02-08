@@ -1,5 +1,7 @@
 package g6.dynamodb.Style;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.UUID;
 
@@ -37,6 +39,15 @@ public class Menu {
     private final ReservaDAO reservaDAO;
     private final ReservaService reservaService;
     private static final Logger log = LoggerFactory.getLogger(Menu.class);
+
+    public Menu() throws FileNotFoundException, IOException {
+        this.aws = new AWSClient(true);
+        this.sc = new Scanner(System.in);
+        this.usuarioDAO = new UsuarioDAO(aws.getDynamoDB());
+        this.aulaDAO = new AulaDAO(aws.getDynamoDB());
+        this.reservaDAO = new ReservaDAO(aws.getDynamoDB());
+        this.reservaService = new ReservaService(aws);
+    }
 
     /**
      * Constructor principal del menu.

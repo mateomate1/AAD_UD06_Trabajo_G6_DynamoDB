@@ -10,7 +10,7 @@
 
     <name>Reserva Salas</name>
     <description>Aplicacion enfocada a demostrar el uso de DynamoDB</description>
-    
+
     <licenses>
         <license>
             <name>MIT License</name>
@@ -101,10 +101,18 @@
                     <mainClass>Main</mainClass>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <mainClass>Launch</mainClass>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
-     <properties>
+    <properties>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
     </properties>

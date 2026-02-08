@@ -71,6 +71,7 @@ public class AWSClient {
      * @throws IOException           si hay error leyendo el archivo de propiedades
      */
     public AWSClient(boolean local) throws FileNotFoundException, IOException {
+        System.setProperty("aws.java.v1.disableDeprecationAnnouncement", "true");
         p.load(new FileInputStream(fichProperties));
         log.trace("Fichero cargado con exito");
 
