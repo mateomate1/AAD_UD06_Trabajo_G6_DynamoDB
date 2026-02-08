@@ -40,13 +40,12 @@ text
 | **Util**  | `AWSClient` + `AWSClient_SinAnotaciones` (Low-Level API) |
 
 ## 🛠️ Requisitos e Instalación
-
-```bash
 ✅ Java 17+
 ✅ Maven (mvn clean compile exec:java)
 ✅ DynamoDB Local (Docker o JAR)
 ✅ SLF4J + Logback
-🚀 Instalación Rápida
+
+##🚀 Instalación Rápida
 Credenciales (obligatorio)
 Crea src/main/resources/DynamoDBCredentials.properties:
 
