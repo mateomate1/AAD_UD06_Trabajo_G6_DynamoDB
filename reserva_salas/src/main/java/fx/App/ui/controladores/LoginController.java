@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 public class LoginController {
  // TODO: Implementar la lógica de autenticación y manejo de eventos para la pantalla de inicio de sesión.
 
-       @FXML
+    @FXML
     private Button ButtonLogIn;
 
     @FXML

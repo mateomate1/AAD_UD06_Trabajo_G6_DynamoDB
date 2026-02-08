@@ -1,5 +1,6 @@
 package fx.App.ui.controladores;
 
+import fx.App.ui.navegacion.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -15,6 +16,6 @@ public class InicioController {
 
     @FXML
     void entrarAPP(ActionEvent event) {
-
+        SceneManager.cambioScene("login");
     }
 }

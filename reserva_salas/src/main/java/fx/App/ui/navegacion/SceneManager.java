@@ -21,12 +21,12 @@ public class SceneManager {
 
     /**
      * Cambia la escena actual a la especificada por el nombre del archivo FXML.
-     * @param fxml El nombre del archivo FXML (sin la extensión) que se encuentra en el paquete "tu.paquete.app.fxml".
+     * @param fxml El nombre del archivo FXML (sin la extensión) que se encuentra en el paquete "fxml".
      */
     public static void cambioScene(String fxml) {
         try {
             Parent root = FXMLLoader.load(
-                SceneManager.class.getResource("/tu/paquete/app/fxml/" + fxml)
+                SceneManager.class.getResource("/fxml/" + fxml + ".fxml")
             );
             stage.setScene(new Scene(root));
         } catch (IOException e) {
