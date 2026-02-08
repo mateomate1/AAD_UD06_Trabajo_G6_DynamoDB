@@ -1,54 +1,69 @@
 package g6.dynamodb;
 
-import java.time.LocalDateTime;
-
+import g6.dynamodb.Model.Aula;
 import g6.dynamodb.Model.Reserva;
-import g6.dynamodb.Service.ReservaService;
+import g6.dynamodb.Model.Usuario;
+import g6.dynamodb.Style.Menu;
 import g6.dynamodb.Util.AWSClient;
+import java.io.IOException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ * Clase principal de entrada de la aplicacion de reservas de aulas con DynamoDB.
+ * 
+ * Inicializa el cliente AWS DynamoDB en modo Local, crea las tablas necesarias
+ * (Usuarios, Aulas, Reservas) y lanza el menu interactivo principal.
+ * 
+ * Maneja excepciones de IO (credenciales/archivos) con logging profesional.
+ * 
+ * @author Mario Garcia
+ * @author Mateo Ayarra
+ * @author Samuel Cobreros
+ * @author Zacaria Daghri
+ * @version 1.0
+ * @since 1.0
+ */
 public class Main {
+    
+    /** Logger SLF4J estatico para trazas de la clase principal */
+    private static final Logger LOG = LoggerFactory.getLogger(Main.class);
+
+    /**
+     * Punto de entrada principal de la aplicacion.
+     * 
+     * Flujo de ejecucion:
+     * <ol>
+     * <li>Crear cliente AWS DynamoDB Local (true)</li>
+     * <li>Generar tablas: Usuario, Aula, Reserva</li>
+     * <li>Inicializar y ejecutar Menu interactivo</li>
+     * </ol>
+     * 
+     * Captura IOException (credenciales/archivos faltantes) y loguea error.
+     * 
+     * @param args argumentos de linea de comandos (no utilizados)
+     */
     public static void main(String[] args) {
-        AWSClient aws;
         try {
-            aws = new AWSClient(true);
-            // Test t = new Test();
-            // t.setClave("clave");
-            // aws.insertItem(t);
+            LOG.info("Iniciando sistema de reservas DynamoDB Local");
+            
+            // Inicializar cliente DynamoDB Local
+            AWSClient aws = new AWSClient(true);
+            
+            // Crear tablas automaticamente desde modelos anotados
+            LOG.debug("Creando tablas...");
+            aws.generateTable(Usuario.class);
+            aws.generateTable(Aula.class);
+            aws.generateTable(Reserva.class);
+            LOG.info("Tablas creadas correctamente");
 
-            // aws.generateTable(Reserva.class);
-            // ReservaDAO r = new ReservaDAO(aws.getDynamoDB());
-            // Reserva o = r.findById("id");
-            // System.out.println(o.toString());
-
-            ReservaService rs = new ReservaService(aws);
-            Reserva reserva = new Reserva();
-            reserva.setFechaInicio(LocalDateTime.of(2026, 2, 7, 9, 0).toString());
-            reserva.setFechaFin(LocalDateTime.of(2026, 2, 7, 10, 20).toString());
-            rs.crearReserva(reserva);
-
-            // aws.listTables().stream().forEach(System.out::println);
-
-            // Map<String, AttributeValue> item = new HashMap<>();
-            // item.put("id", new AttributeValue().withS("UserZaca2"));
-            // item.put("name", new AttributeValue().withN("1234"));
-
-            // aws.insertItem(item);
-            // aws.scanTable("Usuarios").stream().forEach(System.out::println);
-
-            // aws.generateTable(Test.class);
-
-            // aws.scanTable(Usuario.class).stream().forEach(System.out::println);
-
-            // aws.getItemById();
-
-            // YYYY-MM-DDTHH:MM:SS
-            // LocalDateTime time = LocalDateTime.parse("2026-02-07T12:20");
-            // System.out.println(time.toString());
-            // time = LocalDateTime.of(2026, 02, 7, 12, 20);
-            // System.out.println(time.toString());
-        } catch (Exception e){
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            // Lanzar menu interactivo
+            Menu menu = new Menu(aws);
+            menu.start();
+            
+        } catch (IOException e) {
+            LOG.error("ERROR [{}]", e.getMessage());
         }
     }
 }

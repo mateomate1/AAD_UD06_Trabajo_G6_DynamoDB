@@ -1,5 +1,21 @@
 package g6.dynamodb.Util;
 
+/**
+ * Cliente AWS DynamoDB **SIN ANOTACIONES** (Low-Level API).
+ * 
+ * Implementa operaciones CRUD completas usando directamente la API nativa de DynamoDB
+ * (CreateTable, PutItem, GetItem, UpdateItem, DeleteItem, Scan). Útil para casos donde no se
+ * pueden usar clases anotadas con @DynamoDBTable o para operaciones muy específicas.
+ * 
+ * Soporta DynamoDB Local y AWS real mediante credenciales desde properties.
+ * 
+ * @author Mario Garcia
+ * @author Mateo Ayarra
+ * @author Samuel Cobreros
+ * @author Zacaria Daghri
+ * @version 1.0
+ * @since 1.0
+ */
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -41,188 +57,216 @@ import g6.dynamodb.Dictionary;
 import g6.dynamodb.Model.Usuario;
 
 public class AWSClient_SinAnotaciones {
-	public final AmazonDynamoDB dynamoDB;
-	public final Properties p = new Properties();
-	private final File fichProperties = new File("DynamoDBCredentials.properties");
-	private final Logger log = LoggerFactory.getLogger(AWSClient_SinAnotaciones.class);
+    public final AmazonDynamoDB dynamoDB;
+    public final Properties p = new Properties();
+    private final File fichProperties = new File("DynamoDBCredentials.properties");
+    private final Logger log = LoggerFactory.getLogger(AWSClient_SinAnotaciones.class);
 
-	/**
-	 * Inicializar cliente
-	 * 
-	 * @param local
-	 * @throws FileNotFoundException
-	 * @throws IOException
-	 */
-	public AWSClient_SinAnotaciones(boolean local) throws FileNotFoundException, IOException {
-		p.load(new FileInputStream(fichProperties));
-		log.trace("Fichero cargado con exito");
-		if (local) {
-			String accessKey = p.getProperty("local.accessKeyId");
-			String secretKey = p.getProperty("local.secretAccessKey");
-			String region = p.getProperty("local.region");
-			String endpoint = p.getProperty("endpoint");
-			this.dynamoDB = AmazonDynamoDBClientBuilder.standard()
-					.withEndpointConfiguration(
-							new AwsClientBuilder.EndpointConfiguration(
-									endpoint,
-									region))
-					.withCredentials(
-							new AWSStaticCredentialsProvider(
-									new BasicAWSCredentials(accessKey, secretKey)))
-					.build();
-		} else {
-			this.dynamoDB = AmazonDynamoDBClientBuilder.standard()
-					.withRegion("us-east-1")
-					.build();
-		}
-	}
+    /**
+     * Inicializa el cliente DynamoDB (local o AWS real).
+     * 
+     * Carga credenciales desde "DynamoDBCredentials.properties". Local usa endpoint específico,
+     * AWS real usa us-east-1 con credenciales por defecto del sistema.
+     * 
+     * @param local true para DynamoDB Local, false para AWS Cloud
+     * @throws FileNotFoundException si falta el archivo de credenciales
+     * @throws IOException error leyendo propiedades
+     */
+    public AWSClient_SinAnotaciones(boolean local) throws FileNotFoundException, IOException {
+        p.load(new FileInputStream(fichProperties));
+        log.trace("Fichero cargado con exito");
+        
+        if (local) {
+            String accessKey = p.getProperty("local.accessKeyId");
+            String secretKey = p.getProperty("local.secretAccessKey");
+            String region = p.getProperty("local.region");
+            String endpoint = p.getProperty("endpoint");
+            this.dynamoDB = AmazonDynamoDBClientBuilder.standard()
+                    .withEndpointConfiguration(
+                            new AwsClientBuilder.EndpointConfiguration(
+                                    endpoint,
+                                    region))
+                    .withCredentials(
+                            new AWSStaticCredentialsProvider(
+                                    new BasicAWSCredentials(accessKey, secretKey)))
+                    .build();
+        } else {
+            this.dynamoDB = AmazonDynamoDBClientBuilder.standard()
+                    .withRegion("us-east-1")
+                    .build();
+        }
+    }
 
-	public AmazonDynamoDB getDB(){
-		return this.dynamoDB;
-	}
+    /**
+     * Retorna el cliente DynamoDB configurado.
+     * 
+     * @return instancia de AmazonDynamoDB
+     */
+    public AmazonDynamoDB getDB(){
+        return this.dynamoDB;
+    }
 
-	// METODOS CRUD:
-	// ---------------------CREATE---------------------------
-	/**
-	 * Método de prueba para creación manual de tabla (ejemplo).
-	 */
-	public void generateTable(String nombreTabla, String nombreAtrClave) {
-		CreateTableRequest request = new CreateTableRequest()
-				// Nombre de la clase
-				.withTableName(nombreTabla)
-				// Aqui se define el atributo clave de la tabla
-				.withKeySchema(
-						new KeySchemaElement(nombreAtrClave, KeyType.HASH))
-				// Definicion del atributo clave(el tipo de clave S/N/B)
-				.withAttributeDefinitions(
-						new AttributeDefinition(nombreAtrClave, ScalarAttributeType.S))
-				// Anadir un metodo de pago, en este caso es un metodo dummy
-				.withBillingMode(BillingMode.PAY_PER_REQUEST.toString());
-		dynamoDB.createTable(request);
-	}
+    // ==================== CREATE ====================
+    /**
+     * Crea tabla con clave primaria simple (HASH).
+     * 
+     * Configura PAY_PER_REQUEST automáticamente.
+     * 
+     * @param nombreTabla nombre de la nueva tabla
+     * @param nombreAtrClave nombre del atributo clave primaria (String)
+     */
+    public void generateTable(String nombreTabla, String nombreAtrClave) {
+        CreateTableRequest request = new CreateTableRequest()
+                .withTableName(nombreTabla)
+                .withKeySchema(
+                        new KeySchemaElement(nombreAtrClave, KeyType.HASH))
+                .withAttributeDefinitions(
+                        new AttributeDefinition(nombreAtrClave, ScalarAttributeType.S))
+                .withBillingMode(BillingMode.PAY_PER_REQUEST.toString());
+        dynamoDB.createTable(request);
+    }
 
-	/**
-	 * Inserta un item en la tabla "Usuarios".
-	 * 
-	 * @param item mapa con atributos y valores del item
-	 */
-	public void insertItem(Map<String, AttributeValue> item) {
-		PutItemRequest request = new PutItemRequest()
-				.withTableName("Usuarios")
-				.withItem(item);
-		dynamoDB.putItem(request);
-	}
+    /**
+     * Inserta un nuevo item en tabla "Usuarios".
+     * 
+     * @param item mapa atributo → valor (AttributeValue)
+     */
+    public void insertItem(Map<String, AttributeValue> item) {
+        PutItemRequest request = new PutItemRequest()
+                .withTableName("Usuarios")
+                .withItem(item);
+        dynamoDB.putItem(request);
+    }
 
-	// ----------------------READ----------------------------
-	/**
-	 * Listar tablas
-	 *
-	 * @return
-	 */
-	public List<String> listTables() {
-		ListTablesResult resultado = dynamoDB.listTables();
-		List<String> salida = new ArrayList<>();
-		resultado.getTableNames().stream().forEach(salida::add);
-		return salida;
-	}
+    // ==================== READ ====================
+    /**
+     * Lista nombres de todas las tablas.
+     * 
+     * @return lista de nombres de tablas
+     */
+    public List<String> listTables() {
+        ListTablesResult resultado = dynamoDB.listTables();
+        List<String> salida = new ArrayList<>();
+        resultado.getTableNames().stream().forEach(salida::add);
+        return salida;
+    }
 
-	/**
-	 * Recupera un Usuario específico por ID fijo "USER1" (método de ejemplo).
-	 *
-	 * @param id
-	 * @param table
-	 * @return Usuario encontrado (actualmente retorna null - pendiente
-	 *         implementación)
-	 */
-	public Usuario getItemById(String id, Dictionary.Tablas table) {
-		Map<String, AttributeValue> key = new HashMap<>();
-		key.put("id", new AttributeValue(id));
-		GetItemRequest request = new GetItemRequest()
-				.withTableName(table.toString())
-				.withKey(key);
-		// Solo sirve para especificar que atributos devolver
-		// .withAttributesToGet("name")
-		GetItemResult result = dynamoDB.getItem(request);
-		System.out.println(result.getItem());
-		Map<String, AttributeValue> salida = result.getItem();
-		return null;
-	}
+    /**
+     * Obtiene item por clave primaria.
+     * 
+     * @param id valor de la clave primaria
+     * @param table enumeración Dictionary.Tablas
+     * @return mapa de atributos (pendiente conversión a modelo)
+     */
+    public Usuario getItemById(String id, Dictionary.Tablas table) {
+        Map<String, AttributeValue> key = new HashMap<>();
+        key.put("id", new AttributeValue(id));
+        GetItemRequest request = new GetItemRequest()
+                .withTableName(table.toString())
+                .withKey(key);
+        GetItemResult result = dynamoDB.getItem(request);
+        System.out.println(result.getItem());
+        Map<String, AttributeValue> salida = result.getItem();
+        return null; // Pendiente: mapper AttributeValue → Usuario
+    }
 
-	/**
-	 * Escanea tabla filtrando por nombre usando expresiones nativas.
-	 *
-	 * @param client cliente DynamoDB
-	 * @param tabla  nombre de la tabla
-	 * @param nombre valor a buscar en atributo "name"
-	 * @return lista de items que coinciden
-	 */
-	public List<Map<String, AttributeValue>> scanByAttribute(AmazonDynamoDB client, String tabla, String nombre) {
-		Map<String, AttributeValue> values = new HashMap<>();
-		values.put(":n", new AttributeValue().withS(nombre));
-		ScanRequest request = new ScanRequest()
-				.withTableName(tabla)
-				.withFilterExpression("name = :n")
-				.withExpressionAttributeValues(values);
-		return client.scan(request).getItems();
-	}
+    /**
+     * Escanea tabla con filtro por atributo "name".
+     * 
+     * @param client cliente DynamoDB
+     * @param tabla nombre tabla
+     * @param nombre valor para filtrar "name"
+     * @return items filtrados
+     */
+    public List<Map<String, AttributeValue>> scanByAttribute(AmazonDynamoDB client, String tabla, String nombre) {
+        Map<String, AttributeValue> values = new HashMap<>();
+        values.put(":n", new AttributeValue().withS(nombre));
+        ScanRequest request = new ScanRequest()
+                .withTableName(tabla)
+                .withFilterExpression("name = :n")
+                .withExpressionAttributeValues(values);
+        return client.scan(request).getItems();
+    }
 
-	/**
-	 * Escanea tabla completa con paginación (método nativo).
-	 * 
-	 * @param tableName nombre de la tabla
-	 * @return todos los items de la tabla como mapas de atributos
-	 */
-	public List<java.util.Map<String, AttributeValue>> scanTable(String tableName) {
-		ScanRequest request = new ScanRequest()
-				.withTableName(tableName);
-		ScanResult result = dynamoDB.scan(request);
-		List<java.util.Map<String, AttributeValue>> items = new ArrayList<>();
-		items.addAll(result.getItems());
-		while (result.getLastEvaluatedKey() != null) {
-			request = request.withExclusiveStartKey(result.getLastEvaluatedKey());
-			result = dynamoDB.scan(request);
-			items.addAll(result.getItems());
-		}
-		return items;
-	}
+    /**
+     * Escanea tabla completa con paginación automática.
+     * 
+     * @param tableName nombre de la tabla
+     * @return todos los items como mapas AttributeValue
+     */
+    public List<java.util.Map<String, AttributeValue>> scanTable(String tableName) {
+        ScanRequest request = new ScanRequest()
+                .withTableName(tableName);
+        ScanResult result = dynamoDB.scan(request);
+        List<java.util.Map<String, AttributeValue>> items = new ArrayList<>();
+        items.addAll(result.getItems());
+        
+        while (result.getLastEvaluatedKey() != null) {
+            request = request.withExclusiveStartKey(result.getLastEvaluatedKey());
+            result = dynamoDB.scan(request);
+            items.addAll(result.getItems());
+        }
+        return items;
+    }
 
-	// ---------------------UPDATE---------------------------
-	public void updateAttribute(
-			String tableName,
-			String keyName,
-			String keyValue,
-			String attributeName,
-			AttributeValue newValue) {
-		Map<String, AttributeValue> key = Map.of(
-				keyName, new AttributeValue().withS(keyValue));
-		Map<String, AttributeValueUpdate> updates = Map.of(
-				attributeName,
-				new AttributeValueUpdate()
-						.withValue(newValue)
-						.withAction(AttributeAction.PUT));
-		UpdateItemRequest request = new UpdateItemRequest()
-				.withTableName(tableName)
-				.withKey(key)
-				.withAttributeUpdates(updates);
-		dynamoDB.updateItem(request);
-	}
+    // ==================== UPDATE ====================
+    /**
+     * Actualiza un atributo específico de un item.
+     * 
+     * @param tableName tabla objetivo
+     * @param keyName nombre clave primaria
+     * @param keyValue valor clave primaria
+     * @param attributeName atributo a actualizar
+     * @param newValue nuevo valor (AttributeValue)
+     */
+    public void updateAttribute(
+            String tableName,
+            String keyName,
+            String keyValue,
+            String attributeName,
+            AttributeValue newValue) {
+        Map<String, AttributeValue> key = Map.of(
+                keyName, new AttributeValue().withS(keyValue));
+        Map<String, AttributeValueUpdate> updates = Map.of(
+                attributeName,
+                new AttributeValueUpdate()
+                        .withValue(newValue)
+                        .withAction(AttributeAction.PUT));
+        UpdateItemRequest request = new UpdateItemRequest()
+                .withTableName(tableName)
+                .withKey(key)
+                .withAttributeUpdates(updates);
+        dynamoDB.updateItem(request);
+    }
 
-	// ---------------------DELETE---------------------------
-	public void deleteTable(String tableName) {
-		DeleteTableRequest request = new DeleteTableRequest()
-				.withTableName(tableName);
-		dynamoDB.deleteTable(request);
-	}
+    // ==================== DELETE ====================
+    /**
+     * Elimina tabla completa.
+     * 
+     * @param tableName nombre de la tabla a borrar
+     */
+    public void deleteTable(String tableName) {
+        DeleteTableRequest request = new DeleteTableRequest()
+                .withTableName(tableName);
+        dynamoDB.deleteTable(request);
+    }
 
-	public void deleteByKey(
-			String tableName,
-			String keyName,
-			String keyValue) {
-		Map<String, AttributeValue> key = Map.of(
-				keyName, new AttributeValue().withS(keyValue));
-		DeleteItemRequest request = new DeleteItemRequest()
-				.withTableName(tableName)
-				.withKey(key);
-		dynamoDB.deleteItem(request);
-	}
+    /**
+     * Elimina item por clave primaria.
+     * 
+     * @param tableName tabla objetivo
+     * @param keyName nombre clave primaria
+     * @param keyValue valor clave primaria
+     */
+    public void deleteByKey(
+            String tableName,
+            String keyName,
+            String keyValue) {
+        Map<String, AttributeValue> key = Map.of(
+                keyName, new AttributeValue().withS(keyValue));
+        DeleteItemRequest request = new DeleteItemRequest()
+                .withTableName(tableName)
+                .withKey(key);
+        dynamoDB.deleteItem(request);
+    }
 }
