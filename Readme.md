@@ -7,58 +7,35 @@ Implementa patrones **DAO**, **Service** y **menú interactivo** con logging pro
 
 ## 📁 Estructura del Proyecto
 ````
-D:.
-├───.vscode
-├───ApuntesDynamoDB
-│   ├───CREATE
-│   └───UPDATE
-├───design
-├───docker
-│   └───dynamodb
-├───DynamoDB
-│   └───DynamoDBLocal_lib
-└───reserva_salas
-    ├───src
-    │   └───main
-    │       ├───java
-    │       │   ├───fx
-    │       │   │   └───App
-    │       │   │       └───ui
-    │       │   │           ├───controladores
-    │       │   │           └───navegacion
-    │       │   └───g6
-    │       │       └───dynamodb
-    │       │           ├───DAO
-    │       │           ├───Model
-    │       │           ├───Service
-    │       │           ├───Style
-    │       │           └───Util
-    │       └───resources
-    │           ├───css
-    │           ├───fxml
-    │           └───img
-    └───target
-        ├───classes
-        │   ├───css
-        │   ├───fx
-        │   │   └───App
-        │   │       └───ui
-        │   │           ├───controladores
-        │   │           └───navegacion
-        │   ├───fxml
-        │   ├───g6
-        │   │   └───dynamodb
-        │   │       ├───DAO
-        │   │       ├───Model
-        │   │       ├───Service
-        │   │       ├───Style
-        │   │       └───Util
-        │   └───img
-        ├───maven-status
-        │   └───maven-compiler-plugin
-        │       └───compile
-        │           └───default-compile
-        └───test-classes
+src
+\---main
+    \---java
+        \---g6
+            \---dynamodb
+                |   Dictionary.java
+                |
+                +---DAO
+                |       AulaDAO.java
+                |       ReservaDAO.java
+                |       UsuarioDAO.java
+                |
+                +---Model
+                |       Aula.java
+                |       Reserva.java
+                |       Test.java
+                |       Usuario.java
+                |
+                +---Service
+                |       AulaService.java
+                |       ReservaService.java
+                |       UsuarioService.java
+                |
+                +---Style
+                |       Menu.java
+                |
+                \---Util
+                        AWSClient.java
+                        AWSClient_SinAnotaciones.java
 ````
 ## 📋 Contenido Técnico
 
