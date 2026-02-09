@@ -1,3 +1,6 @@
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import fx.App.ui.navegacion.SceneManager;
 import g6.dynamodb.Style.Menu;
 import javafx.application.Application;
@@ -6,7 +9,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-
+    private static final Logger log = LoggerFactory.getLogger(Main.class);
     /**
      * Método de inicio de la aplicación. Carga la escena inicial desde el archivo FXML y la muestra en el escenario principal.
      * @param stage El escenario principal proporcionado por JavaFX.
@@ -19,8 +22,10 @@ public class Main extends Application {
         FXMLLoader cargar = new FXMLLoader(
             getClass().getResource("/fxml/inicio.fxml")
         );
+        
 
         Scene scene = new Scene(cargar.load());
+        log.info("FXML cargado correctamente");
         stage.setTitle("Reserva de Salas");
         stage.setScene(scene);
         scene.getStylesheets().add(getClass().getResource("/css/styles.css").toExternalForm());
@@ -34,10 +39,11 @@ public class Main extends Application {
             Menu menu = new Menu();
             menu.start();
         } catch (Exception e) {
+            log.warn("Algo salió mal:"+e.getMessage());
         }
         
         launch(args);
-        
+        log.info("Aplicación iniciada");
     }
 
     
