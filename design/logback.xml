@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<appender name="Consola" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d %green([%thread]) %highlight(%level) %cyan(%logger{50}) - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="Fichero" class="ch.qos.logback.core.FileAppender">
+		<file>curso2526_Spring_JDBC.log</file>
+		<encoder>
+			<pattern>%d [%thread] %-5level %-40logger{50} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	 <!-- === Nivel TRACE solo para nuestro paquete === -->
+	<logger name="es.ciudadescolar" level="TRACE" />
+
+    <!-- === Reducir el ruido de Spring, Boot y otros a INFO === -->
+    <logger name="org.springframework" level="INFO" />
+    <logger name="org.springframework.boot" level="INFO" />
+    <logger name="org.springframework.jdbc" level="INFO" />
+    <logger name="org.springframework.web" level="INFO" />
+    <!-- springboot no usa hibernate con JdbcTemplate pero a futuro con JPA sí puede interesarnos añadir esto -->
+		<!-- Configuración específica para Hibernate -->
+	<!-- Consultas SQL generadas -->
+	<logger name="org.hibernate.SQL" level="DEBUG" />
+	<!-- Mostrar parámetros de las consultas -->
+	<logger name="org.hibernate.orm.jdbc.bind" level="TRACE" />
+	<!-- Configuración interna de Hibernate -->
+	<logger name="org.hibernate" level="INFO" />
+
+	<logger name="com.zaxxer.hikari" level="INFO" />
+
+   <logger name="ch.qos.logback" level="ERROR"/>
+	<!-- Logger raíz para el resto del mundo -->
+	<root level="INFO">
+		<appender-ref ref="Consola" />
+		<appender-ref ref="Fichero" />
+	</root>
+</configuration>

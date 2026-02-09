@@ -1,7 +1,10 @@
 package g6.dynamodb.DAO;
 
+import java.util.List;
+
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
 
 import g6.dynamodb.Model.Reserva;
 
@@ -56,5 +59,16 @@ public class ReservaDAO {
      */
     public void delete(Reserva e){
         mapper.delete(e);
+    }
+
+    public List<Reserva> scan(){
+        DynamoDBScanExpression scan = new DynamoDBScanExpression();
+        List<Reserva> reservas = mapper.scan(Reserva.class, scan);
+        return reservas;
+    }
+
+    public List<Reserva> scan(DynamoDBScanExpression scan){
+        List<Reserva> reservas = mapper.scan(Reserva.class, scan);
+        return reservas;
     }
 }

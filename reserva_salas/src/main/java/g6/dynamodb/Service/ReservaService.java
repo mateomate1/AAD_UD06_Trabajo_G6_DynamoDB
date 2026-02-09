@@ -18,7 +18,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
 
 import g6.dynamodb.DAO.ReservaDAO;
@@ -28,7 +27,6 @@ import g6.dynamodb.Util.AWSClient;
 
 public class ReservaService {
     private final AWSClient cliente;
-    private final DynamoDBMapper mapper;
 
     /**
      * Crea una nueva instancia del servicio de reservas.
@@ -37,7 +35,6 @@ public class ReservaService {
      */
     public ReservaService(AWSClient cliente) {
         this.cliente = cliente;
-        this.mapper = new DynamoDBMapper(cliente.getDynamoDB());
     }
 
     /**
@@ -75,7 +72,7 @@ public class ReservaService {
         }
 
         // Persiste la reserva
-        mapper.save(reserva);
+        dao.save(reserva);
         return reserva;
     }
 
@@ -102,7 +99,8 @@ public class ReservaService {
      */
     private boolean existeSolapamiento(Reserva nueva) {
         DynamoDBScanExpression scan = new DynamoDBScanExpression();
-        List<Reserva> reservas = mapper.scan(Reserva.class, scan);
+        ReservaDAO dao = new ReservaDAO(this.cliente.getDynamoDB());
+        List<Reserva> reservas = dao.scan();
 
         for (Reserva r : reservas) {
             // Ignorar aulas diferentes
