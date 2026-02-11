@@ -1,27 +1,47 @@
 package fx.App.ui.navegacion;
 
+/**
+ * Gestor centralizado de navegacion entre escenas FXML.
+ * 
+ * Proporciona metodos estaticos para cambiar escenas dinamicamente
+ * usando Stage principal y archivos FXML en /resources/fxml/.
+ * 
+ * @author Mario Garcia
+ * @author Mateo Ayarra
+ * @author Samuel Cobreros
+ * @author Zacaria Daghri
+ * @version 1.0
+ * @since 1.0
+ */
 import java.io.IOException;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-/**
- * Clase responsable de gestionar la navegación entre escenas en la aplicación.
- * Proporciona un método estático para cambiar la escena actual a una nueva escena basada en un archivo FXML.
- */
+
 public class SceneManager {
 
     private static Stage stage;
 
-    // Método para establecer la referencia al Stage principal
+    /**
+     * Establece la referencia al Stage principal de la aplicacion.
+     * 
+     * Debe llamarse en main() despues de crear primaryStage.
+     * 
+     * @param primerStage Stage principal de JavaFX
+     */
     public static void setStage(Stage primerStage) {
         stage = primerStage;
     }
 
     /**
-     * Cambia la escena actual a la especificada por el nombre del archivo FXML.
-     * @param fxml El nombre del archivo FXML (sin la extensión) que se encuentra en el paquete "fxml".
+     * Cambia la escena actual a nueva vista FXML especificada.
+     * 
+     * Carga /fxml/[nombre].fxml y aplica al Stage actual.
+     * Maneja IOException mostrando stack trace en consola.
+     * 
+     * @param fxml nombre del archivo FXML (sin extension .fxml)
+     * @throws IOException si no encuentra archivo FXML
      */
     public static void cambioScene(String fxml) {
         try {
