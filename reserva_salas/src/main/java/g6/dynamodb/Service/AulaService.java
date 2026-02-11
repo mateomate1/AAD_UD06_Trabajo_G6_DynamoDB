@@ -1,5 +1,18 @@
 package g6.dynamodb.Service;
 
+/**
+ * Servicio de negocio para gestion de aulas.
+ * 
+ * Proporciona logica de dominio: creacion con ID unico automatico
+ * y actualizacion validada. Usa AulaDAO interno.
+ * 
+ * @author Mario Garcia
+ * @author Mateo Ayarra
+ * @author Samuel Cobreros
+ * @author Zacaria Daghri
+ * @version 1.0
+ * @since 1.0
+ */
 import java.util.UUID;
 
 import g6.dynamodb.DAO.AulaDAO;
@@ -9,21 +22,34 @@ import g6.dynamodb.Util.AWSClient;
 public class AulaService {
     private final AWSClient cliente;
 
+    /**
+     * Constructor con cliente AWS inyectado.
+     * 
+     * @param cliente AWSClient configurado (local/cloud)
+     */
     public AulaService(AWSClient cliente) {
         this.cliente = cliente;
     }
 
+    /**
+     * Crea aula con ID UUID unico automatico.
+     * 
+     * Genera IDs hasta encontrar uno disponible (evita colisiones).
+     * 
+     * @param a aula con nombre, capacidad, edificio (ID ignorado)
+     * @return aula persistida con ID asignado
+     */
     public Aula crearAula(Aula a) {
         AulaDAO dao = new AulaDAO(this.cliente.getDynamoDB());
 
-        boolean es_unica = false;
+        boolean esUnica = false;
 
-        // Genera ID único UUID hasta encontrar uno disponible
-        while (!es_unica) {
+        // Genera UUID hasta encontrar ID disponible
+        while (!esUnica) {
             String id = UUID.randomUUID().toString();
             if (dao.findById(id) == null) {
-                es_unica = true;
-                a.setId(id); // Asigna el ID generado
+                esUnica = true;
+                a.setId(id);
             }
         }
 
@@ -31,10 +57,17 @@ public class AulaService {
         return a;
     }
 
+    /**
+     * Actualiza aula existente (valida existencia previa).
+     * 
+     * @param a aula completa con ID valido
+     * @return aula actualizada o null si no existia
+     */
     public Aula actualizarAula(Aula a) {
         AulaDAO dao = new AulaDAO(this.cliente.getDynamoDB());
-        if (dao.findById(a.getId()) == null)
+        if (dao.findById(a.getId()) == null) {
             return null;
+        }
         dao.save(a);
         return a;
     }
