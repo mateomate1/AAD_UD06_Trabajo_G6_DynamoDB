@@ -23,7 +23,7 @@ public class LoginController {
     
     @FXML
     void IniciarSesion(ActionEvent event) {
-
+        
     }
 
     @FXML
@@ -40,4 +40,5 @@ public class LoginController {
     void verificarUsuario(ActionEvent event) {
 
     }
+
 }

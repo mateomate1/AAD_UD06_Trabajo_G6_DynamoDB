@@ -14,6 +14,8 @@ public class UsuarioService {
         this.cliente = cliente;
     }
 
+    // public boolean loginUsuario()
+
     public Usuario altaUsuario(Usuario u) {
         UsuarioDAO dao = new UsuarioDAO(this.cliente.getDynamoDB());
         boolean es_unica = false;
@@ -21,7 +23,7 @@ public class UsuarioService {
             String id = UUID.randomUUID().toString();
             if (dao.findById(id) == null) {
                 es_unica = true;
-                u.setId(id);
+                u.setUsername(id);
             }
         }
         dao.save(u);
@@ -30,7 +32,7 @@ public class UsuarioService {
 
     public Usuario actualizarUsuario(Usuario u){
         UsuarioDAO dao = new UsuarioDAO(this.cliente.getDynamoDB());
-        if (dao.findById(u.getId()) == null)
+        if (dao.findById(u.getUsername()) == null)
             return null;
         dao.save(u);
         return u;

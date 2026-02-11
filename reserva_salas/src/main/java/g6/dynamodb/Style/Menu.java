@@ -145,9 +145,9 @@ public class Menu {
     private void crearUsuario() {
         Usuario u = new Usuario();
         log.info("ID: ");
-        u.setId(sc.nextLine());
+        u.setUsername(sc.nextLine());
         log.info("Nombre: ");
-        u.setName(sc.nextLine());
+        u.setPassword(sc.nextLine());
         log.info("Apellidos: ");
         u.setSurname(sc.nextLine());
         usuarioDAO.save(u);
@@ -164,7 +164,7 @@ public class Menu {
         String id = sc.nextLine();
         Usuario u = usuarioDAO.findById(id);
         if (u != null) {
-            log.info("{} {} (ID: {})", u.getName(), u.getSurname(), u.getId());
+            log.info("{} {} (ID: {})", u.getPassword(), u.getSurname(), u.getUsername());
         } else {
             log.warn("Usuario no encontrado");
         }
@@ -179,7 +179,7 @@ public class Menu {
         log.info("ID a borrar: ");
         String id = sc.nextLine();
         Usuario u = new Usuario();
-        u.setId(id);
+        u.setUsername(id);
         usuarioDAO.delete(u);
         log.info("Usuario borrado");
     }
@@ -292,7 +292,7 @@ public class Menu {
         r.setFechaFin(sc.nextLine());
         
         Usuario u = new Usuario();
-        u.setId("USER1");
+        u.setUsername("USER1");
         r.setUsuario(u);
         
         Aula a = new Aula();

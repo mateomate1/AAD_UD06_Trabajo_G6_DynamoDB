@@ -1,7 +1,10 @@
 package g6.dynamodb.DAO;
 
+import java.util.List;
+
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
 
 import g6.dynamodb.Model.Aula;
 
@@ -56,5 +59,16 @@ public class AulaDAO {
      */
     public void delete(Aula a) {
         mapper.delete(a);
+    }
+
+    public List<Aula> scan(){
+        DynamoDBScanExpression scan = new DynamoDBScanExpression();
+        List<Aula> aulas = mapper.scan(Aula.class, scan);
+        return aulas;
+    }
+
+    public List<Aula> scan(DynamoDBScanExpression scan ){
+        List<Aula> aulas = mapper.scan(Aula.class, scan);
+        return aulas;
     }
 }
