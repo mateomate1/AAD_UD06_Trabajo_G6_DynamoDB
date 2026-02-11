@@ -116,73 +116,66 @@ public class Menu {
     }
 
     /**
-     * Gestiona submenu de usuarios.
-     * 
-     * Opciones: crear usuario, buscar por ID, borrar por ID.
-     */
-    private void gestionarUsuarios() {
-        log.info("=== USUARIOS ===");
-        log.info("1. Crear nuevo");
-        log.info("2. Buscar por ID");
-        log.info("3. Borrar por ID");
-        log.info("0. Volver");
-        log.info("Opcion: ");
-        int op = sc.nextInt();
-        sc.nextLine();
-        
-        switch (op) {
-            case 1 -> crearUsuario();
-            case 2 -> buscarUsuario();
-            case 3 -> borrarUsuario();
-        }
+ * Gestiona submenu de usuarios.
+ * Compatible con modelo Usuario actual (solo username/password).
+ */
+private void gestionarUsuarios() {
+    log.info("=== USUARIOS ===");
+    log.info("1. Crear nuevo (username/password)");
+    log.info("2. Buscar por username");
+    log.info("3. Borrar por username");
+    log.info("0. Volver");
+    log.info("Opcion: ");
+    int op = sc.nextInt();
+    sc.nextLine();
+    
+    switch (op) {
+        case 1 -> crearUsuario();
+        case 2 -> buscarUsuario();
+        case 3 -> borrarUsuario();
+        default -> log.warn("Opcion invalida");
     }
+    pausa();
+}
 
-    /**
-     * Crea nuevo usuario interactivamente.
-     * 
-     * Solicita ID, nombre y apellidos via consola y persiste con UsuarioDAO.
-     */
-    private void crearUsuario() {
-        Usuario u = new Usuario();
-        log.info("ID: ");
-        u.setUsername(sc.nextLine());
-        log.info("Nombre: ");
-        u.setPassword(sc.nextLine());
-        log.info("Apellidos: ");
-        u.setSurname(sc.nextLine());
-        usuarioDAO.save(u);
-        log.info("Usuario creado: {}", u);
-    }
+/**
+ * Crea nuevo usuario usando solo campos reales: username/password.
+ */
+private void crearUsuario() {
+    Usuario u = new Usuario();
+    log.info("Username: ");
+    u.setUsername(sc.nextLine());
+    log.info("Password: ");
+    u.setPassword(sc.nextLine());
+    usuarioDAO.save(u);
+    log.info("Usuario creado: {}", u);
+}
 
-    /**
-     * Busca usuario por ID.
-     * 
-     * Si existe muestra nombre completo e ID, sino informa no encontrado.
-     */
-    private void buscarUsuario() {
-        log.info("ID usuario: ");
-        String id = sc.nextLine();
-        Usuario u = usuarioDAO.findById(id);
-        if (u != null) {
-            log.info("{} {} (ID: {})", u.getPassword(), u.getSurname(), u.getUsername());
-        } else {
-            log.warn("Usuario no encontrado");
-        }
+/**
+ * Busca usuario mostrando username y password (como 'nombre').
+ */
+private void buscarUsuario() {
+    log.info("Username: ");
+    String id = sc.nextLine();
+    Usuario u = usuarioDAO.findById(id);
+    if (u != null) {
+        log.info("Nombre: {} (Username: {})", u.getPassword(), u.getUsername());
+    } else {
+        log.warn("Usuario no encontrado");
     }
+}
 
-    /**
-     * Borra usuario por ID.
-     * 
-     * Crea objeto temporal con ID especificado y ejecuta delete en DAO.
-     */
-    private void borrarUsuario() {
-        log.info("ID a borrar: ");
-        String id = sc.nextLine();
-        Usuario u = new Usuario();
-        u.setUsername(id);
-        usuarioDAO.delete(u);
-        log.info("Usuario borrado");
-    }
+/**
+ * Borra usuario por username (sin surname).
+ */
+private void borrarUsuario() {
+    log.info("Username a borrar: ");
+    String id = sc.nextLine();
+    Usuario u = new Usuario();
+    u.setUsername(id);
+    usuarioDAO.delete(u);
+    log.info("Usuario borrado");
+}
 
     /**
      * Gestiona submenu de aulas.
