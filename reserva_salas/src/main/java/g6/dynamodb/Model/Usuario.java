@@ -1,17 +1,18 @@
 package g6.dynamodb.Model;
 
 /**
- * Modelo de entidad para representar usuarios en DynamoDB.
+ * Entidad Usuario para mapeo DynamoDB.
  * 
- * Almacena información básica del usuario: identificador único, nombre y apellidos.
- * Utilizado como parte del sistema de reservas de aulas.
+ * Modelo simple con username (Hash Key) y password (atributo name).
+ * Compatible con autenticacion basica del sistema reservas.
+ * Mapea a tabla "Usuarios".
  * 
  * @author Mario Garcia
  * @author Mateo Ayarra
  * @author Samuel Cobreros
  * @author Zacaria Daghri
- * @version 0.3
- * @since 0.1
+ * @version 1.0
+ * @since 1.0
  */
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
@@ -24,9 +25,9 @@ public class Usuario {
     private String password;
 
     /**
-     * Obtiene el identificador único del usuario.
+     * Retorna username (DynamoDB Hash Key primaria).
      * 
-     * @return id del usuario (DynamoDB Hash Key)
+     * @return identificador login
      */
     @DynamoDBHashKey(attributeName = "username")
     public String getUsername() {
@@ -34,18 +35,18 @@ public class Usuario {
     }
 
     /**
-     * Establece el identificador único del usuario.
+     * Establece username primario.
      * 
-     * @param id nuevo identificador único
+     * @param username ID login unico
      */
-    public void setUsername(String id) {
-        this.username = id;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     /**
-     * Obtiene el nombre del usuario.
+     * Retorna password mapeado como "name".
      * 
-     * @return nombre del usuario
+     * @return credencial hashed
      */
     @DynamoDBAttribute(attributeName = "name")
     public String getPassword() {
@@ -53,23 +54,23 @@ public class Usuario {
     }
 
     /**
-     * Establece el nombre del usuario.
+     * Establece password (texto plano/Hash).
      * 
-     * @param nombre nuevo nombre del usuario
+     * @param password credencial usuario
      */
-    public void setPassword(String nombre) {
-        this.password = nombre;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    
-
     /**
-     * Genera representación en String del usuario para debugging/logging.
+     * Representacion String para logging.
      * 
-     * @return String con todos los campos del usuario
+     * Formato compatible con Menu.toString() usage.
+     * 
+     * @return "Usuario [username=abc, password=***]"
      */
     @Override
     public String toString() {
-        return "Usuario [id=" + username + ", name=" + password + ", surname=" + "]";
+        return "Usuario [username=" + username + ", password=" + password + "]";
     }
 }

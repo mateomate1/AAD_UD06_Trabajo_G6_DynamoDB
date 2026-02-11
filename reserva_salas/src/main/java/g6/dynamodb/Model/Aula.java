@@ -1,18 +1,17 @@
 package g6.dynamodb.Model;
 
 /**
- * Modelo de entidad para representar aulas en DynamoDB.
- *
- * Almacena información de las aulas disponibles para reserva: identificador único,
- * nombre/código del aula, capacidad máxima y ubicación/edificio.
- * Utilizado como parte del sistema de reservas de aulas.
- *
+ * Entidad Aula para mapeo DynamoDB.
+ * 
+ * Representa aulas disponibles para reservas con ID unico, nombre/codigo,
+ * capacidad maxima y ubicacion/edificio. Mapea a tabla "Aulas".
+ * 
  * @author Mario Garcia
  * @author Mateo Ayarra
  * @author Samuel Cobreros
  * @author Zacaria Daghri
- * @version 0.3
- * @since 0.1
+ * @version 1.0
+ * @since 1.0
  */
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
@@ -27,9 +26,9 @@ public class Aula {
     private String edificio;
 
     /**
-     * Obtiene el identificador único del aula.
-     *
-     * @return id del aula (DynamoDB Hash Key)
+     * Retorna ID primario del aula (DynamoDB Hash Key).
+     * 
+     * @return identificador unico del aula
      */
     @DynamoDBHashKey(attributeName = "id")
     public String getId() {
@@ -37,18 +36,18 @@ public class Aula {
     }
 
     /**
-     * Establece el identificador único del aula.
-     *
-     * @param id nuevo identificador único
+     * Establece ID primario del aula.
+     * 
+     * @param id identificador unico
      */
     public void setId(String id) {
         this.id = id;
     }
 
     /**
-     * Obtiene el nombre/código del aula.
-     *
-     * @return nombre del aula (ej: "A-101", "Lab1")
+     * Retorna nombre/codigo del aula.
+     * 
+     * @return codigo como "A-101", "Lab1"
      */
     @DynamoDBAttribute(attributeName = "nombre")
     public String getNombre() {
@@ -56,18 +55,18 @@ public class Aula {
     }
 
     /**
-     * Establece el nombre/código del aula.
-     *
-     * @param nombre nuevo nombre del aula
+     * Establece nombre/codigo del aula.
+     * 
+     * @param nombre codigo del aula
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
     /**
-     * Obtiene la capacidad máxima del aula.
-     *
-     * @return capacidad en número de personas
+     * Retorna capacidad maxima del aula.
+     * 
+     * @return numero maximo de personas
      */
     @DynamoDBAttribute(attributeName = "capacidad")
     public Integer getCapacidad() {
@@ -75,18 +74,18 @@ public class Aula {
     }
 
     /**
-     * Establece la capacidad máxima del aula.
-     *
-     * @param capacidad nueva capacidad máxima
+     * Establece capacidad maxima del aula.
+     * 
+     * @param capacidad numero maximo personas
      */
     public void setCapacidad(Integer capacidad) {
         this.capacidad = capacidad;
     }
 
     /**
-     * Obtiene el edificio/ubicación del aula.
-     *
-     * @return edificio o ala donde se encuentra (ej: "Edificio A", "Planta 1")
+     * Retorna edificio/ubicacion del aula.
+     * 
+     * @return edificio o planta
      */
     @DynamoDBAttribute(attributeName = "edificio")
     public String getEdificio() {
@@ -94,22 +93,22 @@ public class Aula {
     }
 
     /**
-     * Establece el edificio/ubicación del aula.
-     *
-     * @param edificio nuevo edificio/ubicación
+     * Establece edificio/ubicacion del aula.
+     * 
+     * @param edificio ubicacion fisica
      */
     public void setEdificio(String edificio) {
         this.edificio = edificio;
     }
 
     /**
-     * Genera representación en String del aula para debugging/logging.
-     *
-     * @return String con todos los campos del aula
+     * Genera representacion String para logging/debug.
+     * 
+     * @return formato "Aula [id=A-101, nombre=Lab1, ...]"
      */
     @Override
     public String toString() {
-        return "Aula [id=" + id + ", nombre=" + nombre + ", capacidad=" + capacidad +
-                ", edificio=" + edificio + "]";
+        return "Aula [id=" + id + ", nombre=" + nombre + 
+               ", capacidad=" + capacidad + ", edificio=" + edificio + "]";
     }
 }

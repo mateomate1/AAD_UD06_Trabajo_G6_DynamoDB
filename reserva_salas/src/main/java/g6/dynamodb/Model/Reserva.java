@@ -1,17 +1,18 @@
 package g6.dynamodb.Model;
 
 /**
- * Modelo de entidad para representar reservas de aulas en DynamoDB.
+ * Entidad Reserva para mapeo DynamoDB.
  * 
- * Contiene información completa de una reserva: identificador único, fechas de inicio/fin,
- * número de personas, aula reservada y usuario que realiza la reserva.
+ * Representa reservas completas de aulas con ID, fechas inicio/fin (ISO String),
+ * numero personas, aula reservada, usuario propietario y estado (pendiente/confirmada).
+ * Mapea a tabla "reserva".
  * 
  * @author Mario Garcia
  * @author Mateo Ayarra
  * @author Samuel Cobreros
  * @author Zacaria Daghri
- * @version 0.3
- * @since 0.1
+ * @version 1.0
+ * @since 1.0
  */
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
@@ -21,7 +22,6 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 public class Reserva {
 
     private String id;
-    // Se usara String para que el mapper pueda parsear de manera automatica el LocalDateTime
     private String fechaInicio;
     private String fechaFin;
     private Integer nPersonas;
@@ -30,23 +30,23 @@ public class Reserva {
     private String estado;
 
     /**
-     * Constructor vacío requerido por DynamoDB Mapper.
+     * Constructor vacio requerido por DynamoDBMapper.
      */
     public Reserva() {
     }
 
     /**
-     * Constructor completo con todos los parámetros de la reserva.
+     * Constructor completo para nueva reserva.
      * 
-     * @param id          identificador único de la reserva (partition key)
-     * @param fechaInicio fecha y hora de inicio de la reserva
-     * @param fechaFin    fecha y hora de finalización de la reserva
-     * @param nPersonas   número de personas que usarán el aula
-     * @param aula        objeto Aula reservada
-     * @param usuario     objeto Usuario que realiza la reserva
+     * @param id identificador UUID unico
+     * @param fechaInicio ISO-8601 String (ej: "2026-02-11T08:00:00")
+     * @param fechaFin ISO-8601 String (ej: "2026-02-11T10:00:00")  
+     * @param nPersonas cantidad personas (1-50)
+     * @param aula aula reservada
+     * @param usuario propietario reserva
      */
     public Reserva(String id, String fechaInicio, String fechaFin, Integer nPersonas,
-            Aula aula, Usuario usuario) {
+                   Aula aula, Usuario usuario) {
         this.id = id;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
@@ -56,9 +56,9 @@ public class Reserva {
     }
 
     /**
-     * Obtiene el identificador único de la reserva.
+     * Retorna ID primario reserva (Hash Key).
      * 
-     * @return id de la reserva (DynamoDB Hash Key)
+     * @return UUID String
      */
     @DynamoDBHashKey(attributeName = "id")
     public String getId() {
@@ -66,18 +66,18 @@ public class Reserva {
     }
 
     /**
-     * Establece el identificador único de la reserva.
+     * Establece ID primario reserva.
      * 
-     * @param id nuevo identificador único
+     * @param id UUID unico
      */
     public void setId(String id) {
         this.id = id;
     }
 
     /**
-     * Obtiene la fecha y hora de inicio de la reserva.
+     * Retorna fecha inicio (ISO-8601 String).
      * 
-     * @return fechaInicio como objeto Date
+     * @return fechaInicio formateada
      */
     @DynamoDBAttribute(attributeName = "fechaInicio")
     public String getFechaInicio() {
@@ -85,18 +85,18 @@ public class Reserva {
     }
 
     /**
-     * Establece la fecha y hora de inicio de la reserva.
+     * Establece fecha inicio reserva.
      * 
-     * @param fechaInicio nueva fecha de inicio
+     * @param fechaInicio ISO-8601 String
      */
     public void setFechaInicio(String fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
     /**
-     * Obtiene la fecha y hora de finalización de la reserva.
+     * Retorna fecha fin (ISO-8601 String).
      * 
-     * @return fechaFin como objeto Date
+     * @return fechaFin formateada
      */
     @DynamoDBAttribute(attributeName = "fechaFin")
     public String getFechaFin() {
@@ -104,18 +104,18 @@ public class Reserva {
     }
 
     /**
-     * Establece la fecha y hora de finalización de la reserva.
+     * Establece fecha fin reserva.
      * 
-     * @param fechaFin nueva fecha de fin
+     * @param fechaFin ISO-8601 String
      */
     public void setFechaFin(String fechaFin) {
         this.fechaFin = fechaFin;
     }
 
     /**
-     * Obtiene el número de personas para la reserva.
+     * Retorna numero personas.
      * 
-     * @return número de personas como Integer
+     * @return cantidad Integer
      */
     @DynamoDBAttribute(attributeName = "nPersonas")
     public Integer getnPersonas() {
@@ -123,18 +123,18 @@ public class Reserva {
     }
 
     /**
-     * Establece el número de personas para la reserva.
+     * Establece numero personas.
      * 
-     * @param nPersonas nuevo número de personas
+     * @param nPersonas cantidad (1-50)
      */
     public void setnPersonas(Integer nPersonas) {
         this.nPersonas = nPersonas;
     }
 
     /**
-     * Obtiene el objeto Aula reservado.
+     * Retorna aula reservada.
      * 
-     * @return objeto Aula asociado a la reserva
+     * @return objeto Aula
      */
     @DynamoDBAttribute(attributeName = "aula")
     public Aula getAula() {
@@ -142,18 +142,18 @@ public class Reserva {
     }
 
     /**
-     * Establece el aula reservada.
+     * Establece aula reservada.
      * 
-     * @param aula nuevo objeto Aula
+     * @param aula objeto Aula valida
      */
     public void setAula(Aula aula) {
         this.aula = aula;
     }
 
     /**
-     * Obtiene el objeto Usuario que realiza la reserva.
+     * Retorna usuario propietario.
      * 
-     * @return objeto Usuario asociado
+     * @return objeto Usuario
      */
     @DynamoDBAttribute(attributeName = "usuario")
     public Usuario getUsuario() {
@@ -161,33 +161,42 @@ public class Reserva {
     }
 
     /**
-     * Establece el usuario que realiza la reserva.
+     * Establece usuario propietario.
      * 
-     * @param usuario nuevo objeto Usuario
+     * @param usuario objeto Usuario valido
      */
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 
-    @DynamoDBAttribute(attributeName="estado_reserva")
+    /**
+     * Retorna estado reserva.
+     * 
+     * @return "pendiente", "confirmada", "cancelada"
+     */
+    @DynamoDBAttribute(attributeName = "estado_reserva")
     public String getEstado() {
         return estado;
     }
 
+    /**
+     * Establece estado reserva.
+     * 
+     * @param estado nuevo estado
+     */
     public void setEstado(String estado) {
         this.estado = estado;
     }
 
     /**
-     * Genera representación en String de la reserva para debugging/logging.
+     * Genera representacion String completa.
      * 
-     * @return String con todos los campos de la reserva
+     * @return formato legible para logs
      */
     @Override
     public String toString() {
-        return "Reserva [id=" + id + ", fechaInicio=" + fechaInicio +
-                ", fechaFin=" + fechaFin + ", nPersonas=" + nPersonas +
-                ", aula=" + aula + ", usuario=" + usuario + ", estado=" + estado + "]";
+        return "Reserva [id=" + id + ", fechaInicio=" + fechaInicio + 
+               ", fechaFin=" + fechaFin + ", nPersonas=" + nPersonas + 
+               ", aula=" + aula + ", usuario=" + usuario + ", estado=" + estado + "]";
     }
-
 }
