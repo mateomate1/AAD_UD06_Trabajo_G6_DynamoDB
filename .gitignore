@@ -1,3 +1,5 @@
-/target
+/target/
 *.class
 *.log
+*.lst
+*.jar

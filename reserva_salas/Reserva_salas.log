@@ -171,3 +171,23 @@
 2026-02-12 23:27:44,630 [JavaFX Application Thread] INFO  app.Main                                 - FXML cargado correctamente
 2026-02-12 23:27:46,657 [JavaFX Application Thread] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
 2026-02-12 23:27:54,582 [JavaFX Application Thread] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 23:54:59,573 [main] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 23:55:25,083 [main] WARN  app.Main                                 - Algo salio mal: Unable to execute HTTP request: Connect to localhost:8000 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt
+2026-02-12 23:55:25,300 [JavaFX Application Thread] INFO  app.Main                                 - FXML cargado correctamente
+2026-02-12 23:57:24,651 [JavaFX Application Thread] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 23:57:35,761 [JavaFX Application Thread] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 23:58:47,073 [main] INFO  app.Main                                 - Aplicacion iniciada
+2026-02-13 00:13:55,102 [main] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-13 00:13:55,799 [main] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-13 00:13:55,803 [main] INFO  app.Menu                                 - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-13 00:13:55,813 [main] INFO  app.Menu                                 - Tablas cargadas: [Aulas, Usuarios, reserva]
+2026-02-13 00:13:55,813 [main] INFO  app.Menu                                 - ----------------------------------------
+2026-02-13 00:13:55,813 [main] INFO  app.Menu                                 - 1. Gestionar USUARIOS
+2026-02-13 00:13:55,813 [main] INFO  app.Menu                                 - 2. Gestionar AULAS
+2026-02-13 00:13:55,813 [main] INFO  app.Menu                                 - 3. Gestionar RESERVAS
+2026-02-13 00:13:55,813 [main] INFO  app.Menu                                 - 0. SALIR
+2026-02-13 00:13:55,813 [main] INFO  app.Menu                                 - Selecciona opcion: 
+2026-02-13 00:15:22,731 [main] WARN  app.Main                                 - Algo salio mal: No line found
+2026-02-13 00:15:22,919 [JavaFX Application Thread] INFO  app.Main                                 - FXML cargado correctamente
+2026-02-13 00:15:26,906 [JavaFX Application Thread] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-13 00:15:54,196 [main] INFO  app.Main                                 - Aplicacion iniciada

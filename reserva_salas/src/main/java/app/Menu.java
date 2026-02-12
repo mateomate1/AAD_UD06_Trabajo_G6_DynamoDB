@@ -69,7 +69,7 @@ public class Menu {
         this.reservaService = new ReservaService(aws);
     }
 
-    private void inicializar() {
+    public void inicializar() {
         if (aws.existeTabla(Usuario.class))
             aws.deleteTable(Usuario.class);
         aws.generateTable(Usuario.class);

@@ -12,9 +12,9 @@ Cliente AWS DynamoDB (High-Level API con DynamoDBMapper).
 * @since 1.0
  */
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -43,6 +43,7 @@ import com.amazonaws.services.dynamodbv2.util.TableUtils;
 public class AWSClient {
     public final AmazonDynamoDB dynamoDB;
     public final Properties p = new Properties();
+    private final InputStream is = getClass().getClassLoader().getResourceAsStream("DynamoDBCredentials.properties");
     private final File fichProperties = new File("src/main/resources/DynamoDBCredentials.properties");
     private final Logger log = LoggerFactory.getLogger(AWSClient.class);
 
@@ -57,7 +58,8 @@ public class AWSClient {
      */
     public AWSClient(boolean local) throws FileNotFoundException, IOException {
         System.setProperty("aws.java.v1.disableDeprecationAnnouncement", "true");
-        p.load(new FileInputStream(fichProperties));
+        // p.load(new FileInputStream(fichProperties));
+        p.load(is);
         log.trace("Fichero cargado con exito");
 
         if (local) {
