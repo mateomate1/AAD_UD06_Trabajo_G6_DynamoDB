@@ -22,7 +22,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+
+
 import service.UsuarioService;
+import util.HashUtil;
 
 public class LoginController {
 

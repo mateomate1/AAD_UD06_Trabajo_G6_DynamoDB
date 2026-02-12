@@ -9,6 +9,8 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+import util.HashUtil;
+import service.UsuarioService; 
 public class RegistrarUserController {
 
     @FXML

@@ -20,10 +20,11 @@ import java.util.UUID;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
 
-import AWSClient;
-import Dictionary;
-import DAO.ReservaDAO;
+
 import domain.model.Reserva;
+import persistence.dao.ReservaDAO;
+import persistence.dynamodb.AWSClient;
+import util.Dictionary;
 
 public class ReservaService {
     private final AWSClient cliente;

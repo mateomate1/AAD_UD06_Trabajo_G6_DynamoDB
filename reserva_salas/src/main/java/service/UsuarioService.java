@@ -1,14 +1,12 @@
 package service;
 
-import java.util.UUID;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import AWSClient;
-import HashUtil;
-import DAO.UsuarioDAO;
 import domain.model.Usuario;
+import persistence.dao.UsuarioDAO;
+import persistence.dynamodb.AWSClient;
+import util.HashUtil;
 
 /**
  * Servicio de negocio para gestion de usuarios.
@@ -67,7 +65,7 @@ public class UsuarioService {
     public boolean iniciarSesion(String usuario, String contrasena) {
         UsuarioDAO dao = new UsuarioDAO(this.cliente.getDynamoDB());
         Usuario u = dao.findById(usuario);
-        return u != null && u.getPassword().equals(contrasena);
+        return u != null && u.getPasswordHash().equals(contrasena);
     }
 
     /**

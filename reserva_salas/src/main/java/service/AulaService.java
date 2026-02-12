@@ -15,9 +15,9 @@ package service;
  */
 import java.util.UUID;
 
-import AWSClient;
-import DAO.AulaDAO;
 import domain.model.Aula;
+import persistence.dao.AulaDAO;
+import persistence.dynamodb.AWSClient;
 
 public class AulaService {
     private final AWSClient cliente;

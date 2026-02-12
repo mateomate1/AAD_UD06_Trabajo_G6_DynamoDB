@@ -1,4 +1,4 @@
-util
+package util;
 
 /**
 Gestor persistente usuarios/contrasenas (serializacion .dat).

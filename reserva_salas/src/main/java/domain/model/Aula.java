@@ -1,4 +1,4 @@
-package domain.model
+package domain.model;
 
 /**
  * Entidad Aula para mapeo DynamoDB.

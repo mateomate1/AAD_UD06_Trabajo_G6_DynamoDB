@@ -1,4 +1,4 @@
-package persistence.dao
+package persistence.dao;
 
 /**
  * DAO para entidad Reserva usando DynamoDBMapper.

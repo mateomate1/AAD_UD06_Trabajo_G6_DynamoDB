@@ -1,4 +1,4 @@
-persistence.dynamodb
+package persistence.dynamodb;
 
 /**
 Cliente AWS DynamoDB (High-Level API con DynamoDBMapper).
