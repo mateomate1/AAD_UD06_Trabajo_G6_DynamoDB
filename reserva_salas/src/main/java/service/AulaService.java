@@ -60,25 +60,10 @@ public class AulaService {
         return a;
     }
 
-    public boolean eliminarAula(Aula a){
-        AulaDAO dao = new AulaDAO(this.cliente.getDynamoDB());
-        if (dao.findById(a.getId()) == null) {
-            return true;
-        } else{
-            dao.delete(a);
-            return dao.findById(a.getId()) == null;
-        }
-    }
-
-    public Aula buscar(Aula a) {
-        AulaDAO dao = new AulaDAO(this.cliente.getDynamoDB());
-        return dao.findById(a.getId());
-    }
-
-    public Aula buscar(String id) {
-        AulaDAO dao = new AulaDAO(this.cliente.getDynamoDB());
-        return dao.findById(id);
-    }
+    /**
+     * Obtiene lista completa de aulas.
+     * @return lista de aulas o vacia si no hay ninguna
+     */
     public List<Aula> ObtenerListaAulas(){
         AulaDAO aulasDao = new AulaDAO(this.cliente.getDynamoDB());
         return aulasDao.scan();
