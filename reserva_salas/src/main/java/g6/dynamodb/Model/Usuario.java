@@ -22,7 +22,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 public class Usuario {
 
     private String username;
-    private String password;
+    private String passwordHash;
 
     /**
      * Retorna username (DynamoDB Hash Key primaria).
@@ -49,8 +49,8 @@ public class Usuario {
      * @return credencial hashed
      */
     @DynamoDBAttribute(attributeName = "name")
-    public String getPassword() {
-        return password;
+    public String getPasswordHash() {
+        return passwordHash;
     }
 
     /**
@@ -58,8 +58,8 @@ public class Usuario {
      * 
      * @param password credencial usuario
      */
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPasswordHash(String password) {
+        this.passwordHash = password;
     }
 
     /**
@@ -71,6 +71,6 @@ public class Usuario {
      */
     @Override
     public String toString() {
-        return "Usuario [username=" + username + ", password=" + password + "]";
+        return "Usuario [username=" + username + ", password=" + passwordHash + "]";
     }
 }

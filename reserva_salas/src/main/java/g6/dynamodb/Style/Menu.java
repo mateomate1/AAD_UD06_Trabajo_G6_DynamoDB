@@ -143,7 +143,7 @@ public class Menu {
         log.info("Username: ");
         u.setUsername(sc.nextLine());
         log.info("Password: ");
-        u.setPassword(sc.nextLine());
+        u.setPasswordHash(sc.nextLine());
         usuarioDAO.save(u);
         log.info("Usuario creado: {}", u);
     }
