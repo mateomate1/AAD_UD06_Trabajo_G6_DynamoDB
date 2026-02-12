@@ -7,3 +7,492 @@
 2026-02-08 18:07:14,063 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
 2026-02-08 18:07:14,063 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
 2026-02-08 18:07:14,063 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 12:55:36,495 [main] TRACE g6.dynamodb.Util.AWSClient               - Fichero cargado con exito
+2026-02-12 12:55:37,369 [main] INFO  g6.dynamodb.Style.Menu                   - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 12:58:41,135 [main] TRACE g6.dynamodb.Util.AWSClient               - Fichero cargado con exito
+2026-02-12 12:58:42,128 [main] INFO  g6.dynamodb.Style.Menu                   - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 13:00:13,720 [main] TRACE g6.dynamodb.Util.AWSClient               - Fichero cargado con exito
+2026-02-12 13:00:14,529 [main] INFO  g6.dynamodb.Style.Menu                   - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 13:01:06,427 [main] TRACE g6.dynamodb.Util.AWSClient               - Fichero cargado con exito
+2026-02-12 13:01:07,303 [main] INFO  g6.dynamodb.Style.Menu                   - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 13:05:10,466 [main] TRACE g6.dynamodb.Util.AWSClient               - Fichero cargado con exito
+2026-02-12 13:05:11,533 [main] INFO  g6.dynamodb.Style.Menu                   - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 13:05:12,067 [main] INFO  g6.dynamodb.Style.Menu                   - Tablas cargadas: []
+2026-02-12 13:05:12,068 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 13:05:12,069 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 13:05:12,069 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 13:05:12,069 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 13:05:12,069 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 13:05:12,069 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 13:05:31,466 [main] INFO  g6.dynamodb.Style.Menu                   - === USUARIOS ===
+2026-02-12 13:05:31,467 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Crear nuevo
+2026-02-12 13:05:31,467 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Buscar por ID
+2026-02-12 13:05:31,467 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Borrar por ID
+2026-02-12 13:05:31,467 [main] INFO  g6.dynamodb.Style.Menu                   - 0. Volver
+2026-02-12 13:05:31,467 [main] INFO  g6.dynamodb.Style.Menu                   - Opcion: 
+2026-02-12 13:05:34,850 [main] INFO  g6.dynamodb.Style.Menu                   - ID: 
+2026-02-12 13:05:41,355 [main] INFO  g6.dynamodb.Style.Menu                   - Nombre: 
+2026-02-12 13:05:46,946 [main] INFO  g6.dynamodb.Style.Menu                   - Apellidos: 
+2026-02-12 13:16:58,670 [main] TRACE g6.dynamodb.Util.AWSClient               - Fichero cargado con exito
+2026-02-12 13:16:59,535 [main] INFO  g6.dynamodb.Style.Menu                   - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 13:17:16,695 [main] TRACE g6.dynamodb.Util.AWSClient               - Fichero cargado con exito
+2026-02-12 13:17:17,469 [main] INFO  g6.dynamodb.Style.Menu                   - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 13:17:17,823 [main] INFO  g6.dynamodb.Style.Menu                   - Tablas cargadas: []
+2026-02-12 13:17:17,825 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 13:17:17,825 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 13:17:17,825 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 13:17:17,825 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 13:17:17,825 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 13:17:17,825 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 13:17:22,447 [main] INFO  g6.dynamodb.Style.Menu                   - === USUARIOS ===
+2026-02-12 13:17:22,447 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Crear nuevo
+2026-02-12 13:17:22,447 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Buscar por ID
+2026-02-12 13:17:22,447 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Borrar por ID
+2026-02-12 13:17:22,448 [main] INFO  g6.dynamodb.Style.Menu                   - 0. Volver
+2026-02-12 13:17:22,448 [main] INFO  g6.dynamodb.Style.Menu                   - Opcion: 
+2026-02-12 13:17:24,112 [main] INFO  g6.dynamodb.Style.Menu                   - Nombre de usuario: 
+2026-02-12 13:17:29,886 [main] INFO  g6.dynamodb.Style.Menu                   - Contrasena: 
+2026-02-12 13:18:12,671 [main] TRACE g6.dynamodb.Util.AWSClient               - Fichero cargado con exito
+2026-02-12 13:18:13,539 [main] INFO  g6.dynamodb.Style.Menu                   - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 13:18:13,717 [main] INFO  g6.dynamodb.Style.Menu                   - Tablas cargadas: []
+2026-02-12 13:18:13,717 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 13:18:13,717 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 13:18:13,717 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 13:18:13,717 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 13:18:13,717 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 13:18:13,717 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 13:18:15,759 [main] INFO  g6.dynamodb.Style.Menu                   - === USUARIOS ===
+2026-02-12 13:18:15,759 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Crear nuevo
+2026-02-12 13:18:15,759 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Buscar por ID
+2026-02-12 13:18:15,759 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Borrar por ID
+2026-02-12 13:18:15,759 [main] INFO  g6.dynamodb.Style.Menu                   - 0. Volver
+2026-02-12 13:18:15,759 [main] INFO  g6.dynamodb.Style.Menu                   - Opcion: 
+2026-02-12 13:18:17,610 [main] INFO  g6.dynamodb.Style.Menu                   - Nombre de usuario: 
+2026-02-12 13:18:19,643 [main] INFO  g6.dynamodb.Style.Menu                   - Contrasena: 
+2026-02-12 14:19:53,783 [main] TRACE g6.dynamodb.Util.AWSClient               - Fichero cargado con exito
+2026-02-12 14:19:54,403 [main] INFO  g6.dynamodb.Style.Menu                   - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 14:19:54,616 [main] INFO  g6.dynamodb.Style.Menu                   - Tablas cargadas: []
+2026-02-12 14:19:54,617 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 14:19:54,617 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 14:19:54,617 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 14:19:54,617 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 14:19:54,617 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 14:19:54,617 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 14:19:58,203 [main] INFO  g6.dynamodb.Style.Menu                   - === USUARIOS ===
+2026-02-12 14:19:58,203 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Crear nuevo
+2026-02-12 14:19:58,203 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Buscar por ID
+2026-02-12 14:19:58,204 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Borrar por ID
+2026-02-12 14:19:58,204 [main] INFO  g6.dynamodb.Style.Menu                   - 0. Volver
+2026-02-12 14:19:58,204 [main] INFO  g6.dynamodb.Style.Menu                   - Opcion: 
+2026-02-12 14:20:00,271 [main] INFO  g6.dynamodb.Style.Menu                   - Nombre de usuario: 
+2026-02-12 14:20:04,391 [main] INFO  g6.dynamodb.Style.Menu                   - Contrasena: 
+2026-02-12 14:21:29,002 [main] TRACE g6.dynamodb.Util.AWSClient               - Fichero cargado con exito
+2026-02-12 14:21:29,635 [main] INFO  g6.dynamodb.Style.Menu                   - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 14:21:29,761 [main] INFO  g6.dynamodb.Style.Menu                   - Tablas cargadas: []
+2026-02-12 14:21:29,762 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 14:21:29,763 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 14:21:29,763 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 14:21:29,763 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 14:21:29,763 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 14:21:29,763 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 14:21:36,146 [main] INFO  g6.dynamodb.Style.Menu                   - Pulsa Enter para continuar...
+2026-02-12 14:21:37,298 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 14:21:37,299 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 14:21:37,299 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 14:21:37,299 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 14:21:37,299 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 14:21:37,299 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 14:21:43,483 [main] INFO  g6.dynamodb.Style.Menu                   - Pulsa Enter para continuar...
+2026-02-12 14:21:44,683 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 14:21:44,683 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 14:21:44,683 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 14:21:44,684 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 14:21:44,684 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 14:21:44,684 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 14:21:45,814 [main] INFO  g6.dynamodb.Style.Menu                   - Pulsa Enter para continuar...
+2026-02-12 14:21:46,430 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 14:21:46,430 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 14:21:46,431 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 14:21:46,431 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 14:21:46,431 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 14:21:46,431 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 14:21:51,276 [main] INFO  g6.dynamodb.Style.Menu                   - === USUARIOS ===
+2026-02-12 14:21:51,276 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Crear nuevo
+2026-02-12 14:21:51,276 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Buscar por ID
+2026-02-12 14:21:51,277 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Borrar por ID
+2026-02-12 14:21:51,277 [main] INFO  g6.dynamodb.Style.Menu                   - 0. Volver
+2026-02-12 14:21:51,277 [main] INFO  g6.dynamodb.Style.Menu                   - Opcion: 
+2026-02-12 14:21:53,173 [main] INFO  g6.dynamodb.Style.Menu                   - Nombre de usuario: 
+2026-02-12 14:21:58,780 [main] INFO  g6.dynamodb.Style.Menu                   - Contrasena: 
+2026-02-12 14:22:02,079 [main] INFO  g6.dynamodb.Style.Menu                   - Usuario creado: Usuario [id=492573f1-353c-4b2e-adaa-062f8eb21d90, name=0d05, surname=]
+2026-02-12 14:22:02,080 [main] INFO  g6.dynamodb.Style.Menu                   - Pulsa Enter para continuar...
+2026-02-12 14:22:15,873 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 14:22:15,873 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 14:22:15,873 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 14:22:15,873 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 14:22:15,873 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 14:22:15,873 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 14:23:23,382 [main] TRACE g6.dynamodb.Util.AWSClient               - Fichero cargado con exito
+2026-02-12 14:23:23,980 [main] INFO  g6.dynamodb.Style.Menu                   - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 14:23:24,098 [main] INFO  g6.dynamodb.Style.Menu                   - Tablas cargadas: [Aulas, Usuarios, reserva]
+2026-02-12 14:23:24,099 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 14:23:24,099 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 14:23:24,099 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 14:23:24,099 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 14:23:24,099 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 14:23:24,099 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 14:23:30,135 [main] INFO  g6.dynamodb.Style.Menu                   - Pulsa Enter para continuar...
+2026-02-12 14:23:31,171 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 14:23:31,171 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 14:23:31,171 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 14:23:31,171 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 14:23:31,171 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 14:23:31,171 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 14:23:32,025 [main] INFO  g6.dynamodb.Style.Menu                   - Pulsa Enter para continuar...
+2026-02-12 14:23:32,484 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 14:23:32,485 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 14:23:32,485 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 14:23:32,485 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 14:23:32,485 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 14:23:32,485 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 14:23:33,454 [main] INFO  g6.dynamodb.Style.Menu                   - Pulsa Enter para continuar...
+2026-02-12 14:23:33,892 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 14:23:33,892 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 14:23:33,892 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 14:23:33,892 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 14:23:33,892 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 14:23:33,892 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 14:23:53,891 [main] TRACE g6.dynamodb.Util.AWSClient               - Fichero cargado con exito
+2026-02-12 14:23:54,506 [main] INFO  g6.dynamodb.Style.Menu                   - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 14:23:54,625 [main] INFO  g6.dynamodb.Style.Menu                   - Tablas cargadas: [Aulas, Usuarios, reserva]
+2026-02-12 14:23:54,626 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 14:23:54,627 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 14:23:54,627 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 14:23:54,627 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 14:23:54,627 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 14:23:54,627 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 14:24:02,615 [main] INFO  g6.dynamodb.Style.Menu                   - === USUARIOS ===
+2026-02-12 14:24:02,615 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Crear nuevo
+2026-02-12 14:24:02,615 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Buscar por ID
+2026-02-12 14:24:02,615 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Borrar por ID
+2026-02-12 14:24:02,615 [main] INFO  g6.dynamodb.Style.Menu                   - 0. Volver
+2026-02-12 14:24:02,615 [main] INFO  g6.dynamodb.Style.Menu                   - Opcion: 
+2026-02-12 14:24:04,184 [main] INFO  g6.dynamodb.Style.Menu                   - Nombre de usuario: 
+2026-02-12 14:24:07,847 [main] INFO  g6.dynamodb.Style.Menu                   - Contrasena: 
+2026-02-12 14:24:54,051 [main] TRACE g6.dynamodb.Util.AWSClient               - Fichero cargado con exito
+2026-02-12 14:24:54,672 [main] INFO  g6.dynamodb.Style.Menu                   - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 14:24:54,799 [main] INFO  g6.dynamodb.Style.Menu                   - Tablas cargadas: [Aulas, Usuarios, reserva]
+2026-02-12 14:24:54,801 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 14:24:54,801 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 14:24:54,802 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 14:24:54,802 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 14:24:54,802 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 14:24:54,802 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 14:24:56,679 [main] INFO  g6.dynamodb.Style.Menu                   - === USUARIOS ===
+2026-02-12 14:24:56,680 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Crear nuevo
+2026-02-12 14:24:56,680 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Buscar por ID
+2026-02-12 14:24:56,680 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Borrar por ID
+2026-02-12 14:24:56,680 [main] INFO  g6.dynamodb.Style.Menu                   - 0. Volver
+2026-02-12 14:24:56,680 [main] INFO  g6.dynamodb.Style.Menu                   - Opcion: 
+2026-02-12 14:24:57,819 [main] INFO  g6.dynamodb.Style.Menu                   - Nombre de usuario: 
+2026-02-12 14:25:01,487 [main] INFO  g6.dynamodb.Style.Menu                   - Contrasena: 
+2026-02-12 14:25:05,260 [main] INFO  g6.dynamodb.Style.Menu                   - Usuario creado: Usuario [id=mateomate1, name=0d05, surname=]
+2026-02-12 14:25:05,261 [main] INFO  g6.dynamodb.Style.Menu                   - Pulsa Enter para continuar...
+2026-02-12 14:25:56,288 [main] TRACE g6.dynamodb.Util.AWSClient               - Fichero cargado con exito
+2026-02-12 14:25:56,905 [main] INFO  g6.dynamodb.Style.Menu                   - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 14:25:57,030 [main] INFO  g6.dynamodb.Style.Menu                   - Tablas cargadas: [Aulas, Usuarios, reserva]
+2026-02-12 14:25:57,031 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 14:25:57,031 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 14:25:57,031 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 14:25:57,031 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 14:25:57,031 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 14:25:57,031 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 14:26:00,741 [main] INFO  g6.dynamodb.Style.Menu                   - === USUARIOS ===
+2026-02-12 14:26:00,741 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Crear nuevo
+2026-02-12 14:26:00,742 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Buscar por ID
+2026-02-12 14:26:00,742 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Borrar por ID
+2026-02-12 14:26:00,742 [main] INFO  g6.dynamodb.Style.Menu                   - 0. Volver
+2026-02-12 14:26:00,742 [main] INFO  g6.dynamodb.Style.Menu                   - Opcion: 
+2026-02-12 14:26:05,583 [main] INFO  g6.dynamodb.Style.Menu                   - Nombre de usuario: 
+2026-02-12 14:26:10,082 [main] INFO  g6.dynamodb.Style.Menu                   - 0d05 mateomate1 (ID: {})
+2026-02-12 14:26:10,082 [main] INFO  g6.dynamodb.Style.Menu                   - Pulsa Enter para continuar...
+2026-02-12 14:26:46,405 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 14:26:46,406 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 14:26:46,406 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 14:26:46,406 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 14:26:46,406 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 14:26:46,406 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 14:28:34,217 [main] TRACE g6.dynamodb.Util.AWSClient               - Fichero cargado con exito
+2026-02-12 14:28:34,813 [main] INFO  g6.dynamodb.Style.Menu                   - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 14:28:34,942 [main] INFO  g6.dynamodb.Style.Menu                   - Tablas cargadas: [Aulas, Usuarios, reserva]
+2026-02-12 14:28:34,943 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 14:28:34,943 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 14:28:34,943 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 14:28:34,943 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 14:28:34,943 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 14:28:34,943 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 14:53:42,254 [main] TRACE g6.dynamodb.Util.AWSClient               - Fichero cargado con exito
+2026-02-12 14:53:42,947 [main] INFO  g6.dynamodb.Style.Menu                   - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 14:53:43,088 [main] INFO  g6.dynamodb.Style.Menu                   - Tablas cargadas: [Aulas, Usuarios, reserva]
+2026-02-12 14:53:43,089 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 14:53:43,089 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 14:53:43,089 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 14:53:43,089 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 14:53:43,090 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 14:53:43,090 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 14:53:48,671 [main] WARN  g6.dynamodb.Style.Menu                   - Opcion invalida
+2026-02-12 14:53:48,671 [main] INFO  g6.dynamodb.Style.Menu                   - Pulsa Enter para continuar...
+2026-02-12 14:53:52,393 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 14:53:52,393 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 14:53:52,393 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 14:53:52,393 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 14:53:52,393 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 14:53:52,393 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 14:53:56,576 [main] WARN  g6.dynamodb.Style.Menu                   - No has introducido un numero
+2026-02-12 14:53:56,576 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 14:53:56,576 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 14:53:56,576 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 14:53:56,576 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 14:53:56,576 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 14:53:56,576 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 14:55:03,831 [main] TRACE g6.dynamodb.Util.AWSClient               - Fichero cargado con exito
+2026-02-12 14:55:04,480 [main] INFO  g6.dynamodb.Style.Menu                   - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 14:55:04,608 [main] INFO  g6.dynamodb.Style.Menu                   - Tablas cargadas: [Aulas, Usuarios, reserva]
+2026-02-12 14:55:04,609 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 14:55:04,609 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 14:55:04,609 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 14:55:04,609 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 14:55:04,609 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 14:55:04,609 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 14:55:11,596 [main] WARN  g6.dynamodb.Style.Menu                   - Opcion invalida
+2026-02-12 14:55:11,597 [main] INFO  g6.dynamodb.Style.Menu                   - Pulsa Enter para continuar...
+2026-02-12 14:55:14,252 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 14:55:14,252 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 14:55:14,252 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 14:55:14,253 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 14:55:14,253 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 14:55:14,253 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 14:55:17,094 [main] WARN  g6.dynamodb.Style.Menu                   - No has introducido un numero
+2026-02-12 14:55:17,094 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 14:55:17,094 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 14:55:17,094 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 14:55:17,094 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 14:55:17,094 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 14:55:17,094 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 14:55:20,183 [main] WARN  g6.dynamodb.Style.Menu                   - No has introducido un numero
+2026-02-12 14:55:20,184 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 14:55:20,184 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 14:55:20,184 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 14:55:20,184 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 14:55:20,184 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 14:55:20,184 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 14:55:25,555 [main] INFO  g6.dynamodb.Style.Menu                   - Hasta luego!
+2026-02-12 15:10:16,535 [main] TRACE g6.dynamodb.Util.AWSClient               - Fichero cargado con exito
+2026-02-12 15:11:20,237 [main] TRACE g6.dynamodb.Util.AWSClient               - Fichero cargado con exito
+2026-02-12 15:11:20,861 [main] INFO  g6.dynamodb.Style.Menu                   - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 15:11:20,996 [main] INFO  g6.dynamodb.Style.Menu                   - Tablas cargadas: [Aulas, Usuarios, reserva]
+2026-02-12 15:11:20,997 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 15:11:20,997 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 15:11:20,997 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 15:11:20,997 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 15:11:20,997 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 15:11:20,997 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 15:11:27,371 [main] INFO  g6.dynamodb.Style.Menu                   - === USUARIOS ===
+2026-02-12 15:11:27,371 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Crear nuevo
+2026-02-12 15:11:27,371 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Buscar por ID
+2026-02-12 15:11:27,371 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Borrar por ID
+2026-02-12 15:11:27,371 [main] INFO  g6.dynamodb.Style.Menu                   - 0. Volver
+2026-02-12 15:11:27,371 [main] INFO  g6.dynamodb.Style.Menu                   - Opcion: 
+2026-02-12 15:11:28,583 [main] INFO  g6.dynamodb.Style.Menu                   - Nombre de usuario: 
+2026-02-12 15:11:32,900 [main] INFO  g6.dynamodb.Style.Menu                   - Contrasena: 
+2026-02-12 15:11:36,604 [main] INFO  g6.dynamodb.Style.Menu                   - Usuario creado: Usuario [Nombre de usuario=Mateo, Contrasena=]
+2026-02-12 15:11:36,605 [main] INFO  g6.dynamodb.Style.Menu                   - Pulsa Enter para continuar...
+2026-02-12 16:36:02,661 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 16:36:02,661 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 16:36:02,661 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 16:36:02,663 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 16:36:02,663 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 16:36:02,663 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 16:36:06,352 [main] INFO  g6.dynamodb.Style.Menu                   - === USUARIOS ===
+2026-02-12 16:36:06,353 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Crear nuevo
+2026-02-12 16:36:06,353 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Buscar por ID
+2026-02-12 16:36:06,353 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Borrar por ID
+2026-02-12 16:36:06,353 [main] INFO  g6.dynamodb.Style.Menu                   - 0. Volver
+2026-02-12 16:36:06,353 [main] INFO  g6.dynamodb.Style.Menu                   - Opcion: 
+2026-02-12 16:36:10,192 [main] INFO  g6.dynamodb.Style.Menu                   - Nombre de usuario: 
+2026-02-12 16:36:15,938 [main] INFO  g6.dynamodb.Style.Menu                   - 0a mateomate1 (ID: {})
+2026-02-12 16:36:15,939 [main] INFO  g6.dynamodb.Style.Menu                   - Pulsa Enter para continuar...
+2026-02-12 16:36:19,720 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 16:36:19,720 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 16:36:19,720 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 16:36:19,720 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 16:36:19,720 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 16:36:19,720 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 16:42:37,553 [main] TRACE g6.dynamodb.Util.AWSClient               - Fichero cargado con exito
+2026-02-12 16:42:38,292 [main] INFO  g6.dynamodb.Style.Menu                   - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 16:42:38,432 [main] INFO  g6.dynamodb.Style.Menu                   - Tablas cargadas: [Aulas, Usuarios, reserva]
+2026-02-12 16:42:38,432 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 16:42:38,433 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 16:42:38,433 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 16:42:38,433 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 16:42:38,433 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 16:42:38,433 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 16:42:56,886 [main] INFO  g6.dynamodb.Style.Menu                   - === USUARIOS ===
+2026-02-12 16:42:56,887 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Crear nuevo
+2026-02-12 16:42:56,887 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Buscar por ID
+2026-02-12 16:42:56,887 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Borrar por ID
+2026-02-12 16:42:56,887 [main] INFO  g6.dynamodb.Style.Menu                   - 0. Volver
+2026-02-12 16:42:56,887 [main] INFO  g6.dynamodb.Style.Menu                   - Opcion: 
+2026-02-12 16:42:58,160 [main] INFO  g6.dynamodb.Style.Menu                   - Nombre de usuario: 
+2026-02-12 16:43:04,976 [main] INFO  g6.dynamodb.Style.Menu                   - Contrasena: 
+2026-02-12 16:43:09,227 [main] INFO  g6.dynamodb.Style.Menu                   - Usuario creado: Usuario [Nombre de usuario=Maaateo, Contrasena=]
+2026-02-12 16:43:09,228 [main] INFO  g6.dynamodb.Style.Menu                   - Pulsa Enter para continuar...
+2026-02-12 16:43:14,453 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 16:43:14,454 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 16:43:14,454 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 16:43:14,454 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 16:43:14,454 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 16:43:14,454 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 16:46:54,748 [main] TRACE g6.dynamodb.Util.AWSClient               - Fichero cargado con exito
+2026-02-12 16:46:55,380 [main] INFO  g6.dynamodb.Style.Menu                   - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 16:46:55,677 [main] INFO  g6.dynamodb.Style.Menu                   - Tablas cargadas: []
+2026-02-12 16:46:55,677 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 16:46:55,677 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 16:46:55,679 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 16:46:55,679 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 16:46:55,679 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 16:46:55,679 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 16:47:00,121 [main] INFO  g6.dynamodb.Style.Menu                   - === USUARIOS ===
+2026-02-12 16:47:00,121 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Crear nuevo
+2026-02-12 16:47:00,121 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Buscar por ID
+2026-02-12 16:47:00,121 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Borrar por ID
+2026-02-12 16:47:00,121 [main] INFO  g6.dynamodb.Style.Menu                   - 0. Volver
+2026-02-12 16:47:00,121 [main] INFO  g6.dynamodb.Style.Menu                   - Opcion: 
+2026-02-12 16:47:01,712 [main] INFO  g6.dynamodb.Style.Menu                   - Nombre de usuario: 
+2026-02-12 16:47:06,461 [main] INFO  g6.dynamodb.Style.Menu                   - Contrasena: 
+2026-02-12 16:49:40,884 [main] TRACE g6.dynamodb.Util.AWSClient               - Fichero cargado con exito
+2026-02-12 16:49:41,556 [main] INFO  g6.dynamodb.Style.Menu                   - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 16:49:41,684 [main] INFO  g6.dynamodb.Style.Menu                   - Tablas cargadas: []
+2026-02-12 16:49:41,684 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 16:49:41,685 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 16:49:41,685 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 16:49:41,685 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 16:49:41,685 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 16:49:41,685 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 16:49:43,543 [main] INFO  g6.dynamodb.Style.Menu                   - === USUARIOS ===
+2026-02-12 16:49:43,544 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Crear nuevo
+2026-02-12 16:49:43,544 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Buscar por ID
+2026-02-12 16:49:43,544 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Borrar por ID
+2026-02-12 16:49:43,544 [main] INFO  g6.dynamodb.Style.Menu                   - 0. Volver
+2026-02-12 16:49:43,544 [main] INFO  g6.dynamodb.Style.Menu                   - Opcion: 
+2026-02-12 16:49:44,818 [main] INFO  g6.dynamodb.Style.Menu                   - Nombre de usuario: 
+2026-02-12 16:49:48,200 [main] INFO  g6.dynamodb.Style.Menu                   - Contrasena: 
+2026-02-12 16:52:56,577 [main] TRACE g6.dynamodb.Util.AWSClient               - Fichero cargado con exito
+2026-02-12 16:52:57,211 [main] INFO  g6.dynamodb.Style.Menu                   - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 16:52:57,341 [main] INFO  g6.dynamodb.Style.Menu                   - Tablas cargadas: []
+2026-02-12 16:52:57,342 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 16:52:57,342 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 16:52:57,342 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 16:52:57,342 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 16:52:57,342 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 16:52:57,342 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 16:53:00,731 [main] INFO  g6.dynamodb.Style.Menu                   - === USUARIOS ===
+2026-02-12 16:53:00,732 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Crear nuevo
+2026-02-12 16:53:00,732 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Buscar por ID
+2026-02-12 16:53:00,732 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Borrar por ID
+2026-02-12 16:53:00,733 [main] INFO  g6.dynamodb.Style.Menu                   - 0. Volver
+2026-02-12 16:53:00,733 [main] INFO  g6.dynamodb.Style.Menu                   - Opcion: 
+2026-02-12 16:55:54,534 [main] TRACE g6.dynamodb.Util.AWSClient               - Fichero cargado con exito
+2026-02-12 16:56:18,709 [main] TRACE g6.dynamodb.Util.AWSClient               - Fichero cargado con exito
+2026-02-12 16:59:22,657 [main] TRACE g6.dynamodb.Util.AWSClient               - Fichero cargado con exito
+2026-02-12 16:59:38,114 [main] TRACE g6.dynamodb.Util.AWSClient               - Fichero cargado con exito
+2026-02-12 17:01:37,357 [main] TRACE g6.dynamodb.Util.AWSClient               - Fichero cargado con exito
+2026-02-12 17:01:37,988 [main] INFO  g6.dynamodb.Style.Menu                   - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 17:01:38,114 [main] INFO  g6.dynamodb.Style.Menu                   - Tablas cargadas: []
+2026-02-12 17:01:38,114 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 17:01:38,114 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 17:01:38,115 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 17:01:38,115 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 17:01:38,115 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 17:01:38,115 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 17:01:42,555 [main] INFO  g6.dynamodb.Style.Menu                   - Pulsa Enter para continuar...
+2026-02-12 17:01:43,555 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 17:01:43,555 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 17:01:43,555 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 17:01:43,555 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 17:01:43,555 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 17:01:43,555 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 17:01:47,031 [main] INFO  g6.dynamodb.Style.Menu                   - === USUARIOS ===
+2026-02-12 17:01:47,031 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Crear nuevo
+2026-02-12 17:01:47,031 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Buscar por ID
+2026-02-12 17:01:47,031 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Borrar por ID
+2026-02-12 17:01:47,032 [main] INFO  g6.dynamodb.Style.Menu                   - 0. Volver
+2026-02-12 17:01:47,032 [main] INFO  g6.dynamodb.Style.Menu                   - Opcion: 
+2026-02-12 17:01:48,555 [main] INFO  g6.dynamodb.Style.Menu                   - Nombre de usuario: 
+2026-02-12 17:01:53,211 [main] INFO  g6.dynamodb.Style.Menu                   - Contrasena: 
+2026-02-12 17:01:57,295 [main] INFO  g6.dynamodb.Style.Menu                   - Usuario creado: Usuario [Nombre de usuario=mateomate1, Contrasena=0d05]
+2026-02-12 17:01:57,296 [main] INFO  g6.dynamodb.Style.Menu                   - Pulsa Enter para continuar...
+2026-02-12 17:02:03,554 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 17:02:03,554 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 17:02:03,554 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 17:02:03,554 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 17:02:03,554 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 17:02:03,555 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 17:02:53,994 [main] TRACE g6.dynamodb.Util.AWSClient               - Fichero cargado con exito
+2026-02-12 17:02:54,620 [main] INFO  g6.dynamodb.Style.Menu                   - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 17:02:54,745 [main] INFO  g6.dynamodb.Style.Menu                   - Tablas cargadas: [Usuarios]
+2026-02-12 17:02:54,746 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 17:02:54,746 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 17:02:54,746 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 17:02:54,746 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 17:02:54,746 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 17:02:54,746 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 17:02:56,647 [main] INFO  g6.dynamodb.Style.Menu                   - === USUARIOS ===
+2026-02-12 17:02:56,647 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Crear nuevo
+2026-02-12 17:02:56,647 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Buscar por ID
+2026-02-12 17:02:56,647 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Borrar por ID
+2026-02-12 17:02:56,647 [main] INFO  g6.dynamodb.Style.Menu                   - 0. Volver
+2026-02-12 17:02:56,647 [main] INFO  g6.dynamodb.Style.Menu                   - Opcion: 
+2026-02-12 17:02:59,408 [main] INFO  g6.dynamodb.Style.Menu                   - Pulsa Enter para continuar...
+2026-02-12 17:03:06,907 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 17:03:06,907 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 17:03:06,907 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 17:03:06,908 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 17:03:06,908 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 17:03:06,908 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 17:03:09,070 [main] INFO  g6.dynamodb.Style.Menu                   - === USUARIOS ===
+2026-02-12 17:03:09,070 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Crear nuevo
+2026-02-12 17:03:09,070 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Buscar por ID
+2026-02-12 17:03:09,071 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Borrar por ID
+2026-02-12 17:03:09,071 [main] INFO  g6.dynamodb.Style.Menu                   - 0. Volver
+2026-02-12 17:03:09,071 [main] INFO  g6.dynamodb.Style.Menu                   - Opcion: 
+2026-02-12 17:03:14,871 [main] WARN  g6.dynamodb.Style.Menu                   - No has introducido un numero
+2026-02-12 17:03:14,872 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 17:03:14,872 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 17:03:14,872 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 17:03:14,872 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 17:03:14,872 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 17:03:14,872 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 17:03:22,002 [main] INFO  g6.dynamodb.Style.Menu                   - === USUARIOS ===
+2026-02-12 17:03:22,003 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Crear nuevo
+2026-02-12 17:03:22,003 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Buscar por ID
+2026-02-12 17:03:22,003 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Borrar por ID
+2026-02-12 17:03:22,003 [main] INFO  g6.dynamodb.Style.Menu                   - 0. Volver
+2026-02-12 17:03:22,003 [main] INFO  g6.dynamodb.Style.Menu                   - Opcion: 
+2026-02-12 17:03:23,195 [main] INFO  g6.dynamodb.Style.Menu                   - Nombre de usuario: 
+2026-02-12 17:03:29,409 [main] INFO  g6.dynamodb.Style.Menu                   - Contrasena: 
+2026-02-12 17:03:36,057 [main] INFO  g6.dynamodb.Style.Menu                   - Usuario creado: Usuario [Nombre de usuario=Mateomate03, Contrasena=]
+2026-02-12 17:03:36,058 [main] INFO  g6.dynamodb.Style.Menu                   - Pulsa Enter para continuar...
+2026-02-12 17:03:38,328 [main] INFO  g6.dynamodb.Style.Menu                   - ----------------------------------------
+2026-02-12 17:03:38,328 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Gestionar USUARIOS
+2026-02-12 17:03:38,328 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Gestionar AULAS
+2026-02-12 17:03:38,328 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Gestionar RESERVAS
+2026-02-12 17:03:38,329 [main] INFO  g6.dynamodb.Style.Menu                   - 0. SALIR
+2026-02-12 17:03:38,329 [main] INFO  g6.dynamodb.Style.Menu                   - Selecciona opcion: 
+2026-02-12 17:03:40,526 [main] INFO  g6.dynamodb.Style.Menu                   - === USUARIOS ===
+2026-02-12 17:03:40,526 [main] INFO  g6.dynamodb.Style.Menu                   - 1. Crear nuevo
+2026-02-12 17:03:40,526 [main] INFO  g6.dynamodb.Style.Menu                   - 2. Buscar por ID
+2026-02-12 17:03:40,526 [main] INFO  g6.dynamodb.Style.Menu                   - 3. Borrar por ID
+2026-02-12 17:03:40,526 [main] INFO  g6.dynamodb.Style.Menu                   - 0. Volver
+2026-02-12 17:03:40,526 [main] INFO  g6.dynamodb.Style.Menu                   - Opcion: 
+2026-02-12 17:03:43,638 [main] INFO  g6.dynamodb.Style.Menu                   - Pulsa Enter para continuar...

@@ -1,5 +1,11 @@
 package g6.dynamodb.Model;
 
+<<<<<<< HEAD
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+=======
 /**
  * Entidad Usuario para mapeo DynamoDB.
  * 
@@ -14,6 +20,7 @@ package g6.dynamodb.Model;
  * @version 1.0
  * @since 1.0
  */
+>>>>>>> d98dbc3f4011ce79360c93ffe41e17203ba29367
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
@@ -22,6 +29,15 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 public class Usuario {
 
     private String username;
+    private String password;
+
+    public Usuario() {
+    }
+
+    public Usuario(String username, String password) {
+        this.username = username;
+        this.password = encode(password);
+    }
     private String passwordHash;
 
     /**
@@ -56,12 +72,40 @@ public class Usuario {
     /**
      * Establece password (texto plano/Hash).
      * 
+<<<<<<< HEAD
+     * @param contrasena nuevo nombre del usuario
+     */
+    public void setPassword(String contrasena) {
+        this.password = encode(contrasena);
+    }
+
+    public String encode(String pass) {
+        try {
+            final MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            final byte[] hash = digest.digest(pass.getBytes("UTF-8"));
+            final StringBuilder hexString = new StringBuilder();
+            for (int i = 0; i < hash.length; i++) {
+                final String hex = Integer.toHexString(0xFF & hash[i]);
+                if (hex.length() == 1) {
+                    hexString.append('0');
+                    hexString.append(hex);
+                }
+                pass = hexString.toString();
+            }
+        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+            pass = "FAILED HASH";
+        }
+        return pass;
+    }
+
+=======
      * @param password credencial usuario
      */
     public void setPasswordHash(String password) {
         this.passwordHash = password;
     }
 
+>>>>>>> d98dbc3f4011ce79360c93ffe41e17203ba29367
     /**
      * Representacion String para logging.
      * 
@@ -71,6 +115,11 @@ public class Usuario {
      */
     @Override
     public String toString() {
+<<<<<<< HEAD
+        return "Usuario [Nombre de usuario=" + username + ", Contrasena=" + password + "]";
+=======
+        return "Usuario [username=" + username + ", password=" + password + "]";
+>>>>>>> d98dbc3f4011ce79360c93ffe41e17203ba29367
         return "Usuario [username=" + username + ", password=" + passwordHash + "]";
     }
 }

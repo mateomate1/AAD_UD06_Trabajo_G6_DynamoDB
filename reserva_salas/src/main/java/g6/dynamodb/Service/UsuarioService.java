@@ -1,5 +1,7 @@
 package g6.dynamodb.Service;
 
+<<<<<<< HEAD
+=======
 /**
  * Servicio de negocio para gestion de usuarios.
  * 
@@ -15,10 +17,6 @@ package g6.dynamodb.Service;
  */
 import java.util.UUID;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import fx.App.ui.util.HashUtil;
 import g6.dynamodb.DAO.UsuarioDAO;
 import g6.dynamodb.Model.Usuario;
 import g6.dynamodb.Util.AWSClient;
@@ -36,7 +34,7 @@ public class UsuarioService {
     public UsuarioService(AWSClient cliente) {
         this.cliente = cliente;
     }
-    //TODO: revisar ingreso de password codificada
+
     /**
      * Crea usuario con username UUID unico.
      * 
@@ -107,3 +105,4 @@ public class UsuarioService {
     }
 
 }
+>>>>>>> d98dbc3f4011ce79360c93ffe41e17203ba29367
