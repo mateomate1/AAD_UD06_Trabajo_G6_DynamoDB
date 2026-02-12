@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controladores.LoginController">
+   <children>
+      <Button fx:id="ButtonLogIn" layoutX="232.0" layoutY="310.0" mnemonicParsing="false" onAction="#IniciarSesion" prefHeight="18.0" prefWidth="88.0" stylesheets="@../css/styles.css" text="Log in" />
+      <TextField fx:id="Usuario" layoutX="195.0" layoutY="122.0" prefHeight="25.0" prefWidth="161.0" promptText="Usuario" styleClass="prompt-text" stylesheets="@../css/styles.css" />
+      <Label layoutX="172.0" layoutY="60.0" prefHeight="42.0" prefWidth="207.0" styleClass="title" stylesheets="@../css/styles.css" text="Incio de sesion" />
+      <Button fx:id="ButtonSingUp" layoutX="486.0" layoutY="348.0" mnemonicParsing="false" onAction="#RegistrarUsuario" prefHeight="25.0" prefWidth="100.0" stylesheets="@../css/styles.css" text="Sign up" />
+      <PasswordField fx:id="contrasenia" layoutX="195.0" layoutY="179.0" promptText="Contraseña" styleClass="password-field" stylesheets="@../css/styles.css" />
+      <CheckBox fx:id="checkBoxVerPLogin" layoutX="309.0" layoutY="245.0" mnemonicParsing="false" onAction="#VerContrasenia" prefHeight="38.0" prefWidth="74.0" styleClass="vbox" stylesheets="@../css/styles.css" text="Ver" />
+      <TextField fx:id="contraseniaVisible" layoutX="195.0" layoutY="179.0" promptText="Contraseña" stylesheets="@../css/styles.css" />
+   </children>
+</AnchorPane>

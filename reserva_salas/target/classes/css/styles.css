@@ -1,0 +1,114 @@
+
+
+
+/* Estilo para toda la interfaz de la aplicación de reserva de salas. Se utiliza un diseño limpio y moderno con colores suaves para mejorar la experiencia del usuario. Los botones tienen un estilo consistente y los paneles están diseñados para resaltar el contenido de manera clara. */
+
+/* estructura de la hoja de estilos:
+1. Fondo general
+2. Títulos
+3. Botones
+4. Paneles / tarjetas
+5. Inputs    */
+
+
+/* Fondo general */
+.root {
+    -fx-background-color: #f2f1ec;
+    -fx-font-family: "Barlow", "Segoe UI", sans-serif;
+}
+
+/* Títulos */
+.label {
+    -fx-text-fill: #2c3e3f;
+    -fx-font-size: 18px;
+}
+
+/* H1 */
+.label.title {
+    -fx-font-size: 28px;
+    -fx-text-fill: #365b6d;
+    -fx-font-family: "Barlow Bold";
+}
+
+/* H2 */
+.label.subtitle {
+    -fx-font-size: 18px;
+    -fx-text-fill: #5f7d7e;
+    -fx-font-family: "Barlow Medium";
+}
+
+/* Texto normal */
+.label.text {
+    -fx-font-size: 14px;
+    -fx-text-fill: #365b6d;
+    -fx-font-family: "Barlow Regular";
+}
+
+
+/* Botones */
+.button {
+    -fx-background-color: #365b6d;
+    -fx-text-fill: #f2f1ec;
+    -fx-background-radius: 12;
+    -fx-padding: 10 25;
+    -fx-font-size: 14px;
+}
+
+.button:hover {
+    -fx-background-color: #f8eba9;
+}
+
+/* Paneles / tarjetas */
+.pane, .hbox {
+    -fx-background-color: #f2f1ec;
+    -fx-background-radius: 16;
+    -fx-padding: 20;
+}
+
+/* Inputs */
+.text-field, .password-field {
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-padding: 8 12;
+}
+
+/* MenuBar limpio */
+.menu-bar {
+    -fx-background-color: #1E293B;
+    -fx-padding: 6 10;
+    -fx-background-radius: 0;
+    -fx-border-width: 0;
+}
+
+.menu-bar .label {
+    -fx-text-fill: white;
+    -fx-font-family: "Barlow";
+    -fx-font-weight: 600;
+    -fx-font-size: 14px;
+}
+
+.context-menu {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-padding: 6;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.18), 16, 0.2, 0, 4);
+}
+
+.menu-item {
+    -fx-padding: 4 7;
+}
+
+.menu-item .label {
+    -fx-text-fill: #1E293B;
+    -fx-font-size: 13px;
+}
+
+.menu-item:focused, .menu-item:hovered {
+    -fx-background-color: #E2E8F0;
+    -fx-background-radius: 8;
+}
+
+.reservas-aulas-root {
+    -fx-background-color: #f2f1ec;
+    -fx-padding: 0; /* importante para que el MenuBar quede pegado arriba */
+}
