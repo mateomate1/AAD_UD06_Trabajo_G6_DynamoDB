@@ -1,5 +1,6 @@
 package service;
 
+import java.util.List;
 /**
  * Servicio de negocio para gestion de aulas.
  * 
@@ -71,4 +72,11 @@ public class AulaService {
         dao.save(a);
         return a;
     }
+
+    public List<Aula> ObtenerListaAulas(){
+        AulaDAO aulasDao = new AulaDAO(this.cliente.getDynamoDB());
+        return aulasDao.scan();
+    }
+
+
 }

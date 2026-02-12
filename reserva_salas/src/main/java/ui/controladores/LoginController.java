@@ -62,12 +62,11 @@ public class LoginController {
     void IniciarSesion(ActionEvent event) {
         String nombreUsuario = Usuario.getText();
         String contrasena = contrasenia.getText();
-
-       
+        
         try {
 
             if (usuarioService.loginUsuario(nombreUsuario, contrasena)) {
-                SceneManager.cambioScene("reserva");
+                SceneManager.cambioScene("reservasAulas");
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error de inicio de sesión");
@@ -141,9 +140,5 @@ public class LoginController {
             contraseniaVisible.setVisible(false); // Ocultar el campo de contraseña visible
         }
     }
-
-   
-
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 }
