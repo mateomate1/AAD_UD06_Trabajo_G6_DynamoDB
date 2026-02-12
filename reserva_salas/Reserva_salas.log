@@ -4,3 +4,5 @@
 2026-02-11 17:32:07,897 [main] WARN  Main                                     - Algo salió mal:DynamoDBCredentials.properties (The system cannot find the file specified)
 2026-02-11 17:32:08,115 [JavaFX Application Thread] INFO  Main                                     - FXML cargado correctamente
 2026-02-11 17:32:17,659 [main] INFO  Main                                     - Aplicación iniciada
+2026-02-12 19:37:32,151 [main] WARN  app.Main                                 - Algo salio mal: DynamoDBCredentials.properties (The system cannot find the file specified)
+2026-02-12 20:56:10,333 [main] WARN  app.Main                                 - Algo salio mal: DynamoDBCredentials.properties (The system cannot find the file specified)

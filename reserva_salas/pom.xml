@@ -98,7 +98,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <mainClass>Main</mainClass>
+                    <mainClass>app.Main</mainClass>
                 </configuration>
             </plugin>
             <plugin>
@@ -106,7 +106,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.1.0</version>
                 <configuration>
-                    <mainClass>Launch</mainClass>
+                    <mainClass>app.Launch</mainClass>
                 </configuration>
             </plugin>
         </plugins>

@@ -20,7 +20,6 @@ import java.util.UUID;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
 
-
 import domain.model.Reserva;
 import persistence.dao.ReservaDAO;
 import persistence.dynamodb.AWSClient;
@@ -42,7 +41,7 @@ public class ReservaService {
      * Crea reserva validada con todas las reglas de negocio.
      * 
      * 1. Genera ID UUID unico
-     * 2. Valida fechaInicio < fechaFin  
+     * 2. Valida fechaInicio < fechaFin
      * 3. Detecta solapamientos por aula
      * 4. Asigna estado automatico
      * 5. Persiste en DynamoDB
@@ -82,7 +81,7 @@ public class ReservaService {
      * Valida orden temporal de reserva.
      * 
      * @param inicio fecha/hora inicio
-     * @param fin fecha/hora fin
+     * @param fin    fecha/hora fin
      * @return true si inicio.isBefore(fin)
      */
     private boolean fechasValidas(LocalDateTime inicio, LocalDateTime fin) {
@@ -120,7 +119,7 @@ public class ReservaService {
             boolean solapa = LocalDateTime.parse(nueva.getFechaInicio())
                     .isBefore(LocalDateTime.parse(r.getFechaFin()))
                     && LocalDateTime.parse(nueva.getFechaFin())
-                    .isAfter(LocalDateTime.parse(r.getFechaInicio()));
+                            .isAfter(LocalDateTime.parse(r.getFechaInicio()));
 
             if (solapa) {
                 return true;
@@ -128,5 +127,25 @@ public class ReservaService {
         }
 
         return false;
+    }
+
+    public boolean eliminarReserva(Reserva r) {
+        ReservaDAO dao = new ReservaDAO(this.cliente.getDynamoDB());
+        if (dao.findById(r.getId()) == null)
+            return true;
+        else {
+            dao.delete(r);
+            return dao.findById(r.getId()) == null;
+        }
+    }
+
+    public Reserva buscar(Reserva a) {
+        ReservaDAO dao = new ReservaDAO(this.cliente.getDynamoDB());
+        return dao.findById(a.getId());
+    }
+
+    public Reserva buscar(String a) {
+        ReservaDAO dao = new ReservaDAO(this.cliente.getDynamoDB());
+        return dao.findById(a);
     }
 }

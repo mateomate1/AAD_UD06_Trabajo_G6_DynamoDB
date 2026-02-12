@@ -71,4 +71,24 @@ public class AulaService {
         dao.save(a);
         return a;
     }
+
+    public boolean eliminarAula(Aula a){
+        AulaDAO dao = new AulaDAO(this.cliente.getDynamoDB());
+        if (dao.findById(a.getId()) == null) {
+            return true;
+        } else{
+            dao.delete(a);
+            return dao.findById(a.getId()) == null;
+        }
+    }
+
+    public Aula buscar(Aula a) {
+        AulaDAO dao = new AulaDAO(this.cliente.getDynamoDB());
+        return dao.findById(a.getId());
+    }
+
+    public Aula buscar(String id) {
+        AulaDAO dao = new AulaDAO(this.cliente.getDynamoDB());
+        return dao.findById(id);
+    }
 }

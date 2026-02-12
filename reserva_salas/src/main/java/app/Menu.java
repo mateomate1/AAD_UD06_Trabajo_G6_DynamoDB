@@ -1,6 +1,5 @@
 package app;
 
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
@@ -12,9 +11,8 @@ import org.slf4j.LoggerFactory;
 import domain.model.Aula;
 import domain.model.Reserva;
 import domain.model.Usuario;
-import persistence.dao.AulaDAO;
-import persistence.dao.ReservaDAO;
 import persistence.dynamodb.AWSClient;
+import service.AulaService;
 import service.ReservaService;
 import service.UsuarioService;
 
@@ -37,8 +35,7 @@ public class Menu {
     private final AWSClient aws;
     private final Scanner sc;
     private final UsuarioService usuarioService;
-    private final AulaDAO aulaDAO;
-    private final ReservaDAO reservaDAO;
+    private final AulaService aulaService;
     private final ReservaService reservaService;
     private static final Logger log = LoggerFactory.getLogger(Menu.class);
 
@@ -53,8 +50,7 @@ public class Menu {
         this.aws = new AWSClient(true);
         this.sc = new Scanner(System.in);
         this.usuarioService = new UsuarioService(aws);
-        this.aulaDAO = new AulaDAO(aws.getDynamoDB());
-        this.reservaDAO = new ReservaDAO(aws.getDynamoDB());
+        this.aulaService = new AulaService(aws);
         this.reservaService = new ReservaService(aws);
     }
 
@@ -69,9 +65,32 @@ public class Menu {
         this.sc = new Scanner(System.in);
 
         this.usuarioService = new UsuarioService(aws);
-        this.aulaDAO = new AulaDAO(aws.getDynamoDB());
-        this.reservaDAO = new ReservaDAO(aws.getDynamoDB());
+        this.aulaService = new AulaService(aws);
         this.reservaService = new ReservaService(aws);
+    }
+
+    private void inicializar() {
+        if (aws.existeTabla(Usuario.class))
+            aws.deleteTable(Usuario.class);
+        aws.generateTable(Usuario.class);
+
+        Usuario u1 = new Usuario("Mateo", "Ayarra123");
+        Usuario u2 = new Usuario("Mario", "Garcia123");
+        Usuario u3 = new Usuario("Samuel", "Cobreros123");
+        Usuario u4 = new Usuario("Zacaria", "Daghri123");
+
+        usuarioService.altaUsuario(u1);
+        usuarioService.altaUsuario(u2);
+        usuarioService.altaUsuario(u3);
+        usuarioService.altaUsuario(u4);
+
+        if (aws.existeTabla(Aula.class))
+            aws.deleteTable(Aula.class);
+        aws.generateTable(Aula.class);
+
+        if (aws.existeTabla(Reserva.class))
+            aws.deleteTable(Reserva.class);
+        aws.generateTable(Reserva.class);
     }
 
     /**
@@ -108,30 +127,6 @@ public class Menu {
         sc.close();
     }
 
-    private void inicializar() {
-        if (aws.existeTabla(Usuario.class))
-            aws.deleteTable(Usuario.class);
-        aws.generateTable(Usuario.class);
-
-        Usuario u1 = new Usuario("Mateo", "Ayarra123");
-        Usuario u2 = new Usuario("Mario", "Garcia123");
-        Usuario u3 = new Usuario("Samuel", "Cobreros123");
-        Usuario u4 = new Usuario("Zacaria", "Daghri123");
-
-        usuarioService.altaUsuario(u1);
-        usuarioService.altaUsuario(u2);
-        usuarioService.altaUsuario(u3);
-        usuarioService.altaUsuario(u4);
-
-        if (aws.existeTabla(Aula.class))
-            aws.deleteTable(Aula.class);
-        aws.generateTable(Aula.class);
-
-        if (aws.existeTabla(Reserva.class))
-            aws.deleteTable(Reserva.class);
-        aws.generateTable(Reserva.class);
-    }
-
     /**
      * Muestra menu principal formateado.
      * Opciones 1-3: CRUD entidades, 4-6: crear tablas, 0: salir.
@@ -162,7 +157,7 @@ public class Menu {
             case 1 -> crearUsuario();
             case 2 -> buscarUsuario();
             case 3 -> borrarUsuario();
-            case 4 -> aws.scanTable(Usuario.class);
+            case 4 -> aws.scanTable(Usuario.class).stream().forEach(u -> log.info(u.toString()));
             default -> log.warn("Opcion invalida");
         }
         pausa();
@@ -247,7 +242,7 @@ public class Menu {
         sc.nextLine();
         log.info("Edificio: ");
         a.setEdificio(sc.nextLine());
-        aulaDAO.save(a);
+        aulaService.crearAula(a);
         log.info("Aula creada: {}", a);
     }
 
@@ -258,7 +253,7 @@ public class Menu {
     private void buscarAula() {
         log.info("ID aula: ");
         String id = sc.nextLine();
-        Aula a = aulaDAO.findById(id);
+        Aula a = aulaService.buscar(id);
         if (a != null) {
             log.info("{} - Cap: {} - {} (ID: {})",
                     a.getNombre(), a.getCapacidad(), a.getEdificio(), a.getId());
@@ -276,7 +271,7 @@ public class Menu {
         String id = sc.nextLine();
         Aula a = new Aula();
         a.setId(id);
-        aulaDAO.delete(a);
+        aulaService.eliminarAula(a);
         log.info("Aula borrada");
     }
 
@@ -343,7 +338,7 @@ public class Menu {
     private void buscarReserva() {
         log.info("ID reserva: ");
         String id = sc.nextLine();
-        Reserva r = reservaDAO.findById(id);
+        Reserva r = reservaService.buscar(id);
         if (r != null) {
             log.info("{} -> {} | {} pers | {} | {} (ID: {})",
                     r.getFechaInicio(), r.getFechaFin(), r.getnPersonas(),
@@ -362,7 +357,7 @@ public class Menu {
         String id = sc.nextLine();
         Reserva r = new Reserva();
         r.setId(id);
-        reservaDAO.delete(r);
+        reservaService.eliminarReserva(r);
         log.info("Reserva borrada");
     }
 

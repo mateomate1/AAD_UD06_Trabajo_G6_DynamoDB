@@ -11,15 +11,14 @@ Main JavaFX Application + Menu TUI fallback.
 * @version 1.0
 * @since 1.0
  */
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import app.navegacion.SceneManager;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public class Main extends Application {
     private static final Logger log = LoggerFactory.getLogger(Main.class);

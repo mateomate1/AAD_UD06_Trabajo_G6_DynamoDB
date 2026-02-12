@@ -496,3 +496,201 @@
 2026-02-12 17:03:40,526 [main] INFO  g6.dynamodb.Style.Menu                   - 0. Volver
 2026-02-12 17:03:40,526 [main] INFO  g6.dynamodb.Style.Menu                   - Opcion: 
 2026-02-12 17:03:43,638 [main] INFO  g6.dynamodb.Style.Menu                   - Pulsa Enter para continuar...
+2026-02-12 20:28:36,254 [main] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 20:28:36,897 [main] INFO  app.Menu                                 - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 20:31:48,763 [main] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 20:31:49,456 [main] INFO  app.Menu                                 - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 20:31:49,793 [main] INFO  app.Menu                                 - Tablas cargadas: [Usuarios]
+2026-02-12 20:31:49,794 [main] INFO  app.Menu                                 - ----------------------------------------
+2026-02-12 20:31:49,794 [main] INFO  app.Menu                                 - 1. Gestionar USUARIOS
+2026-02-12 20:31:49,794 [main] INFO  app.Menu                                 - 2. Gestionar AULAS
+2026-02-12 20:31:49,794 [main] INFO  app.Menu                                 - 3. Gestionar RESERVAS
+2026-02-12 20:31:49,794 [main] INFO  app.Menu                                 - 0. SALIR
+2026-02-12 20:31:49,794 [main] INFO  app.Menu                                 - Selecciona opcion: 
+2026-02-12 20:31:59,875 [main] INFO  app.Menu                                 - === USUARIOS ===
+2026-02-12 20:31:59,875 [main] INFO  app.Menu                                 - 1. Crear nuevo (username/password)
+2026-02-12 20:31:59,875 [main] INFO  app.Menu                                 - 2. Buscar por username
+2026-02-12 20:31:59,875 [main] INFO  app.Menu                                 - 3. Borrar por username
+2026-02-12 20:31:59,875 [main] INFO  app.Menu                                 - 0. Volver
+2026-02-12 20:31:59,875 [main] INFO  app.Menu                                 - Opcion: 
+2026-02-12 20:32:02,818 [main] INFO  app.Menu                                 - Pulsa Enter para continuar...
+2026-02-12 20:32:03,799 [main] INFO  app.Menu                                 - Pulsa Enter para continuar...
+2026-02-12 20:32:05,205 [main] INFO  app.Menu                                 - ----------------------------------------
+2026-02-12 20:32:05,205 [main] INFO  app.Menu                                 - 1. Gestionar USUARIOS
+2026-02-12 20:32:05,205 [main] INFO  app.Menu                                 - 2. Gestionar AULAS
+2026-02-12 20:32:05,205 [main] INFO  app.Menu                                 - 3. Gestionar RESERVAS
+2026-02-12 20:32:05,206 [main] INFO  app.Menu                                 - 0. SALIR
+2026-02-12 20:32:05,206 [main] INFO  app.Menu                                 - Selecciona opcion: 
+2026-02-12 20:32:56,094 [main] INFO  app.Menu                                 - Hasta luego!
+2026-02-12 20:35:06,040 [main] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 20:35:06,647 [main] INFO  app.Menu                                 - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 20:35:06,769 [main] INFO  app.Menu                                 - Tablas cargadas: [Usuarios]
+2026-02-12 20:35:06,770 [main] INFO  app.Menu                                 - ----------------------------------------
+2026-02-12 20:35:06,770 [main] INFO  app.Menu                                 - 1. Gestionar USUARIOS
+2026-02-12 20:35:06,770 [main] INFO  app.Menu                                 - 2. Gestionar AULAS
+2026-02-12 20:35:06,770 [main] INFO  app.Menu                                 - 3. Gestionar RESERVAS
+2026-02-12 20:35:06,770 [main] INFO  app.Menu                                 - 0. SALIR
+2026-02-12 20:35:06,770 [main] INFO  app.Menu                                 - Selecciona opcion: 
+2026-02-12 20:38:00,199 [main] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 20:38:00,812 [main] INFO  app.Menu                                 - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 20:38:00,945 [main] INFO  app.Menu                                 - Tablas cargadas: [Usuarios]
+2026-02-12 20:38:00,945 [main] INFO  app.Menu                                 - ----------------------------------------
+2026-02-12 20:38:00,946 [main] INFO  app.Menu                                 - 1. Gestionar USUARIOS
+2026-02-12 20:38:00,946 [main] INFO  app.Menu                                 - 2. Gestionar AULAS
+2026-02-12 20:38:00,946 [main] INFO  app.Menu                                 - 3. Gestionar RESERVAS
+2026-02-12 20:38:00,946 [main] INFO  app.Menu                                 - 0. SALIR
+2026-02-12 20:38:00,946 [main] INFO  app.Menu                                 - Selecciona opcion: 
+2026-02-12 20:38:02,589 [main] INFO  app.Menu                                 - === USUARIOS ===
+2026-02-12 20:38:02,589 [main] INFO  app.Menu                                 - 1. Crear nuevo (username/password)
+2026-02-12 20:38:02,589 [main] INFO  app.Menu                                 - 2. Buscar por username
+2026-02-12 20:38:02,589 [main] INFO  app.Menu                                 - 3. Borrar por username
+2026-02-12 20:38:02,589 [main] INFO  app.Menu                                 - 0. Volver
+2026-02-12 20:38:02,589 [main] INFO  app.Menu                                 - Opcion: 
+2026-02-12 20:38:05,238 [main] INFO  app.Menu                                 - Usuario [username=Mateomate03, password=null]
+2026-02-12 20:38:05,239 [main] INFO  app.Menu                                 - Usuario [username=mateomate1, password=null]
+2026-02-12 20:38:05,239 [main] INFO  app.Menu                                 - Pulsa Enter para continuar...
+2026-02-12 20:38:21,041 [main] INFO  app.Menu                                 - Pulsa Enter para continuar...
+2026-02-12 20:38:22,102 [main] INFO  app.Menu                                 - ----------------------------------------
+2026-02-12 20:38:22,103 [main] INFO  app.Menu                                 - 1. Gestionar USUARIOS
+2026-02-12 20:38:22,103 [main] INFO  app.Menu                                 - 2. Gestionar AULAS
+2026-02-12 20:38:22,103 [main] INFO  app.Menu                                 - 3. Gestionar RESERVAS
+2026-02-12 20:38:22,103 [main] INFO  app.Menu                                 - 0. SALIR
+2026-02-12 20:38:22,103 [main] INFO  app.Menu                                 - Selecciona opcion: 
+2026-02-12 20:38:31,266 [main] INFO  app.Menu                                 - Pulsa Enter para continuar...
+2026-02-12 20:38:32,178 [main] INFO  app.Menu                                 - ----------------------------------------
+2026-02-12 20:38:32,179 [main] INFO  app.Menu                                 - 1. Gestionar USUARIOS
+2026-02-12 20:38:32,179 [main] INFO  app.Menu                                 - 2. Gestionar AULAS
+2026-02-12 20:38:32,179 [main] INFO  app.Menu                                 - 3. Gestionar RESERVAS
+2026-02-12 20:38:32,179 [main] INFO  app.Menu                                 - 0. SALIR
+2026-02-12 20:38:32,179 [main] INFO  app.Menu                                 - Selecciona opcion: 
+2026-02-12 20:38:33,846 [main] INFO  app.Menu                                 - Pulsa Enter para continuar...
+2026-02-12 20:38:34,594 [main] INFO  app.Menu                                 - ----------------------------------------
+2026-02-12 20:38:34,595 [main] INFO  app.Menu                                 - 1. Gestionar USUARIOS
+2026-02-12 20:38:34,595 [main] INFO  app.Menu                                 - 2. Gestionar AULAS
+2026-02-12 20:38:34,595 [main] INFO  app.Menu                                 - 3. Gestionar RESERVAS
+2026-02-12 20:38:34,595 [main] INFO  app.Menu                                 - 0. SALIR
+2026-02-12 20:38:34,595 [main] INFO  app.Menu                                 - Selecciona opcion: 
+2026-02-12 20:38:36,738 [main] INFO  app.Menu                                 - === AULAS ===
+2026-02-12 20:38:36,739 [main] INFO  app.Menu                                 - 1. Crear nuevo
+2026-02-12 20:38:36,739 [main] INFO  app.Menu                                 - 2. Buscar por ID
+2026-02-12 20:38:36,739 [main] INFO  app.Menu                                 - 3. Borrar por ID
+2026-02-12 20:38:36,739 [main] INFO  app.Menu                                 - 0. Volver
+2026-02-12 20:38:36,739 [main] INFO  app.Menu                                 - Opcion: 
+2026-02-12 20:38:42,787 [main] INFO  app.Menu                                 - ID: 
+2026-02-12 20:38:49,456 [main] INFO  app.Menu                                 - Nombre/Codigo: 
+2026-02-12 20:38:57,375 [main] INFO  app.Menu                                 - Capacidad: 
+2026-02-12 20:39:01,216 [main] INFO  app.Menu                                 - Edificio: 
+2026-02-12 20:53:20,887 [main] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 20:53:21,477 [main] INFO  app.Menu                                 - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 20:53:21,611 [main] INFO  app.Menu                                 - Tablas cargadas: [Aulas, Usuarios, reserva]
+2026-02-12 20:53:21,613 [main] INFO  app.Menu                                 - ----------------------------------------
+2026-02-12 20:53:21,613 [main] INFO  app.Menu                                 - 1. Gestionar USUARIOS
+2026-02-12 20:53:21,613 [main] INFO  app.Menu                                 - 2. Gestionar AULAS
+2026-02-12 20:53:21,613 [main] INFO  app.Menu                                 - 3. Gestionar RESERVAS
+2026-02-12 20:53:21,613 [main] INFO  app.Menu                                 - 0. SALIR
+2026-02-12 20:53:21,613 [main] INFO  app.Menu                                 - Selecciona opcion: 
+2026-02-12 20:54:02,399 [main] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 20:54:02,976 [main] INFO  app.Menu                                 - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 20:54:03,112 [main] INFO  app.Menu                                 - Tablas cargadas: [Aulas, Usuarios, reserva]
+2026-02-12 20:54:03,113 [main] INFO  app.Menu                                 - ----------------------------------------
+2026-02-12 20:54:03,113 [main] INFO  app.Menu                                 - 1. Gestionar USUARIOS
+2026-02-12 20:54:03,113 [main] INFO  app.Menu                                 - 2. Gestionar AULAS
+2026-02-12 20:54:03,113 [main] INFO  app.Menu                                 - 3. Gestionar RESERVAS
+2026-02-12 20:54:03,113 [main] INFO  app.Menu                                 - 0. SALIR
+2026-02-12 20:54:03,113 [main] INFO  app.Menu                                 - Selecciona opcion: 
+2026-02-12 20:54:34,553 [main] INFO  app.Menu                                 - === USUARIOS ===
+2026-02-12 20:54:34,553 [main] INFO  app.Menu                                 - 1. Crear nuevo (username/password)
+2026-02-12 20:54:34,553 [main] INFO  app.Menu                                 - 2. Buscar por username
+2026-02-12 20:54:34,553 [main] INFO  app.Menu                                 - 3. Borrar por username
+2026-02-12 20:54:34,554 [main] INFO  app.Menu                                 - 0. Volver
+2026-02-12 20:54:34,554 [main] INFO  app.Menu                                 - Opcion: 
+2026-02-12 20:54:41,325 [main] INFO  app.Menu                                 - Username a borrar: 
+2026-02-12 20:54:59,575 [main] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 20:55:00,148 [main] INFO  app.Menu                                 - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 20:55:00,284 [main] INFO  app.Menu                                 - Tablas cargadas: [Aulas, Usuarios, reserva]
+2026-02-12 20:55:00,285 [main] INFO  app.Menu                                 - ----------------------------------------
+2026-02-12 20:55:00,285 [main] INFO  app.Menu                                 - 1. Gestionar USUARIOS
+2026-02-12 20:55:00,285 [main] INFO  app.Menu                                 - 2. Gestionar AULAS
+2026-02-12 20:55:00,285 [main] INFO  app.Menu                                 - 3. Gestionar RESERVAS
+2026-02-12 20:55:00,285 [main] INFO  app.Menu                                 - 0. SALIR
+2026-02-12 20:55:00,285 [main] INFO  app.Menu                                 - Selecciona opcion: 
+2026-02-12 20:55:05,117 [main] INFO  app.Menu                                 - === USUARIOS ===
+2026-02-12 20:55:05,118 [main] INFO  app.Menu                                 - 1. Crear nuevo (username/password)
+2026-02-12 20:55:05,118 [main] INFO  app.Menu                                 - 2. Buscar por username
+2026-02-12 20:55:05,118 [main] INFO  app.Menu                                 - 3. Borrar por username
+2026-02-12 20:55:05,118 [main] INFO  app.Menu                                 - 0. Volver
+2026-02-12 20:55:05,118 [main] INFO  app.Menu                                 - Opcion: 
+2026-02-12 20:55:06,686 [main] INFO  app.Menu                                 - Username a borrar: 
+2026-02-12 20:55:13,163 [main] INFO  app.Menu                                 - Usuario borrado
+2026-02-12 20:55:13,163 [main] INFO  app.Menu                                 - Pulsa Enter para continuar...
+2026-02-12 20:55:15,256 [main] INFO  app.Menu                                 - Pulsa Enter para continuar...
+2026-02-12 20:55:16,671 [main] INFO  app.Menu                                 - ----------------------------------------
+2026-02-12 20:55:16,671 [main] INFO  app.Menu                                 - 1. Gestionar USUARIOS
+2026-02-12 20:55:16,671 [main] INFO  app.Menu                                 - 2. Gestionar AULAS
+2026-02-12 20:55:16,671 [main] INFO  app.Menu                                 - 3. Gestionar RESERVAS
+2026-02-12 20:55:16,671 [main] INFO  app.Menu                                 - 0. SALIR
+2026-02-12 20:55:16,671 [main] INFO  app.Menu                                 - Selecciona opcion: 
+2026-02-12 20:55:24,407 [main] INFO  app.Menu                                 - === AULAS ===
+2026-02-12 20:55:24,407 [main] INFO  app.Menu                                 - 1. Crear nuevo
+2026-02-12 20:55:24,407 [main] INFO  app.Menu                                 - 2. Buscar por ID
+2026-02-12 20:55:24,408 [main] INFO  app.Menu                                 - 3. Borrar por ID
+2026-02-12 20:55:24,408 [main] INFO  app.Menu                                 - 0. Volver
+2026-02-12 20:55:24,408 [main] INFO  app.Menu                                 - Opcion: 
+2026-02-12 20:55:28,071 [main] INFO  app.Menu                                 - ID: 
+2026-02-12 20:55:32,551 [main] INFO  app.Menu                                 - Nombre/Codigo: 
+2026-02-12 20:55:37,580 [main] INFO  app.Menu                                 - Capacidad: 
+2026-02-12 20:55:40,046 [main] INFO  app.Menu                                 - Edificio: 
+2026-02-12 20:55:42,361 [main] INFO  app.Menu                                 - Aula creada: Aula [id=0eb5f77e-2312-4cc9-933b-4d614bd39c62, nombre=Pepe, capacidad=1, edificio=2]
+2026-02-12 20:55:42,363 [main] INFO  app.Menu                                 - Pulsa Enter para continuar...
+2026-02-12 20:55:45,223 [main] INFO  app.Menu                                 - Pulsa Enter para continuar...
+2026-02-12 20:55:46,548 [main] INFO  app.Menu                                 - ----------------------------------------
+2026-02-12 20:55:46,549 [main] INFO  app.Menu                                 - 1. Gestionar USUARIOS
+2026-02-12 20:55:46,549 [main] INFO  app.Menu                                 - 2. Gestionar AULAS
+2026-02-12 20:55:46,549 [main] INFO  app.Menu                                 - 3. Gestionar RESERVAS
+2026-02-12 20:55:46,549 [main] INFO  app.Menu                                 - 0. SALIR
+2026-02-12 20:55:46,549 [main] INFO  app.Menu                                 - Selecciona opcion: 
+2026-02-12 20:55:46,878 [main] WARN  app.Menu                                 - No has introducido un numero
+2026-02-12 20:55:46,878 [main] INFO  app.Menu                                 - ----------------------------------------
+2026-02-12 20:55:46,878 [main] INFO  app.Menu                                 - 1. Gestionar USUARIOS
+2026-02-12 20:55:46,878 [main] INFO  app.Menu                                 - 2. Gestionar AULAS
+2026-02-12 20:55:46,878 [main] INFO  app.Menu                                 - 3. Gestionar RESERVAS
+2026-02-12 20:55:46,878 [main] INFO  app.Menu                                 - 0. SALIR
+2026-02-12 20:55:46,878 [main] INFO  app.Menu                                 - Selecciona opcion: 
+2026-02-12 20:55:52,146 [main] INFO  app.Menu                                 - === RESERVAS ===
+2026-02-12 20:55:52,146 [main] INFO  app.Menu                                 - 1. Crear nuevo
+2026-02-12 20:55:52,146 [main] INFO  app.Menu                                 - 2. Buscar por ID
+2026-02-12 20:55:52,146 [main] INFO  app.Menu                                 - 3. Borrar por ID
+2026-02-12 20:55:52,146 [main] INFO  app.Menu                                 - 0. Volver
+2026-02-12 20:55:52,146 [main] INFO  app.Menu                                 - Opcion: 
+2026-02-12 20:55:55,953 [main] INFO  app.Menu                                 - ID a borrar: 
+2026-02-12 20:55:58,145 [main] INFO  app.Menu                                 - Reserva borrada
+2026-02-12 20:55:58,145 [main] INFO  app.Menu                                 - Pulsa Enter para continuar...
+2026-02-12 20:56:00,343 [main] INFO  app.Menu                                 - Pulsa Enter para continuar...
+2026-02-12 20:56:01,205 [main] INFO  app.Menu                                 - ----------------------------------------
+2026-02-12 20:56:01,205 [main] INFO  app.Menu                                 - 1. Gestionar USUARIOS
+2026-02-12 20:56:01,206 [main] INFO  app.Menu                                 - 2. Gestionar AULAS
+2026-02-12 20:56:01,206 [main] INFO  app.Menu                                 - 3. Gestionar RESERVAS
+2026-02-12 20:56:01,206 [main] INFO  app.Menu                                 - 0. SALIR
+2026-02-12 20:56:01,206 [main] INFO  app.Menu                                 - Selecciona opcion: 
+2026-02-12 20:56:01,400 [main] WARN  app.Menu                                 - No has introducido un numero
+2026-02-12 20:56:01,400 [main] INFO  app.Menu                                 - ----------------------------------------
+2026-02-12 20:56:01,400 [main] INFO  app.Menu                                 - 1. Gestionar USUARIOS
+2026-02-12 20:56:01,400 [main] INFO  app.Menu                                 - 2. Gestionar AULAS
+2026-02-12 20:56:01,400 [main] INFO  app.Menu                                 - 3. Gestionar RESERVAS
+2026-02-12 20:56:01,400 [main] INFO  app.Menu                                 - 0. SALIR
+2026-02-12 20:56:01,400 [main] INFO  app.Menu                                 - Selecciona opcion: 
+2026-02-12 20:56:01,588 [main] WARN  app.Menu                                 - No has introducido un numero
+2026-02-12 20:56:01,589 [main] INFO  app.Menu                                 - ----------------------------------------
+2026-02-12 20:56:01,589 [main] INFO  app.Menu                                 - 1. Gestionar USUARIOS
+2026-02-12 20:56:01,589 [main] INFO  app.Menu                                 - 2. Gestionar AULAS
+2026-02-12 20:56:01,589 [main] INFO  app.Menu                                 - 3. Gestionar RESERVAS
+2026-02-12 20:56:01,589 [main] INFO  app.Menu                                 - 0. SALIR
+2026-02-12 20:56:01,589 [main] INFO  app.Menu                                 - Selecciona opcion: 
+2026-02-12 20:56:01,784 [main] WARN  app.Menu                                 - No has introducido un numero
+2026-02-12 20:56:01,785 [main] INFO  app.Menu                                 - ----------------------------------------
+2026-02-12 20:56:01,785 [main] INFO  app.Menu                                 - 1. Gestionar USUARIOS
+2026-02-12 20:56:01,785 [main] INFO  app.Menu                                 - 2. Gestionar AULAS
+2026-02-12 20:56:01,785 [main] INFO  app.Menu                                 - 3. Gestionar RESERVAS
+2026-02-12 20:56:01,785 [main] INFO  app.Menu                                 - 0. SALIR
+2026-02-12 20:56:01,785 [main] INFO  app.Menu                                 - Selecciona opcion: 
+2026-02-12 20:56:03,329 [main] INFO  app.Menu                                 - Hasta luego!
