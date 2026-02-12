@@ -52,20 +52,21 @@ public class UsuarioService {
         return false;
     }
 
+    /**
+     * Crea usuario con username especificado. * * Valida que el username no exista previamente para evitar colisiones. *
+     * @param usuario nombre de usuario deseado (debe ser unico)
+     * @param contrasena contraseña en texto plano (se codifica a hash para almacenar)
+     * @return
+     */
     public boolean altaUsuario(String usuario, String contrasena) {
-        Usuario u = new Usuario(usuario, contrasena);
+        String contrasenaHash = HashUtil.encode(contrasena);
+        Usuario u = new Usuario(usuario, contrasenaHash);
         UsuarioDAO dao = new UsuarioDAO(this.cliente.getDynamoDB());
         if (dao.findById(usuario) == null) {
             dao.save(u);
             return true;
         }
         return false;
-    }
-
-    public boolean iniciarSesion(String usuario, String contrasena) {
-        UsuarioDAO dao = new UsuarioDAO(this.cliente.getDynamoDB());
-        Usuario u = dao.findById(usuario);
-        return u != null && u.getPasswordHash().equals(contrasena);
     }
 
     /**
@@ -114,11 +115,21 @@ public class UsuarioService {
         return false;
     }
 
+    /**
+     * Busca usuario por username.
+     * @param username identificador del usuario a buscar
+     * @return usuario encontrado o null si no existe
+     */
     public Usuario buscarUsuario(String username) {
         UsuarioDAO dao = new UsuarioDAO(this.cliente.getDynamoDB());
         return dao.findById(username);
     }
 
+    /**
+     *  Elimina usuario por username.
+     * @param username identificador del usuario a eliminar
+     * @return true si el usuario fue eliminado exitosamente, false si no existía o no se pudo eliminar
+     */
     public boolean deleteUsuario(String username) {
         UsuarioDAO dao = new UsuarioDAO(this.cliente.getDynamoDB());
         Usuario u = dao.findById(username);
@@ -126,6 +137,11 @@ public class UsuarioService {
         return dao.findById(username) == null;
     }
 
+    /**
+     * Elimina usuario por objeto Usuario completo.
+     * @param u usuario a eliminar (debe contener username válido)
+     * @return true si el usuario fue eliminado exitosamente, false si no existía o no se pudo eliminar
+     */
     public boolean deleteUsuario(Usuario u) {
         UsuarioDAO dao = new UsuarioDAO(this.cliente.getDynamoDB());
         String username = u.getUsername();
