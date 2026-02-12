@@ -1,5 +1,13 @@
 package g6.dynamodb.Style;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Scanner;
+import java.util.UUID;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import g6.dynamodb.DAO.AulaDAO;
 import g6.dynamodb.DAO.ReservaDAO;
 import g6.dynamodb.Model.Aula;
@@ -8,14 +16,6 @@ import g6.dynamodb.Model.Usuario;
 import g6.dynamodb.Service.ReservaService;
 import g6.dynamodb.Service.UsuarioService;
 import g6.dynamodb.Util.AWSClient;
-
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Scanner;
-import java.util.UUID;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Menu interactivo principal de la aplicacion de reservas de aulas.
@@ -171,20 +171,13 @@ public class Menu {
      * Crea usuario interactivo (solo username/password reales).
      * Valida campos vacios implicitamente via DAO.
      */
-
     private void crearUsuario() {
         Usuario u = new Usuario();
         log.info("Username: ");
         u.setUsername(sc.nextLine());
         log.info("Password: ");
-<<<<<<< HEAD
         u.setPassword(sc.nextLine());
         usuarioService.altaUsuario(u);
-=======
-        u.setPasswordHash(sc.nextLine());
-        usuarioDAO.save(u);
->>>>>>> d98dbc3f4011ce79360c93ffe41e17203ba29367
->>>>>>> 581d930c9ee25c084313084458c34e8cc9cc6fcc
         log.info("Usuario creado: {}", u);
     }
 
@@ -197,7 +190,7 @@ public class Menu {
         String username = sc.nextLine();
         Usuario u = usuarioService.buscarUsuario(username);
         if (u != null) {
-            log.info("{} {} (ID: {})", u.getPassword(), u.getUsername());
+            log.info("{} {} (ID: {})", u.getPasswordHash(), u.getUsername());
         } else {
             log.warn("Usuario no encontrado");
         }
