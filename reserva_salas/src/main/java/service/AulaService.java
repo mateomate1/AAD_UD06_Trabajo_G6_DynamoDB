@@ -1,18 +1,6 @@
 package service;
 
-/**
- * Servicio de negocio para gestion de aulas.
- * 
- * Proporciona logica de dominio: creacion con ID unico automatico
- * y actualizacion validada. Usa AulaDAO interno.
- * 
- * @author Mario Garcia
- * @author Mateo Ayarra
- * @author Samuel Cobreros
- * @author Zacaria Daghri
- * @version 1.0
- * @since 1.0
- */
+import java.util.List;
 import java.util.UUID;
 
 import domain.model.Aula;
@@ -91,4 +79,10 @@ public class AulaService {
         AulaDAO dao = new AulaDAO(this.cliente.getDynamoDB());
         return dao.findById(id);
     }
+    public List<Aula> ObtenerListaAulas(){
+        AulaDAO aulasDao = new AulaDAO(this.cliente.getDynamoDB());
+        return aulasDao.scan();
+    }
+
+
 }

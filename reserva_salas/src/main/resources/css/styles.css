@@ -59,7 +59,7 @@
 }
 
 /* Paneles / tarjetas */
-.pane, .vbox, .hbox {
+.pane, .hbox {
     -fx-background-color: #f2f1ec;
     -fx-background-radius: 16;
     -fx-padding: 20;
@@ -71,4 +71,45 @@
     -fx-border-radius: 10;
     -fx-border-color: #cfdede;
     -fx-padding: 8 12;
+}
+
+/* MenuBar limpio */
+.menu-bar {
+    -fx-background-color: #1E293B;
+    -fx-padding: 6 10;
+    -fx-background-radius: 0;
+    -fx-border-width: 0;
+}
+
+.menu-bar .label {
+    -fx-text-fill: white;
+    -fx-font-family: "Barlow";
+    -fx-font-weight: 600;
+    -fx-font-size: 14px;
+}
+
+.context-menu {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-padding: 6;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.18), 16, 0.2, 0, 4);
+}
+
+.menu-item {
+    -fx-padding: 4 7;
+}
+
+.menu-item .label {
+    -fx-text-fill: #1E293B;
+    -fx-font-size: 13px;
+}
+
+.menu-item:focused, .menu-item:hovered {
+    -fx-background-color: #E2E8F0;
+    -fx-background-radius: 8;
+}
+
+.reservas-aulas-root {
+    -fx-background-color: #f2f1ec;
+    -fx-padding: 0; /* importante para que el MenuBar quede pegado arriba */
 }

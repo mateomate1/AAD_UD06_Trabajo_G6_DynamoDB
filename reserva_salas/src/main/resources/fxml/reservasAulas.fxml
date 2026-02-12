@@ -43,19 +43,15 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.web.WebView?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ResservaController">
+<VBox prefHeight="400.0" prefWidth="640.0" styleClass="root" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controladores.ReservasAulasController">
   <children>
-    <MenuBar VBox.vgrow="NEVER">
+    <MenuBar stylesheets="@../css/styles.css" VBox.vgrow="NEVER">
       <menus>
-        <Menu fx:id="botonInicioPReservas" mnemonicParsing="false" text="Inicio" />
-        <Menu fx:id="botonAuyudaPReservas" mnemonicParsing="false" text="Help">
+        <Menu fx:id="menuBarSalirPReservasAulas" mnemonicParsing="false" onAction="#SalirInicio" text="Salir" />
+        <Menu mnemonicParsing="false" text="Help">
           <items>
-            <MenuItem mnemonicParsing="false" text="About Reservas Aulas">
-                     <graphic>
-                        <WebView fx:id="WebViewPReservas" prefHeight="200.0" prefWidth="200.0" />
-                     </graphic></MenuItem>
+            <MenuItem fx:id="botonAuyudaPReservasAulas" mnemonicParsing="false" onAction="#verWebView" text="About Reservas Aulas" />
           </items>
         </Menu>
       </menus>
@@ -66,17 +62,17 @@
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="338.0" prefWidth="252.0">
                      <children>
-                        <ListView fx:id="listAulasDisponibles" prefHeight="371.0" prefWidth="252.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                        <Label layoutX="14.0" layoutY="6.0" text="Aulas disponibles" />
+                        <ListView fx:id="listAulasDisponibles" prefHeight="371.0" prefWidth="252.0" styleClass="pane" stylesheets="@../css/styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Label layoutX="14.0" layoutY="6.0" styleClass="subtitle" stylesheets="@../css/styles.css" text="Aulas disponibles" />
                      </children>
                   </AnchorPane>
                 <AnchorPane prefHeight="371.0" prefWidth="380.0">
                      <children>
-                        <Label layoutX="140.0" layoutY="94.0" text="Seleciona la fecha" />
-                        <DatePicker fx:id="calendarioPReservas" layoutX="107.0" layoutY="127.0" prefHeight="26.0" prefWidth="167.0" promptText="Days" AnchorPane.bottomAnchor="218.0" AnchorPane.leftAnchor="107.0" AnchorPane.rightAnchor="106.0" AnchorPane.topAnchor="127.0" />
-                        <ComboBox fx:id="boxHorasPReservas" accessibleRole="CHECK_BOX" layoutX="106.0" layoutY="224.0" prefHeight="26.0" prefWidth="166.0" promptText="Times" />
-                        <Label layoutX="130.0" layoutY="185.0" text="Elije la hora de reserva" />
-                        <Button fx:id="botonReservaPReserva" layoutX="264.0" layoutY="306.0" mnemonicParsing="false" text="Reservar" />
+                        <Label layoutX="125.0" layoutY="76.0" styleClass="text" stylesheets="@../css/styles.css" text="Seleciona la fecha" />
+                        <DatePicker fx:id="calendarioPReservas" layoutX="107.0" layoutY="112.0" prefHeight="26.0" prefWidth="167.0" promptText="Days" stylesheets="@../css/styles.css" AnchorPane.bottomAnchor="233.0" AnchorPane.leftAnchor="107.0" AnchorPane.rightAnchor="106.0" AnchorPane.topAnchor="112.0" />
+                        <ComboBox fx:id="boxHorasPReservas" accessibleRole="CHECK_BOX" layoutX="96.0" layoutY="228.0" prefHeight="26.0" prefWidth="166.0" promptText="Times" stylesheets="@../css/styles.css" />
+                        <Label layoutX="113.0" layoutY="190.0" styleClass="text" stylesheets="@../css/styles.css" text="Elije la hora de reserva" />
+                        <Button fx:id="botonReservaPReserva" layoutX="231.0" layoutY="322.0" mnemonicParsing="false" stylesheets="@../css/styles.css" text="Reservar" />
                      </children>
                   </AnchorPane>
               </items>
