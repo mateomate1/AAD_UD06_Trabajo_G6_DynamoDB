@@ -8,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-
+import persistence.dynamodb.AWSClient;
 import util.HashUtil;
 import service.UsuarioService; 
 public class RegistrarUserController {
@@ -33,6 +33,9 @@ public class RegistrarUserController {
 
     @FXML
     private CheckBox vBoxPRegistro;
+
+    private  AWSClient awsClient;
+    private UsuarioService usuarioService = new UsuarioService(awsClient);
 
     /**
      * Método que se ejecuta al inicializar el controlador.
@@ -116,7 +119,7 @@ public class RegistrarUserController {
             alert.setContentText("Por favor, asegúrate de que ambas contraseñas sean iguales.");
             alert.showAndWait();
         }else {
-            if(UsuarioServices.registrarUsuario(Usuario.getText(), contrasena1)){
+            if(usuarioService.altaUsuario(Usuario.getText(), contrasena1)){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Registro Exitoso");
                 alert.setHeaderText("Usuario registrado correctamente");

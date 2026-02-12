@@ -22,8 +22,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-
-
+import persistence.dynamodb.AWSClient;
 import service.UsuarioService;
 import util.HashUtil;
 
@@ -47,6 +46,9 @@ public class LoginController {
     
     @FXML
     private CheckBox checkBoxVerPLogin;
+    
+    private  AWSClient awsClient;
+    private UsuarioService usuarioService = new UsuarioService(awsClient);
 
     // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -62,15 +64,24 @@ public class LoginController {
         String contrasena = contrasenia.getText();
 
        
-        if (UsuarioService.loginUsuario(nombreUsuario, contrasena)) {
-            SceneManager.cambioScene("pa1App");
-        } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error de inicio de sesión");
-            alert.setHeaderText("Credenciales incorrectas");
-            alert.setContentText("Nombre de usuario o contraseña incorrectos. Por favor, inténtalo de nuevo.");
-            alert.showAndWait();
-            
+        try {
+
+            if (usuarioService.loginUsuario(nombreUsuario, contrasena)) {
+                SceneManager.cambioScene("reserva");
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error de inicio de sesión");
+                alert.setHeaderText("Credenciales incorrectas");
+                alert.setContentText("Nombre de usuario o contraseña incorrectos. Por favor, inténtalo de nuevo.");
+                alert.showAndWait();
+                
+            }
+        } catch (Exception e) {
+             Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error de inicio de sesión");
+                alert.setHeaderText("Error inesperado");
+                alert.setContentText("Ha ocurrido un error inesperado al intentar iniciar sesión. Por favor, inténtalo de nuevo.");
+                alert.showAndWait();
         }
         return;
     }
