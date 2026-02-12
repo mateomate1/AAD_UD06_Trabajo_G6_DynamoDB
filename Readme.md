@@ -13,6 +13,7 @@ src/main/java
 ├── app
 │   ├── Main.java
 │   ├── Launch.java
+│   ├── Main.java
 │   └── navegacion
 │       └── SceneManager.java
 │
