@@ -1,10 +1,13 @@
 package fx.App.ui.controladores;
-
+import fx.App.ui.navegacion.SceneManager;
+import fx.App.ui.util.HashUtil;
+import g6.dynamodb.Service.UsuarioService;
 /**
- * Controlador FXML para la vista de login y registro de usuarios.
+ * Controlador FXML para la vista de login de la aplicacion.
  * 
- * Gestiona autenticacion, registro y validacion de credenciales.
- * Integra campos de usuario/contrasena con navegacion entre pantallas.
+ * Gestiona la pantalla de inicio de sesion con campos de usuario y contraseña.
+ * Permite alternar visibilidad de contraseña y valida las credenciales ingresadas.
+ * Realiza navegacion a vista de registro mediante SceneManager.
  * 
  * @author Mario Garcia
  * @author Mateo Ayarra
@@ -15,12 +18,15 @@ package fx.App.ui.controladores;
  */
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class LoginController {
 
+    // --------------------------------------- Declaración de los elementos de la interfaz gráfica que se utilizarán en el controlador. ---------------------------------------
     @FXML
     private Button ButtonLogIn;
 
@@ -33,51 +39,97 @@ public class LoginController {
     @FXML
     private PasswordField contrasenia;
 
+    @FXML
+    private TextField contraseniaVisible;
+    
+    @FXML
+    private CheckBox checkBoxVerPLogin;
+
+    // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    // --------------------------------------- Métodos que se ejecutan al interactuar con los elementos de la interfaz gráfica. ---------------------------------------------------------
+   
     /**
-     * Inicia sesion con credenciales ingresadas.
-     * 
-     * Valida usuario/contrasena y navega a pantalla principal.
-     * 
-     * @param event evento ActionEvent del boton login
+     * Método que se ejecuta al hacer clic en el botón "Log in" para iniciar sesión.
+     * @param event Evento que se produce al interactuar con el botón "Log in".* * Valida las credenciales ingresadas utilizando el servicio de usuarios (Usuario
      */
     @FXML
     void IniciarSesion(ActionEvent event) {
-        // TODO: Implementar logica de autenticacion
+        String nombreUsuario = Usuario.getText();
+        String contrasena = contrasenia.getText();
+
+       
+        if (UsuarioService.loginUsuario(nombreUsuario, contrasena)) {
+            SceneManager.cambioScene("pa1App");
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error de inicio de sesión");
+            alert.setHeaderText("Credenciales incorrectas");
+            alert.setContentText("Nombre de usuario o contraseña incorrectos. Por favor, inténtalo de nuevo.");
+            alert.showAndWait();
+            
+        }
+        return;
     }
 
     /**
-     * Navega a pantalla de registro de nuevo usuario.
-     * 
-     * Transfiere a formulario de sign up.
-     * 
-     * @param event evento ActionEvent del boton registro
+     * Método que se ejecuta al hacer clic en el botón "Sing up" para registrar un nuevo usuario.
+     * @param event
      */
     @FXML
     void RegistrarUsuario(ActionEvent event) {
-        // TODO: Implementar navegacion a registro
+        SceneManager.cambioScene("singUp");
+    }
+
+   /**
+    * Método que se ejecuta al inicializar el controlador.
+    * Hace que el campo de contraseña visible esté oculto inicialmente
+    * y sincroniza su contenido con el campo de contraseña oculto
+    * para que ambos campos muestren la misma contraseña cuando se alterna la visibilidad.
+    * Y además, agrega un listener al campo de contraseña para validar su contenido en tiempo real 
+    * y cambiar el estilo del campo según el resultado de la validación.
+    */
+    @FXML
+    public void initialize() {
+        // Inicialmente, el campo de contraseña visible está oculto
+        contraseniaVisible.setVisible(false);
+        // Sincronizar el contenido del campo de contraseña visible con el campo de contraseña oculto
+        contraseniaVisible.textProperty().bindBidirectional(contrasenia.textProperty());
+
+
+        // Listener de Validación
+        contrasenia.textProperty().addListener((observable, oldValue, newValue) -> {
+            int resulatadoValidacion = HashUtil.validar(Usuario.getText(), newValue);
+            if (resulatadoValidacion == -1) {
+                contrasenia.setStyle("-fx-border-color: red;");
+                contraseniaVisible.setStyle("-fx-border-color: red;");
+            } else if (resulatadoValidacion == 0) {
+                contrasenia.setStyle("-fx-border-color: orange;");
+                contraseniaVisible.setStyle("-fx-border-color: orange;");
+            } else {
+                contrasenia.setStyle("-fx-border-color: green;");
+                contraseniaVisible.setStyle("-fx-border-color: green;");
+            }
+        });
     }
 
     /**
-     * Verifica validez del campo contrasena.
-     * 
-     * Realiza validaciones en tiempo real (longitud, caracteres especiales).
-     * 
-     * @param event evento ActionEvent de validacion
+     * Método que permite mostrar u opcultar la contraseña al marcar o desmarcar el CheckBox "checkBoxVerPLogin".
+     * @param event Evento que se produce al interactuar con el CheckBox "checkBoxVerPLogin".
      */
     @FXML
-    void verificarContrasenia(ActionEvent event) {
-        // TODO: Implementar validacion contrasena
+    void VerContrasenia(ActionEvent event) {
+        if (checkBoxVerPLogin.isSelected()) {
+            contrasenia.setVisible(false); // Ocultar el campo de contraseña
+            contraseniaVisible.setVisible(true); // Mostrar el campo de contraseña visible
+        }else{
+            contrasenia.setVisible(true); // Mostrar el campo de contraseña
+            contraseniaVisible.setVisible(false); // Ocultar el campo de contraseña visible
+        }
     }
 
-    /**
-     * Verifica validez del campo usuario.
-     * 
-     * Valida formato, existencia y duplicados en tiempo real.
-     * 
-     * @param event evento ActionEvent de validacion
-     */
-    @FXML
-    void verificarUsuario(ActionEvent event) {
-        // TODO: Implementar validacion usuario
-    }
+   
+
+    // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 }

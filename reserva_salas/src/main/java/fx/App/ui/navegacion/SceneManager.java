@@ -5,11 +5,10 @@ package fx.App.ui.navegacion;
  * 
  * Proporciona metodos estaticos para cambiar escenas dinamicamente
  * usando Stage principal y archivos FXML en /resources/fxml/.
- * 
+ * @author Zacaria Daghri
  * @author Mario Garcia
  * @author Mateo Ayarra
  * @author Samuel Cobreros
- * @author Zacaria Daghri
  * @version 1.0
  * @since 1.0
  */

@@ -35,6 +35,7 @@ public class Usuario {
         this.username = username;
         this.password = encode(password);
     }
+    private String passwordHash;
 
     /**
      * Retorna username (DynamoDB Hash Key primaria).
@@ -60,9 +61,9 @@ public class Usuario {
      * 
      * @return credencial hashed
      */
-    @DynamoDBAttribute(attributeName = "password")
-    public String getPassword() {
-        return password;
+    @DynamoDBAttribute(attributeName = "name")
+    public String getPasswordHash() {
+        return passwordHash;
     }
 
     /**
@@ -94,6 +95,13 @@ public class Usuario {
     }
 
     /**
+     * @param password credencial usuario
+     */
+    public void setPasswordHash(String password) {
+        this.passwordHash = password;
+    }
+
+    /**
      * Representacion String para logging.
      * 
      * Formato compatible con Menu.toString() usage.
@@ -102,6 +110,6 @@ public class Usuario {
      */
     @Override
     public String toString() {
-        return "Usuario [Nombre de usuario=" + username + ", Contrasena=" + password + "]";
+        return "Usuario [username=" + username + ", password=" + passwordHash + "]";
     }
 }

@@ -177,8 +177,14 @@ public class Menu {
         log.info("Username: ");
         u.setUsername(sc.nextLine());
         log.info("Password: ");
+<<<<<<< HEAD
         u.setPassword(sc.nextLine());
         usuarioService.altaUsuario(u);
+=======
+        u.setPasswordHash(sc.nextLine());
+        usuarioDAO.save(u);
+>>>>>>> d98dbc3f4011ce79360c93ffe41e17203ba29367
+>>>>>>> 581d930c9ee25c084313084458c34e8cc9cc6fcc
         log.info("Usuario creado: {}", u);
     }
 
