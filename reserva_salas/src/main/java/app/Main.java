@@ -15,10 +15,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import app.navegacion.SceneManager;
+import domain.model.Aula;
+import domain.model.Reserva;
+import domain.model.Usuario;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import persistence.dynamodb.AWSClient;
 
 public class Main extends Application {
     private static final Logger log = LoggerFactory.getLogger(Main.class);
@@ -54,7 +58,24 @@ public class Main extends Application {
     * @param args argumentos linea comandos
     */
     public static void main(String[] args) {
+
+        // Intentar ejecutar menú TUI para pruebas DynamoDB Local
+        // Si falla (ej. entorno sin consola), continuar con GUI JavaFX
         try {
+            AWSClient awsClient = new AWSClient(true); // true = local
+
+            if (!awsClient.existeTabla(Usuario.class)) {
+                awsClient.generateTable(Usuario.class);
+            }
+
+            if (!awsClient.existeTabla(Aula.class)) {
+                awsClient.generateTable(Aula.class);
+            }
+
+            if (!awsClient.existeTabla(Reserva.class)) {
+                awsClient.generateTable(Reserva.class);
+            }
+            
             Menu menu = new Menu();
             menu.start();
         } catch (Exception e) {

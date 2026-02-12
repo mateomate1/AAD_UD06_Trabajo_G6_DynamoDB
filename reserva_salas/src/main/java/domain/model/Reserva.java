@@ -129,7 +129,7 @@ public class Reserva {
      * 
      * @param nPersonas cantidad (1-50)
      */
-    public void setnPersonas(Integer nPersonas) {
+    public void setNPersonas(Integer nPersonas) {
         this.nPersonas = nPersonas;
     }
 

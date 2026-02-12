@@ -1,5 +1,8 @@
 package ui.controladores;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import app.navegacion.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -35,8 +38,19 @@ public class RegistroController {
     @FXML
     private CheckBox vBoxPRegistro;
 
-    private  AWSClient awsClient;
-    private UsuarioService usuarioService = new UsuarioService(awsClient);
+    private AWSClient awsClient;
+    private UsuarioService usuarioService;
+
+    /**
+     * Constructor del controlador de registro.
+     * Inicializa el cliente AWS DynamoDB y el servicio de usuarios.
+     * @throws FileNotFoundException    Si el archivo de propiedades de DynamoDB no se encuentra.
+     * @throws IOException              Si ocurre un error al cargar las credenciales de DynamoDB desde el archivo de propiedades.
+     */
+    public RegistroController() throws FileNotFoundException, IOException {
+        this.awsClient = new AWSClient(true);
+        this.usuarioService = new UsuarioService(awsClient);
+    }
 
     /**
      * Método que se ejecuta al inicializar el controlador.
@@ -60,7 +74,7 @@ public class RegistroController {
 
         // Listener de Validación campo 1
         contrasenia.textProperty().addListener((observable, oldValue, newValue) -> {
-            int resulatadoValidacion = HashUtil.validar(Usuario.getText(), newValue);
+            int resulatadoValidacion = HashUtil.validar(newValue);
             if (resulatadoValidacion == -1) {
                 contrasenia.setStyle("-fx-border-color: red;");
                 contraseniaVisible1.setStyle("-fx-border-color: red;");
@@ -75,7 +89,7 @@ public class RegistroController {
 
         // Listener de Validación campo 2
         contrasenia1.textProperty().addListener((observable, oldValue, newValue) -> {
-            int resulatadoValidacion = HashUtil.validar(Usuario.getText(), newValue);
+            int resulatadoValidacion = HashUtil.validar(newValue);
             if (resulatadoValidacion == -1) {
                 contrasenia1.setStyle("-fx-border-color: red;");
                 contraseniaVisible2.setStyle("-fx-border-color: red;");

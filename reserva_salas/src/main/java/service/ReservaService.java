@@ -1,5 +1,6 @@
 package service;
 
+import java.time.LocalDate;
 /**
  * Servicio de negocio para gestion de reservas.
  * 
@@ -14,7 +15,7 @@ package service;
  * @version 1.0
  * @since 1.0
  */
-import java.time.LocalDateTime;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -63,16 +64,16 @@ public class ReservaService {
         }
 
         // Validaciones logicas
-        if (!fechasValidas(
-                LocalDateTime.parse(reserva.getFechaInicio()),
-                LocalDateTime.parse(reserva.getFechaFin()))) {
-            reserva.setEstado(Dictionary.Estado.RECHAZADA.toString());
-        } else if (existeSolapamiento(reserva)) {
-            reserva.setEstado(Dictionary.Estado.RECHAZADA.toString());
-        } else {
-            reserva.setEstado(Dictionary.Estado.ACEPTADA.toString());
-        }
-
+        // if (!fechasValidas(
+        //         LocalDateTime.parse(reserva.getFechaInicio()),
+        //         LocalDateTime.parse(reserva.getFechaFin()))) {
+        //     reserva.setEstado(Dictionary.Estado.RECHAZADA.toString());
+        // } else if (existeSolapamiento(reserva)) {
+        //     reserva.setEstado(Dictionary.Estado.RECHAZADA.toString());
+        // } else {
+        //     reserva.setEstado(Dictionary.Estado.ACEPTADA.toString());
+        // }
+        reserva.setEstado(Dictionary.Estado.ACEPTADA.toString());
         dao.save(reserva);
         return reserva;
     }
@@ -84,7 +85,7 @@ public class ReservaService {
      * @param fin    fecha/hora fin
      * @return true si inicio.isBefore(fin)
      */
-    private boolean fechasValidas(LocalDateTime inicio, LocalDateTime fin) {
+    public boolean fechasValidas(LocalDate inicio, LocalDate fin) {
         return inicio.isBefore(fin);
     }
 
@@ -99,7 +100,7 @@ public class ReservaService {
      * @param nueva reserva candidato
      * @return true si conflicto detectado
      */
-    private boolean existeSolapamiento(Reserva nueva) {
+    public boolean existeSolapamiento(Reserva nueva) {
         DynamoDBScanExpression scan = new DynamoDBScanExpression();
         ReservaDAO dao = new ReservaDAO(this.cliente.getDynamoDB());
         List<Reserva> reservas = dao.scan(scan);
@@ -116,10 +117,10 @@ public class ReservaService {
             }
 
             // Detectar solapamiento temporal
-            boolean solapa = LocalDateTime.parse(nueva.getFechaInicio())
-                    .isBefore(LocalDateTime.parse(r.getFechaFin()))
-                    && LocalDateTime.parse(nueva.getFechaFin())
-                            .isAfter(LocalDateTime.parse(r.getFechaInicio()));
+            boolean solapa = LocalDate.parse(nueva.getFechaInicio())
+                    .isBefore(LocalDate.parse(r.getFechaFin()))
+                    && LocalDate.parse(nueva.getFechaFin())
+                            .isAfter(LocalDate.parse(r.getFechaInicio()));
 
             if (solapa) {
                 return true;

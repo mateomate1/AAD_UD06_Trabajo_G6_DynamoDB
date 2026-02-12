@@ -69,7 +69,6 @@
 .text-field, .password-field {
     -fx-background-radius: 10;
     -fx-border-radius: 10;
-    -fx-border-color: #cfdede;
     -fx-padding: 8 12;
 }
 

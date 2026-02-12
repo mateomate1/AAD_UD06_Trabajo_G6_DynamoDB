@@ -59,25 +59,34 @@ public class HashUtil {
      *       ERROR_REQUISITOS  0: El nombre de usuario o la contraseña no cumplen con las especificaciones necesarias.
      *         OK 1: El nombre de usuario y la contrasena son validos.
      */
-    public static int validar(String user, String pass){
+    public static int validar(String pass){
 
         final int ERROR_CARACTERES = -1;
         final int ERROR_REQUISITOS = 0;
         final int OK = 1;
 
-        if (user == null || user.trim().isEmpty() || pass == null || pass.trim().isEmpty()) {
-            return ERROR_CARACTERES; // Usuario o contraseña vacíos
+        // if (user == null || user.trim().isEmpty() || pass == null || pass.trim().isEmpty()) {
+        //     return ERROR_CARACTERES; // Usuario o contraseña vacíos
+        // }
+
+        // if (user.length() < MIN_CHARS || user.length() > MAX_CHARS || pass.length() < MIN_CHARS || pass.length() > MAX_CHARS) {
+        //     return ERROR_REQUISITOS; // Longitud fuera del rango permitido
+        // }
+
+        if (pass == null || pass.trim().isEmpty()) {
+            return ERROR_CARACTERES; // Contraseña vacía
         }
 
-        if (user.length() < MIN_CHARS || user.length() > MAX_CHARS || pass.length() < MIN_CHARS || pass.length() > MAX_CHARS) {
+        if (pass.length() < MIN_CHARS || pass.length() > MAX_CHARS) {
             return ERROR_REQUISITOS; // Longitud fuera del rango permitido
         }
 
-        for(Character c : user.toCharArray()){
-            if (USABLE_CHARS.indexOf(c) == -1) {
-                return ERROR_CARACTERES; // Codigo usuario no valido
-            }
-        }
+        // for(Character c : user.toCharArray()){
+        //     if (USABLE_CHARS.indexOf(c) == -1) {
+        //         return ERROR_CARACTERES; // Codigo usuario no valido
+        //     }
+        // }
+
         boolean hasUppercase = false;
         boolean hasDigit = false;
         for(Character c : pass.toCharArray()){

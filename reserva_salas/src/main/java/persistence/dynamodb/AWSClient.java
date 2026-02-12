@@ -43,7 +43,7 @@ import com.amazonaws.services.dynamodbv2.util.TableUtils;
 public class AWSClient {
     public final AmazonDynamoDB dynamoDB;
     public final Properties p = new Properties();
-    private final File fichProperties = new File("DynamoDBCredentials.properties");
+    private final File fichProperties = new File("src/main/resources/DynamoDBCredentials.properties");
     private final Logger log = LoggerFactory.getLogger(AWSClient.class);
 
     /**
@@ -79,6 +79,11 @@ public class AWSClient {
                     .withRegion("us-east-1")
                     .build();
         }
+    }
+
+    private String getResources(String string) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getResources'");
     }
 
     /**

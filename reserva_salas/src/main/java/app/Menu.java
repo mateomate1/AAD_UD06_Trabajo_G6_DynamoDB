@@ -311,7 +311,7 @@ public class Menu {
         r.setId(UUID.randomUUID().toString());
         log.info("Nueva reserva ID: {}", r.getId());
         log.info("N personas: ");
-        r.setnPersonas(sc.nextInt());
+        r.setNPersonas(sc.nextInt());
         sc.nextLine();
         log.info("Fecha inicio (YYYY-MM-DDTHH:mm:ss): ");
         r.setFechaInicio(sc.nextLine());

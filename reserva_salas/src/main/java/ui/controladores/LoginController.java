@@ -1,5 +1,7 @@
 package ui.controladores;
 
+import java.io.IOException;
+
 /**
  * Controlador FXML para la vista de login de la aplicacion.
  * 
@@ -47,8 +49,18 @@ public class LoginController {
     @FXML
     private CheckBox checkBoxVerPLogin;
     
-    private  AWSClient awsClient;
-    private UsuarioService usuarioService = new UsuarioService(awsClient);
+    private AWSClient awsClient;
+    private UsuarioService usuarioService;
+    
+    /**
+     * Constructor del controlador de login.
+     * Inicializa el cliente AWS DynamoDB y el servicio de usuarios.
+     * @throws IOException Si ocurre un error al cargar las credenciales de DynamoDB desde el archivo de propiedades.
+     */
+    public LoginController() throws IOException {
+        this.awsClient = new AWSClient(true);
+        this.usuarioService = new UsuarioService(awsClient);
+    }
 
     // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -91,7 +103,7 @@ public class LoginController {
      */
     @FXML
     void RegistrarUsuario(ActionEvent event) {
-        SceneManager.cambioScene("singUp");
+        SceneManager.cambioScene("registro");
     }
 
    /**
@@ -112,7 +124,7 @@ public class LoginController {
 
         // Listener de Validación
         contrasenia.textProperty().addListener((observable, oldValue, newValue) -> {
-            int resulatadoValidacion = HashUtil.validar(Usuario.getText(), newValue);
+            int resulatadoValidacion = HashUtil.validar(newValue);
             if (resulatadoValidacion == -1) {
                 contrasenia.setStyle("-fx-border-color: red;");
                 contraseniaVisible.setStyle("-fx-border-color: red;");

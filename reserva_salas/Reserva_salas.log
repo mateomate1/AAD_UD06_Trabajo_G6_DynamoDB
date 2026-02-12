@@ -6,3 +6,168 @@
 2026-02-11 17:32:17,659 [main] INFO  Main                                     - Aplicación iniciada
 2026-02-12 19:37:32,151 [main] WARN  app.Main                                 - Algo salio mal: DynamoDBCredentials.properties (The system cannot find the file specified)
 2026-02-12 20:56:10,333 [main] WARN  app.Main                                 - Algo salio mal: DynamoDBCredentials.properties (The system cannot find the file specified)
+2026-02-12 21:45:31,670 [main] WARN  app.Main                                 - Algo salio mal: DynamoDBCredentials.properties (No such file or directory)
+2026-02-12 21:50:14,298 [main] WARN  app.Main                                 - Algo salio mal: DynamoDBCredentials.properties (No such file or directory)
+2026-02-12 21:50:14,449 [JavaFX Application Thread] INFO  app.Main                                 - FXML cargado correctamente
+2026-02-12 21:52:29,177 [main] INFO  app.Main                                 - Aplicacion iniciada
+2026-02-12 21:52:43,306 [main] WARN  app.Main                                 - Algo salio mal: DynamoDBCredentials.properties (No such file or directory)
+2026-02-12 21:52:43,448 [JavaFX Application Thread] INFO  app.Main                                 - FXML cargado correctamente
+2026-02-12 21:54:01,694 [main] WARN  app.Main                                 - Algo salio mal: DynamoDBCredentials.properties (No such file or directory)
+2026-02-12 21:54:01,837 [JavaFX Application Thread] INFO  app.Main                                 - FXML cargado correctamente
+2026-02-12 21:54:41,330 [main] INFO  app.Main                                 - Aplicacion iniciada
+2026-02-12 21:56:04,415 [main] WARN  app.Main                                 - Algo salio mal: DynamoDBCredentials.properties (No such file or directory)
+2026-02-12 21:56:04,571 [JavaFX Application Thread] INFO  app.Main                                 - FXML cargado correctamente
+2026-02-12 21:56:36,388 [main] INFO  app.Main                                 - Aplicacion iniciada
+2026-02-12 21:58:39,070 [main] WARN  app.Main                                 - Algo salio mal: DynamoDBCredentials.properties (No such file or directory)
+2026-02-12 21:58:39,221 [JavaFX Application Thread] INFO  app.Main                                 - FXML cargado correctamente
+2026-02-12 22:07:39,083 [main] WARN  app.Main                                 - Algo salio mal: DynamoDBCredentials.properties (No such file or directory)
+2026-02-12 22:07:39,238 [JavaFX Application Thread] INFO  app.Main                                 - FXML cargado correctamente
+2026-02-12 22:08:00,413 [main] INFO  app.Main                                 - Aplicacion iniciada
+2026-02-12 22:10:43,392 [main] WARN  app.Main                                 - Algo salio mal: DynamoDBCredentials.properties (No such file or directory)
+2026-02-12 22:10:43,543 [JavaFX Application Thread] INFO  app.Main                                 - FXML cargado correctamente
+2026-02-12 22:12:39,261 [main] INFO  app.Main                                 - Aplicacion iniciada
+2026-02-12 22:12:51,444 [main] WARN  app.Main                                 - Algo salio mal: DynamoDBCredentials.properties (No such file or directory)
+2026-02-12 22:12:51,593 [JavaFX Application Thread] INFO  app.Main                                 - FXML cargado correctamente
+2026-02-12 22:16:30,927 [main] INFO  app.Main                                 - Aplicacion iniciada
+2026-02-12 22:16:48,378 [main] WARN  app.Main                                 - Algo salio mal: DynamoDBCredentials.properties (No such file or directory)
+2026-02-12 22:16:48,526 [JavaFX Application Thread] INFO  app.Main                                 - FXML cargado correctamente
+2026-02-12 22:17:07,866 [main] INFO  app.Main                                 - Aplicacion iniciada
+2026-02-12 22:19:02,209 [main] WARN  app.Main                                 - Algo salio mal: DynamoDBCredentials.properties (No such file or directory)
+2026-02-12 22:19:02,360 [JavaFX Application Thread] INFO  app.Main                                 - FXML cargado correctamente
+2026-02-12 22:20:02,315 [main] INFO  app.Main                                 - Aplicacion iniciada
+2026-02-12 22:21:54,327 [main] WARN  app.Main                                 - Algo salio mal: DynamoDBCredentials.properties (No such file or directory)
+2026-02-12 22:21:54,475 [JavaFX Application Thread] INFO  app.Main                                 - FXML cargado correctamente
+2026-02-12 22:29:06,823 [main] WARN  app.Main                                 - Algo salio mal: Unimplemented method 'getResources'
+2026-02-12 22:29:06,970 [JavaFX Application Thread] INFO  app.Main                                 - FXML cargado correctamente
+2026-02-12 22:29:57,624 [main] INFO  app.Main                                 - Aplicacion iniciada
+2026-02-12 22:34:06,378 [main] WARN  app.Main                                 - Algo salio mal: Unimplemented method 'getResources'
+2026-02-12 22:34:06,530 [JavaFX Application Thread] INFO  app.Main                                 - FXML cargado correctamente
+2026-02-12 22:36:17,764 [main] WARN  app.Main                                 - Algo salio mal: resources/DynamoDBCredentials.properties (No such file or directory)
+2026-02-12 22:36:17,914 [JavaFX Application Thread] INFO  app.Main                                 - FXML cargado correctamente
+2026-02-12 22:39:11,761 [main] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 22:39:12,133 [main] INFO  app.Menu                                 - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 22:39:17,231 [main] WARN  app.Main                                 - Algo salio mal: Unable to execute HTTP request: Connect to localhost:8000 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused
+2026-02-12 22:39:17,459 [JavaFX Application Thread] INFO  app.Main                                 - FXML cargado correctamente
+2026-02-12 22:39:19,220 [JavaFX Application Thread] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 22:39:20,987 [JavaFX Application Thread] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 22:48:23,199 [main] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 22:48:23,516 [main] INFO  app.Menu                                 - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 22:48:23,768 [main] INFO  app.Menu                                 - Tablas cargadas: []
+2026-02-12 22:48:23,769 [main] INFO  app.Menu                                 - ----------------------------------------
+2026-02-12 22:48:23,769 [main] INFO  app.Menu                                 - 1. Gestionar USUARIOS
+2026-02-12 22:48:23,769 [main] INFO  app.Menu                                 - 2. Gestionar AULAS
+2026-02-12 22:48:23,769 [main] INFO  app.Menu                                 - 3. Gestionar RESERVAS
+2026-02-12 22:48:23,769 [main] INFO  app.Menu                                 - 0. SALIR
+2026-02-12 22:48:23,769 [main] INFO  app.Menu                                 - Selecciona opcion: 
+2026-02-12 22:48:45,687 [main] INFO  app.Menu                                 - Hasta luego!
+2026-02-12 22:48:45,878 [JavaFX Application Thread] INFO  app.Main                                 - FXML cargado correctamente
+2026-02-12 22:48:56,257 [JavaFX Application Thread] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 22:48:57,439 [JavaFX Application Thread] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 22:55:46,689 [main] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 22:55:47,326 [main] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 22:55:47,330 [main] INFO  app.Menu                                 - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 22:55:47,336 [main] INFO  app.Menu                                 - Tablas cargadas: [Aulas, Usuarios, reserva]
+2026-02-12 22:55:47,336 [main] INFO  app.Menu                                 - ----------------------------------------
+2026-02-12 22:55:47,336 [main] INFO  app.Menu                                 - 1. Gestionar USUARIOS
+2026-02-12 22:55:47,336 [main] INFO  app.Menu                                 - 2. Gestionar AULAS
+2026-02-12 22:55:47,336 [main] INFO  app.Menu                                 - 3. Gestionar RESERVAS
+2026-02-12 22:55:47,336 [main] INFO  app.Menu                                 - 0. SALIR
+2026-02-12 22:55:47,336 [main] INFO  app.Menu                                 - Selecciona opcion: 
+2026-02-12 22:55:50,275 [main] INFO  app.Menu                                 - Hasta luego!
+2026-02-12 22:55:50,445 [JavaFX Application Thread] INFO  app.Main                                 - FXML cargado correctamente
+2026-02-12 22:55:53,118 [JavaFX Application Thread] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 22:55:54,614 [JavaFX Application Thread] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 22:56:09,432 [JavaFX Application Thread] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 22:58:38,833 [main] INFO  app.Main                                 - Aplicacion iniciada
+2026-02-12 23:01:04,923 [main] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 23:01:05,380 [main] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 23:01:05,384 [main] INFO  app.Menu                                 - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 23:01:05,389 [main] INFO  app.Menu                                 - Tablas cargadas: [Aulas, Usuarios, reserva]
+2026-02-12 23:01:05,389 [main] INFO  app.Menu                                 - ----------------------------------------
+2026-02-12 23:01:05,389 [main] INFO  app.Menu                                 - 1. Gestionar USUARIOS
+2026-02-12 23:01:05,389 [main] INFO  app.Menu                                 - 2. Gestionar AULAS
+2026-02-12 23:01:05,389 [main] INFO  app.Menu                                 - 3. Gestionar RESERVAS
+2026-02-12 23:01:05,389 [main] INFO  app.Menu                                 - 0. SALIR
+2026-02-12 23:01:05,390 [main] INFO  app.Menu                                 - Selecciona opcion: 
+2026-02-12 23:01:08,067 [main] INFO  app.Menu                                 - Hasta luego!
+2026-02-12 23:01:08,213 [JavaFX Application Thread] INFO  app.Main                                 - FXML cargado correctamente
+2026-02-12 23:01:10,037 [JavaFX Application Thread] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 23:01:18,472 [JavaFX Application Thread] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 23:01:33,637 [main] INFO  app.Main                                 - Aplicacion iniciada
+2026-02-12 23:14:46,682 [main] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 23:14:47,477 [main] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 23:14:47,481 [main] INFO  app.Menu                                 - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 23:14:47,497 [main] INFO  app.Menu                                 - Tablas cargadas: [Aulas, Usuarios, reserva]
+2026-02-12 23:14:47,498 [main] INFO  app.Menu                                 - ----------------------------------------
+2026-02-12 23:14:47,498 [main] INFO  app.Menu                                 - 1. Gestionar USUARIOS
+2026-02-12 23:14:47,498 [main] INFO  app.Menu                                 - 2. Gestionar AULAS
+2026-02-12 23:14:47,498 [main] INFO  app.Menu                                 - 3. Gestionar RESERVAS
+2026-02-12 23:14:47,498 [main] INFO  app.Menu                                 - 0. SALIR
+2026-02-12 23:14:47,498 [main] INFO  app.Menu                                 - Selecciona opcion: 
+2026-02-12 23:14:54,302 [main] INFO  app.Menu                                 - === AULAS ===
+2026-02-12 23:14:54,302 [main] INFO  app.Menu                                 - 1. Crear nuevo
+2026-02-12 23:14:54,302 [main] INFO  app.Menu                                 - 2. Buscar por ID
+2026-02-12 23:14:54,302 [main] INFO  app.Menu                                 - 3. Borrar por ID
+2026-02-12 23:14:54,302 [main] INFO  app.Menu                                 - 0. Volver
+2026-02-12 23:14:54,302 [main] INFO  app.Menu                                 - Opcion: 
+2026-02-12 23:14:56,896 [main] INFO  app.Menu                                 - ID: 
+2026-02-12 23:14:59,272 [main] INFO  app.Menu                                 - Nombre/Codigo: 
+2026-02-12 23:15:07,135 [main] INFO  app.Menu                                 - Capacidad: 
+2026-02-12 23:15:11,591 [main] INFO  app.Menu                                 - Edificio: 
+2026-02-12 23:15:19,886 [main] INFO  app.Menu                                 - Aula creada: Aula [id=4e981e71-32db-4a9d-b33d-6b6c600a3352, nombre=AADD, capacidad=50, edificio=sinLuz]
+2026-02-12 23:15:19,887 [main] INFO  app.Menu                                 - Pulsa Enter para continuar...
+2026-02-12 23:15:21,732 [main] INFO  app.Menu                                 - Pulsa Enter para continuar...
+2026-02-12 23:15:24,641 [main] INFO  app.Menu                                 - ----------------------------------------
+2026-02-12 23:15:24,641 [main] INFO  app.Menu                                 - 1. Gestionar USUARIOS
+2026-02-12 23:15:24,641 [main] INFO  app.Menu                                 - 2. Gestionar AULAS
+2026-02-12 23:15:24,642 [main] INFO  app.Menu                                 - 3. Gestionar RESERVAS
+2026-02-12 23:15:24,642 [main] INFO  app.Menu                                 - 0. SALIR
+2026-02-12 23:15:24,642 [main] INFO  app.Menu                                 - Selecciona opcion: 
+2026-02-12 23:15:26,512 [main] INFO  app.Menu                                 - Hasta luego!
+2026-02-12 23:15:26,694 [JavaFX Application Thread] INFO  app.Main                                 - FXML cargado correctamente
+2026-02-12 23:15:29,904 [JavaFX Application Thread] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 23:15:40,280 [JavaFX Application Thread] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 23:24:33,803 [main] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 23:24:34,234 [main] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 23:24:34,237 [main] INFO  app.Menu                                 - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 23:24:34,241 [main] INFO  app.Menu                                 - Tablas cargadas: [Aulas, Usuarios, reserva]
+2026-02-12 23:24:34,242 [main] INFO  app.Menu                                 - ----------------------------------------
+2026-02-12 23:24:34,242 [main] INFO  app.Menu                                 - 1. Gestionar USUARIOS
+2026-02-12 23:24:34,242 [main] INFO  app.Menu                                 - 2. Gestionar AULAS
+2026-02-12 23:24:34,242 [main] INFO  app.Menu                                 - 3. Gestionar RESERVAS
+2026-02-12 23:24:34,242 [main] INFO  app.Menu                                 - 0. SALIR
+2026-02-12 23:24:34,242 [main] INFO  app.Menu                                 - Selecciona opcion: 
+2026-02-12 23:24:38,517 [main] INFO  app.Menu                                 - === AULAS ===
+2026-02-12 23:24:38,518 [main] INFO  app.Menu                                 - 1. Crear nuevo
+2026-02-12 23:24:38,518 [main] INFO  app.Menu                                 - 2. Buscar por ID
+2026-02-12 23:24:38,518 [main] INFO  app.Menu                                 - 3. Borrar por ID
+2026-02-12 23:24:38,518 [main] INFO  app.Menu                                 - 0. Volver
+2026-02-12 23:24:38,518 [main] INFO  app.Menu                                 - Opcion: 
+2026-02-12 23:24:41,102 [main] INFO  app.Menu                                 - ID aula: 
+2026-02-12 23:24:42,087 [main] WARN  app.Menu                                 - Aula no encontrada
+2026-02-12 23:24:42,088 [main] INFO  app.Menu                                 - Pulsa Enter para continuar...
+2026-02-12 23:24:45,258 [main] INFO  app.Menu                                 - Pulsa Enter para continuar...
+2026-02-12 23:24:46,192 [main] INFO  app.Menu                                 - ----------------------------------------
+2026-02-12 23:24:46,193 [main] INFO  app.Menu                                 - 1. Gestionar USUARIOS
+2026-02-12 23:24:46,193 [main] INFO  app.Menu                                 - 2. Gestionar AULAS
+2026-02-12 23:24:46,193 [main] INFO  app.Menu                                 - 3. Gestionar RESERVAS
+2026-02-12 23:24:46,193 [main] INFO  app.Menu                                 - 0. SALIR
+2026-02-12 23:24:46,193 [main] INFO  app.Menu                                 - Selecciona opcion: 
+2026-02-12 23:24:48,573 [main] INFO  app.Menu                                 - Hasta luego!
+2026-02-12 23:24:48,770 [JavaFX Application Thread] INFO  app.Main                                 - FXML cargado correctamente
+2026-02-12 23:24:51,508 [JavaFX Application Thread] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 23:25:05,416 [JavaFX Application Thread] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 23:27:41,764 [main] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 23:27:42,197 [main] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 23:27:42,201 [main] INFO  app.Menu                                 - === SISTEMA DE RESERVAS DE AULAS ===
+2026-02-12 23:27:42,206 [main] INFO  app.Menu                                 - Tablas cargadas: [Aulas, Usuarios, reserva]
+2026-02-12 23:27:42,207 [main] INFO  app.Menu                                 - ----------------------------------------
+2026-02-12 23:27:42,207 [main] INFO  app.Menu                                 - 1. Gestionar USUARIOS
+2026-02-12 23:27:42,207 [main] INFO  app.Menu                                 - 2. Gestionar AULAS
+2026-02-12 23:27:42,207 [main] INFO  app.Menu                                 - 3. Gestionar RESERVAS
+2026-02-12 23:27:42,207 [main] INFO  app.Menu                                 - 0. SALIR
+2026-02-12 23:27:42,207 [main] INFO  app.Menu                                 - Selecciona opcion: 
+2026-02-12 23:27:44,477 [main] INFO  app.Menu                                 - Hasta luego!
+2026-02-12 23:27:44,630 [JavaFX Application Thread] INFO  app.Main                                 - FXML cargado correctamente
+2026-02-12 23:27:46,657 [JavaFX Application Thread] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito
+2026-02-12 23:27:54,582 [JavaFX Application Thread] TRACE persistence.dynamodb.AWSClient           - Fichero cargado con exito

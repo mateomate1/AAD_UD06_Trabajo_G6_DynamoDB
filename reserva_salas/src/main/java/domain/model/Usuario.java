@@ -86,7 +86,7 @@ public class Usuario {
      */
     public String encode(String pass) {
         if(HashUtil.esSha256(pass)) 
-            throw new IllegalArgumentException("La contraseña proporcionada ya parece ser un hash SHA-256. Se recomienda no almacenar hashes precomputados directamente.");
+            return pass; // Si el password ya parece un hash SHA-256, se devuelve tal cual para evitar doble hashing. Esto es solo una medida de precaución y no garantiza que el password no sea un hash precomputado.
         return HashUtil.encode(pass);
     }
 
