@@ -1,11 +1,13 @@
 package g6.dynamodb.Service;
 
-<<<<<<< HEAD
-=======
+import g6.dynamodb.DAO.UsuarioDAO;
+import g6.dynamodb.Model.Usuario;
+import g6.dynamodb.Util.AWSClient;
+
 /**
  * Servicio de negocio para gestion de usuarios.
  * 
- * Maneja creacion con username UUID unico automatico y 
+ * Maneja creacion con username UUID unico automatico y
  * actualizacion validada por existencia. Coordina UsuarioDAO.
  * 
  * @author Mario Garcia
@@ -15,13 +17,6 @@ package g6.dynamodb.Service;
  * @version 1.0
  * @since 1.0
  */
-import java.util.UUID;
-
->>>>>>> d98dbc3f4011ce79360c93ffe41e17203ba29367
-import g6.dynamodb.DAO.UsuarioDAO;
-import g6.dynamodb.Model.Usuario;
-import g6.dynamodb.Util.AWSClient;
-
 public class UsuarioService {
 
     private final AWSClient cliente;
@@ -35,7 +30,6 @@ public class UsuarioService {
         this.cliente = cliente;
     }
 
-<<<<<<< HEAD
     public boolean altaUsuario(Usuario u) {
         UsuarioDAO dao = new UsuarioDAO(this.cliente.getDynamoDB());
         if (dao.findById(u.getUsername()) == null) {
@@ -69,66 +63,22 @@ public class UsuarioService {
         return u;
     }
 
-    public Usuario buscarUsuario(String username){
+    public Usuario buscarUsuario(String username) {
         UsuarioDAO dao = new UsuarioDAO(this.cliente.getDynamoDB());
         return dao.findById(username);
     }
 
-    public boolean deleteUsuario(String username){
+    public boolean deleteUsuario(String username) {
         UsuarioDAO dao = new UsuarioDAO(this.cliente.getDynamoDB());
         Usuario u = dao.findById(username);
         dao.delete(u);
-        return dao.findById(username)==null;
+        return dao.findById(username) == null;
     }
 
-    public boolean deleteUsuario(Usuario u){
+    public boolean deleteUsuario(Usuario u) {
         UsuarioDAO dao = new UsuarioDAO(this.cliente.getDynamoDB());
         String username = u.getUsername();
         dao.delete(u);
-        return dao.findById(username)==null;
+        return dao.findById(username) == null;
     }
 }
-=======
-    /**
-     * Crea usuario con username UUID unico.
-     * 
-     * Genera IDs hasta evitar colisiones, asigna a username.
-     * 
-     * @param u usuario con password (username ignorado)
-     * @return usuario persistido con ID unico
-     */
-    public Usuario altaUsuario(Usuario u) {
-        UsuarioDAO dao = new UsuarioDAO(this.cliente.getDynamoDB());
-        boolean esUnica = false;
-        
-        // Genera UUID hasta username disponible
-        while (!esUnica) {
-            String id = UUID.randomUUID().toString();
-            if (dao.findById(id) == null) {
-                esUnica = true;
-                u.setUsername(id);
-            }
-        }
-        
-        dao.save(u);
-        return u;
-    }
-
-    /**
-     * Actualiza usuario existente.
-     * 
-     * Valida existencia previa por username.
-     * 
-     * @param u usuario completo con username valido
-     * @return usuario actualizado o null si no existia
-     */
-    public Usuario actualizarUsuario(Usuario u) {
-        UsuarioDAO dao = new UsuarioDAO(this.cliente.getDynamoDB());
-        if (dao.findById(u.getUsername()) == null) {
-            return null;
-        }
-        dao.save(u);
-        return u;
-    }
-}
->>>>>>> d98dbc3f4011ce79360c93ffe41e17203ba29367

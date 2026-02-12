@@ -11,6 +11,18 @@ Cliente AWS DynamoDB (High-Level API con DynamoDBMapper).
 * @version 1.0
 * @since 1.0
  */
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.client.builder.AwsClientBuilder;
@@ -18,7 +30,6 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
-<<<<<<< HEAD
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.BillingMode;
@@ -27,19 +38,7 @@ import com.amazonaws.services.dynamodbv2.model.DeleteTableRequest;
 import com.amazonaws.services.dynamodbv2.model.DescribeTableRequest;
 import com.amazonaws.services.dynamodbv2.model.ListTablesResult;
 import com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException;
-=======
-import com.amazonaws.services.dynamodbv2.model.*;
->>>>>>> d98dbc3f4011ce79360c93ffe41e17203ba29367
 import com.amazonaws.services.dynamodbv2.util.TableUtils;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.*;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class AWSClient {
     public final AmazonDynamoDB dynamoDB;
@@ -48,12 +47,14 @@ public class AWSClient {
     private final Logger log = LoggerFactory.getLogger(AWSClient.class);
 
     /**
-    Constructor principal (local/cloud).
-    * Carga DynamoDBCredentials.properties. Local: endpoint custom. Cloud: us-east-1.
-    * @param local true=DynamoDB Local, false=AWS Cloud
-    * @throws FileNotFoundException credenciales.properties ausente
-    * @throws IOException error lectura properties
-    */
+     * Constructor principal (local/cloud).
+     * Carga DynamoDBCredentials.properties. Local: endpoint custom. Cloud:
+     * us-east-1.
+     * 
+     * @param local true=DynamoDB Local, false=AWS Cloud
+     * @throws FileNotFoundException credenciales.properties ausente
+     * @throws IOException           error lectura properties
+     */
     public AWSClient(boolean local) throws FileNotFoundException, IOException {
         System.setProperty("aws.java.v1.disableDeprecationAnnouncement", "true");
         p.load(new FileInputStream(fichProperties));
@@ -81,19 +82,21 @@ public class AWSClient {
     }
 
     /**
-    Cliente DynamoDB configurado.
-    * @return AmazonDynamoDB para DAOs directos
-    */
+     * Cliente DynamoDB configurado.
+     * 
+     * @return AmazonDynamoDB para DAOs directos
+     */
     public AmazonDynamoDB getDynamoDB() {
         return dynamoDB;
     }
 
     // ==================== CREATE ====================
     /**
-    Crea tabla automatica desde clase @DynamoDBTable.
-    * Usa TableUtils + PAY_PER_REQUEST billing.
-    * @param c clase modelo anotada (Usuario.class, Aula.class, etc.)
-    */
+     * Crea tabla automatica desde clase @DynamoDBTable.
+     * Usa TableUtils + PAY_PER_REQUEST billing.
+     * 
+     * @param c clase modelo anotada (Usuario.class, Aula.class, etc.)
+     */
     public void generateTable(Class<?> c) {
         DynamoDBMapper mapper = new DynamoDBMapper(dynamoDB);
         CreateTableRequest request = mapper.generateCreateTableRequest(c);
@@ -102,10 +105,11 @@ public class AWSClient {
     }
 
     /**
-    Inserta/actualiza item generico (save).
-    * @param <T> tipo modelo
-    * @param item instancia anotada completa
-    */
+     * Inserta/actualiza item generico (save).
+     * 
+     * @param <T>  tipo modelo
+     * @param item instancia anotada completa
+     */
     public <T> void insertItem(T item) {
         DynamoDBMapper mapper = new DynamoDBMapper(dynamoDB);
         mapper.save(item);
@@ -113,7 +117,6 @@ public class AWSClient {
 
     // ==================== READ ====================
     /**
-<<<<<<< HEAD
      * Metodo que hace un describe table y si no existe controla la excepcion
      * devolviendo true o false
      * 
@@ -154,14 +157,9 @@ public class AWSClient {
 
     /**
      * Lista todas las tablas disponibles en DynamoDB.
-     * 
-     * @return lista de nombres de tablas
+     *
+     * @return List<String> nombres tablas
      */
-=======
-    Lista nombres todas tablas DynamoDB.
-    * @return List<String> nombres tablas
-    */
->>>>>>> d98dbc3f4011ce79360c93ffe41e17203ba29367
     public List<String> listTables() {
         ListTablesResult resultado = dynamoDB.listTables();
         List<String> salida = new ArrayList<>();
@@ -170,13 +168,14 @@ public class AWSClient {
     }
 
     /**
-    Escanea filtrando por atributo (ScanExpression).
-    * @param <T> tipo modelo
-    * @param clazz clase anotada
-    * @param attribute nombre atributo filtrar
-    * @param value valor String buscar
-    * @return List<T> items coincidentes
-    */
+     * Escanea filtrando por atributo (ScanExpression).
+     * 
+     * @param <T>       tipo modelo
+     * @param clazz     clase anotada
+     * @param attribute nombre atributo filtrar
+     * @param value     valor String buscar
+     * @return List<T> items coincidentes
+     */
     public <T> List<T> scanByAttribute(Class<T> clazz, String attribute, String value) {
         DynamoDBMapper mapper = new DynamoDBMapper(dynamoDB);
         DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
@@ -194,22 +193,17 @@ public class AWSClient {
     */
     public <T> List<T> scanTable(Class<T> c) {
         DynamoDBMapper mapper = new DynamoDBMapper(dynamoDB);
-<<<<<<< HEAD
-        DynamoDBScanExpression scanExpresion = new DynamoDBScanExpression();
-        mapper.scan(c, scanExpresion).stream().forEach(System.out::println);
-        return mapper.scan(c, scanExpresion);
-=======
         DynamoDBScanExpression scanExpression = new DynamoDBScanExpression();
         return mapper.scan(c, scanExpression);
->>>>>>> d98dbc3f4011ce79360c93ffe41e17203ba29367
     }
 
     // ==================== UPDATE ====================
     /**
-    Actualiza item existente (save sobrescribe).
-    * @param <T> tipo modelo
-    * @param item instancia con cambios
-    */
+     * Actualiza item existente (save sobrescribe).
+     * 
+     * @param <T>  tipo modelo
+     * @param item instancia con cambios
+     */
     public <T> void updateItem(T item) {
         DynamoDBMapper mapper = new DynamoDBMapper(dynamoDB);
         mapper.save(item);
@@ -217,19 +211,21 @@ public class AWSClient {
 
     // ==================== DELETE ====================
     /**
-    Borra item por instancia.
-    * @param <T> tipo modelo
-    * @param item instancia con clave primaria valida
-    */
+     * Borra item por instancia.
+     * 
+     * @param <T>  tipo modelo
+     * @param item instancia con clave primaria valida
+     */
     public <T> void deleteItem(T item) {
         DynamoDBMapper mapper = new DynamoDBMapper(dynamoDB);
         mapper.delete(item);
     }
 
     /**
-    Elimina tabla desde clase modelo.
-    * @param c clase @DynamoDBTable correspondiente
-    */
+     * Elimina tabla desde clase modelo.
+     * 
+     * @param c clase @DynamoDBTable correspondiente
+     */
     public void deleteTable(Class<?> c) {
         DynamoDBMapper mapper = new DynamoDBMapper(dynamoDB);
         DeleteTableRequest request = mapper.generateDeleteTableRequest(c);

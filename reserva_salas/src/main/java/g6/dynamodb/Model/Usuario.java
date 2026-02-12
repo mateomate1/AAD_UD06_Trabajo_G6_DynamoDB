@@ -1,11 +1,13 @@
 package g6.dynamodb.Model;
 
-<<<<<<< HEAD
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-=======
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+
 /**
  * Entidad Usuario para mapeo DynamoDB.
  * 
@@ -20,11 +22,6 @@ import java.security.NoSuchAlgorithmException;
  * @version 1.0
  * @since 1.0
  */
->>>>>>> d98dbc3f4011ce79360c93ffe41e17203ba29367
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
-
 @DynamoDBTable(tableName = "Usuarios")
 public class Usuario {
 
@@ -71,7 +68,6 @@ public class Usuario {
     /**
      * Establece password (texto plano/Hash).
      * 
-<<<<<<< HEAD
      * @param contrasena nuevo nombre del usuario
      */
     public void setPassword(String contrasena) {
@@ -97,14 +93,6 @@ public class Usuario {
         return pass;
     }
 
-=======
-     * @param password credencial usuario
-     */
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
->>>>>>> d98dbc3f4011ce79360c93ffe41e17203ba29367
     /**
      * Representacion String para logging.
      * 
@@ -114,10 +102,6 @@ public class Usuario {
      */
     @Override
     public String toString() {
-<<<<<<< HEAD
         return "Usuario [Nombre de usuario=" + username + ", Contrasena=" + password + "]";
-=======
-        return "Usuario [username=" + username + ", password=" + password + "]";
->>>>>>> d98dbc3f4011ce79360c93ffe41e17203ba29367
     }
 }
