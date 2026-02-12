@@ -10,17 +10,18 @@ import org.slf4j.LoggerFactory;
 
 import g6.dynamodb.DAO.AulaDAO;
 import g6.dynamodb.DAO.ReservaDAO;
-import g6.dynamodb.DAO.UsuarioDAO;
 import g6.dynamodb.Model.Aula;
 import g6.dynamodb.Model.Reserva;
 import g6.dynamodb.Model.Usuario;
 import g6.dynamodb.Service.ReservaService;
+import g6.dynamodb.Service.UsuarioService;
 import g6.dynamodb.Util.AWSClient;
 
 /**
  * Menu interactivo principal de la aplicacion de reservas de aulas.
  * 
- * Proporciona interfaz de consola con logging SLF4J para operaciones CRUD basicas
+ * Proporciona interfaz de consola con logging SLF4J para operaciones CRUD
+ * basicas
  * (crear/buscar/borrar) sobre entidades Usuario, Aula y Reserva usando DAOs y
  * servicio de reservas. Soporta creacion automatica de tablas DynamoDB.
  * 
@@ -34,7 +35,7 @@ import g6.dynamodb.Util.AWSClient;
 public class Menu {
     private final AWSClient aws;
     private final Scanner sc;
-    private final UsuarioDAO usuarioDAO;
+    private final UsuarioService usuarioService;
     private final AulaDAO aulaDAO;
     private final ReservaDAO reservaDAO;
     private final ReservaService reservaService;
@@ -43,7 +44,7 @@ public class Menu {
     public Menu() throws FileNotFoundException, IOException {
         this.aws = new AWSClient(true);
         this.sc = new Scanner(System.in);
-        this.usuarioDAO = new UsuarioDAO(aws.getDynamoDB());
+        this.usuarioService = new UsuarioService(aws);
         this.aulaDAO = new AulaDAO(aws.getDynamoDB());
         this.reservaDAO = new ReservaDAO(aws.getDynamoDB());
         this.reservaService = new ReservaService(aws);
@@ -59,7 +60,8 @@ public class Menu {
     public Menu(AWSClient aws) {
         this.aws = aws;
         this.sc = new Scanner(System.in);
-        this.usuarioDAO = new UsuarioDAO(aws.getDynamoDB());
+
+        this.usuarioService = new UsuarioService(aws);
         this.aulaDAO = new AulaDAO(aws.getDynamoDB());
         this.reservaDAO = new ReservaDAO(aws.getDynamoDB());
         this.reservaService = new ReservaService(aws);
@@ -74,28 +76,55 @@ public class Menu {
     public void start() {
         log.info("=== SISTEMA DE RESERVAS DE AULAS ===");
         log.info("Tablas cargadas: {}", aws.listTables());
-        
-        while (true) {
-            mostrarMenuPrincipal();
-            int opcion = sc.nextInt();
-            sc.nextLine();
-            
-            switch (opcion) {
-                case 1 -> gestionarUsuarios();
-                case 2 -> gestionarAulas();
-                case 3 -> gestionarReservas();
-                case 4 -> aws.generateTable(Usuario.class);
-                case 5 -> aws.generateTable(Aula.class);
-                case 6 -> aws.generateTable(Reserva.class);
-                case 0 -> {
-                    log.info("Hasta luego!");
-                    sc.close();
-                    return;
+        int opcion = 1;
+        while (opcion != 0) {
+            try {
+                mostrarMenuPrincipal();
+                opcion = Integer.parseInt(sc.nextLine());
+                switch (opcion) {
+                    case 1 -> gestionarUsuarios();
+                    case 2 -> gestionarAulas();
+                    case 3 -> gestionarReservas();
+                    case 4 -> aws.generateTable(Usuario.class);
+                    case 5 -> aws.generateTable(Aula.class);
+                    case 6 -> aws.generateTable(Reserva.class);
+                    case 7 -> inicializar();
+                    case 0 -> {
+                        log.info("Hasta luego!");
+                        return;
+                    }
+                    default -> log.warn("Opcion invalida");
                 }
-                default -> log.warn("Opcion invalida");
+                pausa();
+            } catch (NumberFormatException e) {
+                log.warn("No has introducido un numero");
             }
-            pausa();
         }
+        sc.close();
+    }
+
+    private void inicializar() {
+        if (aws.existeTabla(Usuario.class))
+            aws.deleteTable(Usuario.class);
+        aws.generateTable(Usuario.class);
+
+        Usuario u1 = new Usuario("Mateo", "Ayarra123");
+        Usuario u2 = new Usuario("Mario", "Garcia123");
+        Usuario u3 = new Usuario("Samuel", "Cobreros123");
+        Usuario u4 = new Usuario("Zacaria", "Daghri123");
+
+        usuarioService.altaUsuario(u1);
+        usuarioService.altaUsuario(u2);
+        usuarioService.altaUsuario(u3);
+        usuarioService.altaUsuario(u4);
+
+        if (aws.existeTabla(Aula.class))
+            aws.deleteTable(Aula.class);
+        aws.generateTable(Aula.class);
+
+        if (aws.existeTabla(Reserva.class))
+            aws.deleteTable(Reserva.class);
+        aws.generateTable(Reserva.class);
     }
 
     /**
@@ -127,30 +156,33 @@ public class Menu {
         log.info("3. Borrar por ID");
         log.info("0. Volver");
         log.info("Opcion: ");
-        int op = sc.nextInt();
-        sc.nextLine();
-        
+        int op = Integer.parseInt(sc.nextLine());
+
         switch (op) {
             case 1 -> crearUsuario();
             case 2 -> buscarUsuario();
             case 3 -> borrarUsuario();
+            case 4 -> aws.scanTable(Usuario.class);
         }
     }
 
     /**
      * Crea nuevo usuario interactivamente.
      * 
-     * Solicita ID, nombre y apellidos via consola y persiste con UsuarioDAO.
+     * Solicita nombre de usuario y contrasena via consola y persiste con
+     * UsuarioDAO.
      */
     private void crearUsuario() {
         Usuario u = new Usuario();
-        log.info("ID: ");
+        log.info("Nombre de usuario: ");
         u.setUsername(sc.nextLine());
-        log.info("Nombre: ");
-        u.setPassword(sc.nextLine());
-        log.info("Apellidos: ");
-        u.setSurname(sc.nextLine());
-        usuarioDAO.save(u);
+        log.info("Contrasena: ");
+        String contrasena = sc.nextLine();
+        System.out.println("Insercion contrasena");
+        u.setPassword(contrasena);
+        System.out.println("Insercion de usuario a db");
+        usuarioService.altaUsuario(u);
+        System.out.println("Imprimir");
         log.info("Usuario creado: {}", u);
     }
 
@@ -160,11 +192,11 @@ public class Menu {
      * Si existe muestra nombre completo e ID, sino informa no encontrado.
      */
     private void buscarUsuario() {
-        log.info("ID usuario: ");
-        String id = sc.nextLine();
-        Usuario u = usuarioDAO.findById(id);
+        log.info("Nombre de usuario: ");
+        String username = sc.nextLine();
+        Usuario u = usuarioService.buscarUsuario(username);
         if (u != null) {
-            log.info("{} {} (ID: {})", u.getPassword(), u.getSurname(), u.getUsername());
+            log.info("{} {} (ID: {})", u.getPassword(), u.getUsername());
         } else {
             log.warn("Usuario no encontrado");
         }
@@ -180,7 +212,7 @@ public class Menu {
         String id = sc.nextLine();
         Usuario u = new Usuario();
         u.setUsername(id);
-        usuarioDAO.delete(u);
+        usuarioService.deleteUsuario(u.getUsername());
         log.info("Usuario borrado");
     }
 
@@ -196,9 +228,8 @@ public class Menu {
         log.info("3. Borrar por ID");
         log.info("0. Volver");
         log.info("Opcion: ");
-        int op = sc.nextInt();
-        sc.nextLine();
-        
+        int op = Integer.parseInt(sc.nextLine());
+
         switch (op) {
             case 1 -> crearAula();
             case 2 -> buscarAula();
@@ -255,7 +286,8 @@ public class Menu {
     /**
      * Gestiona submenu de reservas.
      * 
-     * Opciones: crear reserva (con validaciones automaticas), buscar por ID, borrar por ID.
+     * Opciones: crear reserva (con validaciones automaticas), buscar por ID, borrar
+     * por ID.
      */
     private void gestionarReservas() {
         log.info("=== RESERVAS ===");
@@ -264,9 +296,8 @@ public class Menu {
         log.info("3. Borrar por ID");
         log.info("0. Volver");
         log.info("Opcion: ");
-        int op = sc.nextInt();
-        sc.nextLine();
-        
+        int op = Integer.parseInt(sc.nextLine());
+
         switch (op) {
             case 1 -> crearReserva();
             case 2 -> buscarReserva();
@@ -277,7 +308,8 @@ public class Menu {
     /**
      * Crea reserva completa usando ReservaService.
      * 
-     * Genera UUID automatico, usuario fijo (USER1), valida solapamientos y fechas automaticamente.
+     * Genera UUID automatico, usuario fijo (USER1), valida solapamientos y fechas
+     * automaticamente.
      */
     private void crearReserva() {
         Reserva r = new Reserva();
@@ -290,16 +322,16 @@ public class Menu {
         r.setFechaInicio(sc.nextLine());
         log.info("Fecha fin (YYYY-MM-DDTHH:mm:ss): ");
         r.setFechaFin(sc.nextLine());
-        
+
         Usuario u = new Usuario();
         u.setUsername("USER1");
         r.setUsuario(u);
-        
+
         Aula a = new Aula();
         log.info("ID Aula: ");
         a.setId(sc.nextLine());
         r.setAula(a);
-        
+
         Reserva resultado = reservaService.crearReserva(r);
         log.info("Reserva creada: {}", resultado);
     }
@@ -312,9 +344,9 @@ public class Menu {
         String id = sc.nextLine();
         Reserva r = reservaDAO.findById(id);
         if (r != null) {
-            log.info("{} -> {} | {} pers | {} | {} (ID: {})", 
-                r.getFechaInicio(), r.getFechaFin(), r.getnPersonas(),
-                r.getAula().getId(), r.getEstado(), r.getId());
+            log.info("{} -> {} | {} pers | {} | {} (ID: {})",
+                    r.getFechaInicio(), r.getFechaFin(), r.getnPersonas(),
+                    r.getAula().getId(), r.getEstado(), r.getId());
         } else {
             log.warn("Reserva no encontrada");
         }

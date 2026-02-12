@@ -32,11 +32,14 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.BillingMode;
 import com.amazonaws.services.dynamodbv2.model.CreateTableRequest;
 import com.amazonaws.services.dynamodbv2.model.DeleteTableRequest;
+import com.amazonaws.services.dynamodbv2.model.DescribeTableRequest;
 import com.amazonaws.services.dynamodbv2.model.ListTablesResult;
+import com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException;
 import com.amazonaws.services.dynamodbv2.util.TableUtils;
 
 /**
@@ -127,6 +130,45 @@ public class AWSClient {
     // ----------------------READ----------------------------
 
     /**
+     * Metodo que hace un describe table y si no existe controla la excepcion
+     * devolviendo true o false
+     * 
+     * @param <T>
+     * @param dynamoDB
+     * @param clazz
+     * @return
+     */
+    public <T> boolean existeTabla(Class<T> clazz) {
+        try {
+            DynamoDBTable tableAnnotation = clazz.getAnnotation(DynamoDBTable.class);
+
+            if (tableAnnotation == null) {
+                return false;
+            }
+
+            String nombreTabla = tableAnnotation.tableName();
+
+            DescribeTableRequest request = new DescribeTableRequest().withTableName(nombreTabla);
+            dynamoDB.describeTable(request);
+
+            return true;
+
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean existeTabla(String nombreTabla) {
+        try {
+            DescribeTableRequest request = new DescribeTableRequest().withTableName(nombreTabla);
+            dynamoDB.describeTable(request);
+            return true;
+        } catch (ResourceNotFoundException e) {
+            return false;
+        }
+    }
+
+    /**
      * Lista todas las tablas disponibles en DynamoDB.
      * 
      * @return lista de nombres de tablas
@@ -168,6 +210,7 @@ public class AWSClient {
     public <T> List<T> scanTable(Class<T> c) {
         DynamoDBMapper mapper = new DynamoDBMapper(dynamoDB);
         DynamoDBScanExpression scanExpresion = new DynamoDBScanExpression();
+        mapper.scan(c, scanExpresion).stream().forEach(System.out::println);
         return mapper.scan(c, scanExpresion);
     }
 

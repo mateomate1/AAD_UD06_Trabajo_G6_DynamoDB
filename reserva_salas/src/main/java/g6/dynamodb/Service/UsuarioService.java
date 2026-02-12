@@ -1,7 +1,5 @@
 package g6.dynamodb.Service;
 
-import java.util.UUID;
-
 import g6.dynamodb.DAO.UsuarioDAO;
 import g6.dynamodb.Model.Usuario;
 import g6.dynamodb.Util.AWSClient;
@@ -14,27 +12,55 @@ public class UsuarioService {
         this.cliente = cliente;
     }
 
-    // public boolean loginUsuario()
-
-    public Usuario altaUsuario(Usuario u) {
+    public boolean altaUsuario(Usuario u) {
         UsuarioDAO dao = new UsuarioDAO(this.cliente.getDynamoDB());
-        boolean es_unica = false;
-        while (!es_unica) {
-            String id = UUID.randomUUID().toString();
-            if (dao.findById(id) == null) {
-                es_unica = true;
-                u.setUsername(id);
-            }
+        if (dao.findById(u.getUsername()) == null) {
+            dao.save(u);
+            return true;
         }
-        dao.save(u);
-        return u;
+        return false;
     }
 
-    public Usuario actualizarUsuario(Usuario u){
+    public boolean altaUsuario(String usuario, String contrasena) {
+        Usuario u = new Usuario(usuario, contrasena);
+        UsuarioDAO dao = new UsuarioDAO(this.cliente.getDynamoDB());
+        if (dao.findById(usuario) == null) {
+            dao.save(u);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean iniciarSesion(String usuario, String contrasena) {
+        UsuarioDAO dao = new UsuarioDAO(this.cliente.getDynamoDB());
+        Usuario u = dao.findById(usuario);
+        return u != null && u.getPassword().equals(contrasena);
+    }
+
+    public Usuario actualizarUsuario(Usuario u) {
         UsuarioDAO dao = new UsuarioDAO(this.cliente.getDynamoDB());
         if (dao.findById(u.getUsername()) == null)
             return null;
         dao.save(u);
         return u;
+    }
+
+    public Usuario buscarUsuario(String username){
+        UsuarioDAO dao = new UsuarioDAO(this.cliente.getDynamoDB());
+        return dao.findById(username);
+    }
+
+    public boolean deleteUsuario(String username){
+        UsuarioDAO dao = new UsuarioDAO(this.cliente.getDynamoDB());
+        Usuario u = dao.findById(username);
+        dao.delete(u);
+        return dao.findById(username)==null;
+    }
+
+    public boolean deleteUsuario(Usuario u){
+        UsuarioDAO dao = new UsuarioDAO(this.cliente.getDynamoDB());
+        String username = u.getUsername();
+        dao.delete(u);
+        return dao.findById(username)==null;
     }
 }

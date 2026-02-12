@@ -1,18 +1,9 @@
 package g6.dynamodb.Model;
 
-/**
- * Modelo de entidad para representar usuarios en DynamoDB.
- * 
- * Almacena información básica del usuario: identificador único, nombre y apellidos.
- * Utilizado como parte del sistema de reservas de aulas.
- * 
- * @author Mario Garcia
- * @author Mateo Ayarra
- * @author Samuel Cobreros
- * @author Zacaria Daghri
- * @version 0.3
- * @since 0.1
- */
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
@@ -22,6 +13,14 @@ public class Usuario {
 
     private String username;
     private String password;
+
+    public Usuario() {
+    }
+
+    public Usuario(String username, String password) {
+        this.username = username;
+        this.password = encode(password);
+    }
 
     /**
      * Obtiene el identificador único del usuario.
@@ -47,7 +46,7 @@ public class Usuario {
      * 
      * @return nombre del usuario
      */
-    @DynamoDBAttribute(attributeName = "name")
+    @DynamoDBAttribute(attributeName = "password")
     public String getPassword() {
         return password;
     }
@@ -55,13 +54,30 @@ public class Usuario {
     /**
      * Establece el nombre del usuario.
      * 
-     * @param nombre nuevo nombre del usuario
+     * @param contrasena nuevo nombre del usuario
      */
-    public void setPassword(String nombre) {
-        this.password = nombre;
+    public void setPassword(String contrasena) {
+        this.password = encode(contrasena);
     }
 
-    
+    public String encode(String pass) {
+        try {
+            final MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            final byte[] hash = digest.digest(pass.getBytes("UTF-8"));
+            final StringBuilder hexString = new StringBuilder();
+            for (int i = 0; i < hash.length; i++) {
+                final String hex = Integer.toHexString(0xFF & hash[i]);
+                if (hex.length() == 1) {
+                    hexString.append('0');
+                    hexString.append(hex);
+                }
+                pass = hexString.toString();
+            }
+        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+            pass = "FAILED HASH";
+        }
+        return pass;
+    }
 
     /**
      * Genera representación en String del usuario para debugging/logging.
@@ -70,6 +86,6 @@ public class Usuario {
      */
     @Override
     public String toString() {
-        return "Usuario [id=" + username + ", name=" + password + ", surname=" + "]";
+        return "Usuario [Nombre de usuario=" + username + ", Contrasena=" + password + "]";
     }
 }
