@@ -11,7 +11,7 @@
       <Button fx:id="ButtonLogIn" layoutX="259.0" layoutY="246.0" mnemonicParsing="false" onAction="#IniciarSesion" text="Log In" />
       <TextField fx:id="Usuario" layoutX="204.0" layoutY="167.0" onAction="#verificarUsuario" />
       <Label layoutX="244.0" layoutY="130.0" text="Incio de sesion" />
-      <Button fx:id="ButtonSingUp" layoutX="489.0" layoutY="340.0" mnemonicParsing="false" onAction="#RegistrarUsuario" text="Sing up" />
+      <Button fx:id="ButtonSingUp" layoutX="489.0" layoutY="340.0" mnemonicParsing="false" onAction="#RegistrarUsuario" text="Sign up" />
       <PasswordField fx:id="contrasenia" layoutX="205.0" layoutY="206.0" onAction="#verificarContrasenia" />
    </children>
 </AnchorPane>

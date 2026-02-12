@@ -1,12 +1,10 @@
 package domain.model;
 
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+
+import util.HashUtil;
 
 /**
  * Entidad Usuario para mapeo DynamoDB.
@@ -26,16 +24,20 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 public class Usuario {
 
     private String username;
-    private String password;
+    private String passwordHash;
 
     public Usuario() {
     }
-
+    /**
+     * Constructor con username y password (texto plano).
+     * @param username Nombre del usuario en texto plano
+     * @param password  Contraseña del usuario en texto plano, se almacenará como hash.
+     */
     public Usuario(String username, String password) {
         this.username = username;
-        this.password = encode(password);
+        this.passwordHash = encode(password);
     }
-    private String passwordHash;
+    
 
     /**
      * Retorna username (DynamoDB Hash Key primaria).
@@ -59,7 +61,7 @@ public class Usuario {
     /**
      * Retorna password mapeado como "name".
      * 
-     * @return credencial hashed
+     * @return password hashed
      */
     @DynamoDBAttribute(attributeName = "name")
     public String getPasswordHash() {
@@ -67,31 +69,25 @@ public class Usuario {
     }
 
     /**
-     * Establece password (texto plano/Hash).
-     * 
-     * @param contrasena nuevo nombre del usuario
+     * Cambia el password del usuario. Se espera que el nuevo password ya esté codificado como hash.
+     * @param contrasena nuevo hash del password del usuario
      */
     public void setPassword(String contrasena) {
-        this.password = encode(contrasena);
+        this.passwordHash  = contrasena;
     }
 
+
+    /**
+     * Codifica el password usando SHA-256 y retorna el hash en formato hexadecimal.
+     * verifica que el password no sea ya un hash SHA-256 para evitar almacenar hashes precomputados directamente.
+     * Pero solo en calidad de aviso ya que no se puede saber exactamente si el password es un hash o no
+     * @param pass contraseña en texto plano a codificar
+     * @return hash hexadecimal de la contraseña codificada
+     */
     public String encode(String pass) {
-        try {
-            final MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            final byte[] hash = digest.digest(pass.getBytes("UTF-8"));
-            final StringBuilder hexString = new StringBuilder();
-            for (int i = 0; i < hash.length; i++) {
-                final String hex = Integer.toHexString(0xFF & hash[i]);
-                if (hex.length() == 1) {
-                    hexString.append('0');
-                    hexString.append(hex);
-                }
-                pass = hexString.toString();
-            }
-        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
-            pass = "FAILED HASH";
-        }
-        return pass;
+        if(HashUtil.esSha256(pass)) 
+            throw new IllegalArgumentException("La contraseña proporcionada ya parece ser un hash SHA-256. Se recomienda no almacenar hashes precomputados directamente.");
+        return HashUtil.encode(pass);
     }
 
     /**

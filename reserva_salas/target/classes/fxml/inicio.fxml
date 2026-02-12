@@ -15,6 +15,6 @@
             <Image url="@/img/Logo_PInicio_sinFondo.png"/>
          </image>
       </ImageView>
-      <Button fx:id="botonPinicio" layoutX="456.0" layoutY="322.0" mnemonicParsing="false" onAction="#entrarAPP" stylesheets="@css/styles.css" text="Entrrar" />
+      <Button fx:id="botonPinicio" layoutX="456.0" layoutY="322.0" mnemonicParsing="false" onAction="#entrarAPP" stylesheets="@css/styles.css" text="Entrar" />
    </children>
 </AnchorPane>

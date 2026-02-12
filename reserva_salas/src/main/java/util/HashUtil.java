@@ -92,4 +92,13 @@ public class HashUtil {
         }
         return OK; // Codigo validado
     }
+    /**
+     * Metodo que verifica si un texto dado es un hash SHA-256 válido.
+     * Este método utiliza una expresión regular para comprobar si el texto tiene exactamente 64 caracteres hexadecimales (0-9, a-f, A-F), lo cual es la longitud típica de un hash SHA-256 representado en formato hexadecimal.
+     * @param texto El texto que se desea verificar como un hash SHA-256.
+     * @return true si el texto es un hash SHA-256 válido, false en caso contrario.
+     */
+    public static boolean esSha256(String texto) {
+        return texto != null && texto.matches("^[a-fA-F0-9]{64}$");
+    }
 }
