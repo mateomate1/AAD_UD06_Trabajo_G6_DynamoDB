@@ -1,17 +1,15 @@
 package g6.dynamodb.DAO;
 
-import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
-
-import g6.dynamodb.Model.Usuario;
-
 /**
- * DAO para la entidad {@link Usuario} usando {@link DynamoDBMapper}.
+ * DAO para entidad Usuario usando DynamoDBMapper.
  * 
- * Encapsula las operaciones de acceso a datos para usuarios, permitiendo cargar, guardar
- * y borrar elementos de la tabla de usuarios en DynamoDB.[web:46][web:47][web:57]
+ * Proporciona operaciones CRUD completas:
+ * - Crear: save() para nuevo usuario
+ * - Leer: findById() por username (hash key)
+ * - Actualizar: save() para modificar datos
+ * - Borrar: delete() por username
  * 
- * OJO: Se corrige la carga por id para usar el valor de clave primaria en lugar del mapper.
+ * Compatible con modelo Usuario (username/password).
  * 
  * @author Mario Garcia
  * @author Mateo Ayarra
@@ -20,42 +18,48 @@ import g6.dynamodb.Model.Usuario;
  * @version 1.0
  * @since 1.0
  */
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+
+import g6.dynamodb.Model.Usuario;
+
 public class UsuarioDAO {
     private final DynamoDBMapper mapper;
 
     /**
-     * Crea una nueva instancia de UsuarioDAO con el cliente DynamoDB indicado.
+     * Constructor con cliente DynamoDB inyectado.
      * 
-     * @param dynamoDB cliente {@link AmazonDynamoDB} configurado para la aplicación
+     * Inicializa mapper para operaciones Usuario.
+     * 
+     * @param dynamoDB cliente AmazonDynamoDB activo
      */
     public UsuarioDAO(AmazonDynamoDB dynamoDB) {
         this.mapper = new DynamoDBMapper(dynamoDB);
     }
 
     /**
-     * Busca un usuario por su identificador.
+     * Carga usuario por username (hash key primaria).
      * 
-     * @param id identificador del usuario
-     * @return instancia de {@link Usuario} o null si no existe
+     * @param id username del usuario
+     * @return Usuario encontrado o null
      */
     public Usuario findById(String id) {
-        // Corregido: antes usaba mapper como segundo parámetro
         return mapper.load(Usuario.class, id);
     }
 
     /**
-     * Guarda o actualiza un usuario en la tabla de DynamoDB.
+     * Crea o actualiza usuario en DynamoDB (UPSERT).
      * 
-     * @param u instancia de {@link Usuario} a persistir
+     * @param u instancia Usuario completa
      */
     public void save(Usuario u) {
         mapper.save(u);
     }
 
     /**
-     * Elimina un usuario existente de la tabla de DynamoDB.
+     * Borra usuario por username cargado.
      * 
-     * @param u instancia de {@link Usuario} a borrar
+     * @param u instancia Usuario con ID valido
      */
     public void delete(Usuario u) {
         mapper.delete(u);

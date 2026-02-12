@@ -1,60 +1,35 @@
 package g6.dynamodb.Util;
 
 /**
- * Cliente AWS DynamoDB **SIN ANOTACIONES** (Low-Level API).
- * 
- * Implementa operaciones CRUD completas usando directamente la API nativa de DynamoDB
- * (CreateTable, PutItem, GetItem, UpdateItem, DeleteItem, Scan). Útil para casos donde no se
- * pueden usar clases anotadas con @DynamoDBTable o para operaciones muy específicas.
- * 
- * Soporta DynamoDB Local y AWS real mediante credenciales desde properties.
- * 
- * @author Mario Garcia
- * @author Mateo Ayarra
- * @author Samuel Cobreros
- * @author Zacaria Daghri
- * @version 1.0
- * @since 1.0
+Cliente AWS DynamoDB sin anotaciones (Low-Level API).
+* Implementa CRUD completo: CreateTable/PutItem/GetItem/UpdateItem/DeleteItem/Scan.
+* Alternativa a DynamoDBMapper para operaciones especificas o testing.
+* Soporta DynamoDB Local/AWS real via credenciales properties.
+* @author Mario Garcia
+* @author Mateo Ayarra
+* @author Samuel Cobreros
+* @author Zacaria Daghri
+* @version 1.0
+* @since 1.0
  */
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
-import com.amazonaws.services.dynamodbv2.model.AttributeAction;
-import com.amazonaws.services.dynamodbv2.model.AttributeDefinition;
-import com.amazonaws.services.dynamodbv2.model.AttributeValue;
-import com.amazonaws.services.dynamodbv2.model.AttributeValueUpdate;
-import com.amazonaws.services.dynamodbv2.model.BillingMode;
-import com.amazonaws.services.dynamodbv2.model.CreateTableRequest;
-import com.amazonaws.services.dynamodbv2.model.DeleteItemRequest;
-import com.amazonaws.services.dynamodbv2.model.DeleteTableRequest;
-import com.amazonaws.services.dynamodbv2.model.GetItemRequest;
-import com.amazonaws.services.dynamodbv2.model.GetItemResult;
-import com.amazonaws.services.dynamodbv2.model.KeySchemaElement;
-import com.amazonaws.services.dynamodbv2.model.KeyType;
-import com.amazonaws.services.dynamodbv2.model.ListTablesResult;
-import com.amazonaws.services.dynamodbv2.model.PutItemRequest;
-import com.amazonaws.services.dynamodbv2.model.ScalarAttributeType;
-import com.amazonaws.services.dynamodbv2.model.ScanRequest;
-import com.amazonaws.services.dynamodbv2.model.ScanResult;
-import com.amazonaws.services.dynamodbv2.model.UpdateItemRequest;
+import com.amazonaws.services.dynamodbv2.model.*;
 
 import g6.dynamodb.Dictionary;
 import g6.dynamodb.Model.Usuario;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.*;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class AWSClient_SinAnotaciones {
     public final AmazonDynamoDB dynamoDB;
@@ -63,15 +38,13 @@ public class AWSClient_SinAnotaciones {
     private final Logger log = LoggerFactory.getLogger(AWSClient_SinAnotaciones.class);
 
     /**
-     * Inicializa el cliente DynamoDB (local o AWS real).
-     * 
-     * Carga credenciales desde "DynamoDBCredentials.properties". Local usa endpoint específico,
-     * AWS real usa us-east-1 con credenciales por defecto del sistema.
-     * 
-     * @param local true para DynamoDB Local, false para AWS Cloud
-     * @throws FileNotFoundException si falta el archivo de credenciales
-     * @throws IOException error leyendo propiedades
-     */
+    Constructor principal (local/cloud).
+    * Carga credenciales desde DynamoDBCredentials.properties.
+    * Local: endpoint/region especificos. Cloud: us-east-1 default.
+    * @param local true=DynamoDB Local, false=AWS Cloud
+    * @throws FileNotFoundException archivo credenciales ausente
+    * @throws IOException error lectura properties
+    */
     public AWSClient_SinAnotaciones(boolean local) throws FileNotFoundException, IOException {
         p.load(new FileInputStream(fichProperties));
         log.trace("Fichero cargado con exito");
@@ -98,23 +71,20 @@ public class AWSClient_SinAnotaciones {
     }
 
     /**
-     * Retorna el cliente DynamoDB configurado.
-     * 
-     * @return instancia de AmazonDynamoDB
-     */
-    public AmazonDynamoDB getDB(){
+    Acceso al cliente DynamoDB configurado.
+    * @return instancia AmazonDynamoDB lista para low-level operations
+    */
+    public AmazonDynamoDB getDB() {
         return this.dynamoDB;
     }
 
     // ==================== CREATE ====================
     /**
-     * Crea tabla con clave primaria simple (HASH).
-     * 
-     * Configura PAY_PER_REQUEST automáticamente.
-     * 
-     * @param nombreTabla nombre de la nueva tabla
-     * @param nombreAtrClave nombre del atributo clave primaria (String)
-     */
+    Crea tabla con clave primaria HASH simple.
+    * Configura PAY_PER_REQUEST billing automatico.
+    * @param nombreTabla nombre tabla nueva
+    * @param nombreAtrClave atributo clave primaria (String)
+    */
     public void generateTable(String nombreTabla, String nombreAtrClave) {
         CreateTableRequest request = new CreateTableRequest()
                 .withTableName(nombreTabla)
@@ -127,10 +97,9 @@ public class AWSClient_SinAnotaciones {
     }
 
     /**
-     * Inserta un nuevo item en tabla "Usuarios".
-     * 
-     * @param item mapa atributo → valor (AttributeValue)
-     */
+    Inserta item en tabla "Usuarios" (PutItem).
+    * @param item mapa atributo=AttributeValue
+    */
     public void insertItem(Map<String, AttributeValue> item) {
         PutItemRequest request = new PutItemRequest()
                 .withTableName("Usuarios")
@@ -140,10 +109,9 @@ public class AWSClient_SinAnotaciones {
 
     // ==================== READ ====================
     /**
-     * Lista nombres de todas las tablas.
-     * 
-     * @return lista de nombres de tablas
-     */
+    Lista nombres todas tablas existentes.
+    * @return ArrayList nombres tablas
+    */
     public List<String> listTables() {
         ListTablesResult resultado = dynamoDB.listTables();
         List<String> salida = new ArrayList<>();
@@ -152,12 +120,12 @@ public class AWSClient_SinAnotaciones {
     }
 
     /**
-     * Obtiene item por clave primaria.
-     * 
-     * @param id valor de la clave primaria
-     * @param table enumeración Dictionary.Tablas
-     * @return mapa de atributos (pendiente conversión a modelo)
-     */
+    Obtiene item por clave primaria (GetItem).
+    * Imprime raw result (pendiente mapeo modelo).
+    * @param id valor clave primaria
+    * @param table tabla Dictionary.Tablas
+    * @return Usuario (TODO: implementar mapper AttributeValue->modelo)
+    */
     public Usuario getItemById(String id, Dictionary.Tablas table) {
         Map<String, AttributeValue> key = new HashMap<>();
         key.put("id", new AttributeValue(id));
@@ -167,18 +135,21 @@ public class AWSClient_SinAnotaciones {
         GetItemResult result = dynamoDB.getItem(request);
         System.out.println(result.getItem());
         Map<String, AttributeValue> salida = result.getItem();
-        return null; // Pendiente: mapper AttributeValue → Usuario
+        return null; // Pendiente: mapper AttributeValue -> Usuario
     }
 
     /**
-     * Escanea tabla con filtro por atributo "name".
-     * 
-     * @param client cliente DynamoDB
-     * @param tabla nombre tabla
-     * @param nombre valor para filtrar "name"
-     * @return items filtrados
-     */
-    public List<Map<String, AttributeValue>> scanByAttribute(AmazonDynamoDB client, String tabla, String nombre) {
+    Escanea tabla filtrando por atributo "name".
+    * Usa FilterExpression name=:n.
+    * @param client cliente DynamoDB
+    * @param tabla nombre tabla
+    * @param nombre valor filtro "name"
+    * @return lista items filtrados como mapas
+    */
+    public List<Map<String, AttributeValue>> scanByAttribute(
+            AmazonDynamoDB client, 
+            String tabla, 
+            String nombre) {
         Map<String, AttributeValue> values = new HashMap<>();
         values.put(":n", new AttributeValue().withS(nombre));
         ScanRequest request = new ScanRequest()
@@ -189,16 +160,16 @@ public class AWSClient_SinAnotaciones {
     }
 
     /**
-     * Escanea tabla completa con paginación automática.
-     * 
-     * @param tableName nombre de la tabla
-     * @return todos los items como mapas AttributeValue
-     */
-    public List<java.util.Map<String, AttributeValue>> scanTable(String tableName) {
+    Escanea tabla completa con paginacion automatica.
+    * Maneja LastEvaluatedKey hasta null.
+    * @param tableName nombre tabla
+    * @return todos items como List<Map<AttributeValue>>
+    */
+    public List<Map<String, AttributeValue>> scanTable(String tableName) {
         ScanRequest request = new ScanRequest()
                 .withTableName(tableName);
         ScanResult result = dynamoDB.scan(request);
-        List<java.util.Map<String, AttributeValue>> items = new ArrayList<>();
+        List<Map<String, AttributeValue>> items = new ArrayList<>();
         items.addAll(result.getItems());
         
         while (result.getLastEvaluatedKey() != null) {
@@ -211,14 +182,14 @@ public class AWSClient_SinAnotaciones {
 
     // ==================== UPDATE ====================
     /**
-     * Actualiza un atributo específico de un item.
-     * 
-     * @param tableName tabla objetivo
-     * @param keyName nombre clave primaria
-     * @param keyValue valor clave primaria
-     * @param attributeName atributo a actualizar
-     * @param newValue nuevo valor (AttributeValue)
-     */
+    Actualiza atributo especifico (UpdateItem).
+    * Action PUT sobrescribe valor.
+    * @param tableName tabla objetivo
+    * @param keyName nombre clave primaria
+    * @param keyValue valor clave primaria
+    * @param attributeName atributo actualizar
+    * @param newValue nuevo valor AttributeValue
+    */
     public void updateAttribute(
             String tableName,
             String keyName,
@@ -241,10 +212,9 @@ public class AWSClient_SinAnotaciones {
 
     // ==================== DELETE ====================
     /**
-     * Elimina tabla completa.
-     * 
-     * @param tableName nombre de la tabla a borrar
-     */
+    Elimina tabla completa (DeleteTable).
+    * @param tableName nombre tabla borrar
+    */
     public void deleteTable(String tableName) {
         DeleteTableRequest request = new DeleteTableRequest()
                 .withTableName(tableName);
@@ -252,12 +222,11 @@ public class AWSClient_SinAnotaciones {
     }
 
     /**
-     * Elimina item por clave primaria.
-     * 
-     * @param tableName tabla objetivo
-     * @param keyName nombre clave primaria
-     * @param keyValue valor clave primaria
-     */
+    Elimina item por clave primaria (DeleteItem).
+    * @param tableName tabla objetivo
+    * @param keyName nombre clave primaria
+    * @param keyValue valor clave primaria
+    */
     public void deleteByKey(
             String tableName,
             String keyName,

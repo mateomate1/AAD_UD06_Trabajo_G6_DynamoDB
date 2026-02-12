@@ -1,5 +1,18 @@
 package fx.App.ui.controladores;
 
+/**
+ * Controlador FXML para la vista de gestion de reservas de aulas.
+ * 
+ * Integra calendario, lista de aulas disponibles, selector de horas y 
+ * navegacion mediante WebView. Gestiona creacion y visualizacion de reservas.
+ * 
+ * @author Mario Garcia
+ * @author Mateo Ayarra
+ * @author Samuel Cobreros
+ * @author Zacaria Daghri
+ * @version 1.0
+ * @since 1.0
+ */
 import g6.dynamodb.Style.Menu;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,12 +22,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.web.WebView;
 
 public class ReservaController {
-    
-    // Conecta el FXML con el controller
-    
-    
-    
-    // Falta implementar la lógica de control para la pantalla de reservas, incluyendo la gestión de eventos y la interacción con el modelo de datos.
+
     @FXML
     private WebView WebViewPReservas;
 
@@ -36,5 +44,16 @@ public class ReservaController {
     @FXML
     private ListView<?> listAulasDisponibles;
 
-
+    /**
+     * Inicializa el controlador despues de cargar FXML.
+     * 
+     * Configura ComboBox de horas, popula lista de aulas disponibles y 
+     * prepara WebView para visualizacion de calendario/reservas.
+     */
+    @FXML
+    private void initialize() {
+        // TODO: Configurar ComboBox horas (8:00-22:00)
+        // TODO: Cargar aulas disponibles desde DynamoDB
+        // TODO: Inicializar WebView con calendario HTML
+    }
 }

@@ -1,11 +1,11 @@
 package g6.dynamodb.Service;
 
 /**
- * Servicio de negocio para gestión de reservas de aulas.
+ * Servicio de negocio para gestion de reservas.
  * 
- * Maneja la lógica de creación de reservas, validación de fechas, detección de solapamientos
- * y asignación automática de estado (ACEPTADA/RECHAZADA). Genera IDs únicos y verifica
- * disponibilidad del aula solicitada.
+ * Valida creacion reservas: genera UUID unico, verifica fechas ordenadas,
+ * detecta solapamientos por aula y asigna estado automatico 
+ * (ACEPTADA/RECHAZADA). Coordina con ReservaDAO.
  * 
  * @author Mario Garcia
  * @author Mateo Ayarra
@@ -29,40 +29,42 @@ public class ReservaService {
     private final AWSClient cliente;
 
     /**
-     * Crea una nueva instancia del servicio de reservas.
+     * Constructor con cliente AWS configurado.
      * 
-     * @param cliente cliente AWS configurado para DynamoDB
+     * @param cliente instancia AWSClient (local/cloud)
      */
     public ReservaService(AWSClient cliente) {
         this.cliente = cliente;
     }
 
     /**
-     * Crea una nueva reserva con validaciones completas.
+     * Crea reserva validada con todas las reglas de negocio.
      * 
-     * Genera ID único UUID, valida orden de fechas, verifica solapamientos con
-     * otras reservas
-     * del mismo aula y asigna estado automáticamente. Guarda la reserva en
-     * DynamoDB.
+     * 1. Genera ID UUID unico
+     * 2. Valida fechaInicio < fechaFin  
+     * 3. Detecta solapamientos por aula
+     * 4. Asigna estado automatico
+     * 5. Persiste en DynamoDB
      * 
-     * @param reserva reserva con datos completos (aula, fechas, usuario, etc.)
-     * @return reserva persistida con ID único y estado asignado
+     * @param reserva datos reserva completa
+     * @return reserva persistida con ID/estado
      */
     public Reserva crearReserva(Reserva reserva) {
         ReservaDAO dao = new ReservaDAO(this.cliente.getDynamoDB());
-        boolean es_unica = false;
+        boolean esUnica = false;
 
-        // Genera ID único UUID hasta encontrar uno disponible
-        while (!es_unica) {
+        // Genera UUID hasta ID disponible
+        while (!esUnica) {
             String id = UUID.randomUUID().toString();
             if (dao.findById(id) == null) {
-                es_unica = true;
-                reserva.setId(id); // Asigna el ID generado
+                esUnica = true;
+                reserva.setId(id);
             }
         }
 
-        // Validaciones y asignación de estado
-        if (!fechasValidas(LocalDateTime.parse(reserva.getFechaInicio()),
+        // Validaciones logicas
+        if (!fechasValidas(
+                LocalDateTime.parse(reserva.getFechaInicio()),
                 LocalDateTime.parse(reserva.getFechaFin()))) {
             reserva.setEstado(Dictionary.Estado.RECHAZADA.toString());
         } else if (existeSolapamiento(reserva)) {
@@ -71,51 +73,53 @@ public class ReservaService {
             reserva.setEstado(Dictionary.Estado.ACEPTADA.toString());
         }
 
-        // Persiste la reserva
         dao.save(reserva);
         return reserva;
     }
 
     /**
-     * Valida que la fecha de inicio sea anterior a la fecha de fin.
+     * Valida orden temporal de reserva.
      * 
-     * @param inicio fecha/hora de inicio
-     * @param fin    fecha/hora de fin
-     * @return true si inicio < fin
+     * @param inicio fecha/hora inicio
+     * @param fin fecha/hora fin
+     * @return true si inicio.isBefore(fin)
      */
     private boolean fechasValidas(LocalDateTime inicio, LocalDateTime fin) {
         return inicio.isBefore(fin);
     }
 
     /**
-     * Detecta si la nueva reserva solapa con reservas existentes del mismo aula.
+     * Detecta solapamientos con reservas existentes.
      * 
-     * Ignora reservas RECHAZADAS y aulas diferentes. Verifica solapamiento
-     * temporal:
-     * nueva.inicio < existente.fin && nueva.fin > existente.inicio
+     * Reglas:
+     * - Misma aula solamente
+     * - Ignora RECHAZADA
+     * - Formula: nueva.inicio < existente.fin && nueva.fin > existente.inicio
      * 
-     * @param nueva reserva a validar
-     * @return true si existe solapamiento
+     * @param nueva reserva candidato
+     * @return true si conflicto detectado
      */
     private boolean existeSolapamiento(Reserva nueva) {
         DynamoDBScanExpression scan = new DynamoDBScanExpression();
         ReservaDAO dao = new ReservaDAO(this.cliente.getDynamoDB());
-        List<Reserva> reservas = dao.scan();
+        List<Reserva> reservas = dao.scan(scan);
 
         for (Reserva r : reservas) {
-            // Ignorar aulas diferentes
+            // Filtrar aulas diferentes
             if (!r.getAula().getId().equals(nueva.getAula().getId())) {
                 continue;
             }
 
-            // Ignorar reservas rechazadas
+            // Ignorar rechazadas
             if (r.getEstado().equals(Dictionary.Estado.RECHAZADA.toString())) {
                 continue;
             }
 
-            // Verificar solapamiento temporal
-            boolean solapa = LocalDateTime.parse(nueva.getFechaInicio()).isBefore(LocalDateTime.parse(r.getFechaFin()))
-                    && LocalDateTime.parse(nueva.getFechaFin()).isAfter(LocalDateTime.parse(r.getFechaInicio()));
+            // Detectar solapamiento temporal
+            boolean solapa = LocalDateTime.parse(nueva.getFechaInicio())
+                    .isBefore(LocalDateTime.parse(r.getFechaFin()))
+                    && LocalDateTime.parse(nueva.getFechaFin())
+                    .isAfter(LocalDateTime.parse(r.getFechaInicio()));
 
             if (solapa) {
                 return true;

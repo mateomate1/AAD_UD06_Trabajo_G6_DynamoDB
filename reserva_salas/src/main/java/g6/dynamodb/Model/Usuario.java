@@ -1,9 +1,26 @@
 package g6.dynamodb.Model;
 
+<<<<<<< HEAD
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+=======
+/**
+ * Entidad Usuario para mapeo DynamoDB.
+ * 
+ * Modelo simple con username (Hash Key) y password (atributo name).
+ * Compatible con autenticacion basica del sistema reservas.
+ * Mapea a tabla "Usuarios".
+ * 
+ * @author Mario Garcia
+ * @author Mateo Ayarra
+ * @author Samuel Cobreros
+ * @author Zacaria Daghri
+ * @version 1.0
+ * @since 1.0
+ */
+>>>>>>> d98dbc3f4011ce79360c93ffe41e17203ba29367
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
@@ -23,9 +40,9 @@ public class Usuario {
     }
 
     /**
-     * Obtiene el identificador único del usuario.
+     * Retorna username (DynamoDB Hash Key primaria).
      * 
-     * @return id del usuario (DynamoDB Hash Key)
+     * @return identificador login
      */
     @DynamoDBHashKey(attributeName = "username")
     public String getUsername() {
@@ -33,18 +50,18 @@ public class Usuario {
     }
 
     /**
-     * Establece el identificador único del usuario.
+     * Establece username primario.
      * 
-     * @param id nuevo identificador único
+     * @param username ID login unico
      */
-    public void setUsername(String id) {
-        this.username = id;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     /**
-     * Obtiene el nombre del usuario.
+     * Retorna password mapeado como "name".
      * 
-     * @return nombre del usuario
+     * @return credencial hashed
      */
     @DynamoDBAttribute(attributeName = "password")
     public String getPassword() {
@@ -52,8 +69,9 @@ public class Usuario {
     }
 
     /**
-     * Establece el nombre del usuario.
+     * Establece password (texto plano/Hash).
      * 
+<<<<<<< HEAD
      * @param contrasena nuevo nombre del usuario
      */
     public void setPassword(String contrasena) {
@@ -79,13 +97,27 @@ public class Usuario {
         return pass;
     }
 
+=======
+     * @param password credencial usuario
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+>>>>>>> d98dbc3f4011ce79360c93ffe41e17203ba29367
     /**
-     * Genera representación en String del usuario para debugging/logging.
+     * Representacion String para logging.
      * 
-     * @return String con todos los campos del usuario
+     * Formato compatible con Menu.toString() usage.
+     * 
+     * @return "Usuario [username=abc, password=***]"
      */
     @Override
     public String toString() {
+<<<<<<< HEAD
         return "Usuario [Nombre de usuario=" + username + ", Contrasena=" + password + "]";
+=======
+        return "Usuario [username=" + username + ", password=" + password + "]";
+>>>>>>> d98dbc3f4011ce79360c93ffe41e17203ba29367
     }
 }
