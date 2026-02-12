@@ -7,7 +7,7 @@ Implementa patrones **DAO**, **Service** y **menú interactivo** con logging pro
 
 ## 📁 Estructura del Proyecto
 
-````
+```` bash
 src/main/java
 │
 ├── app
@@ -60,7 +60,7 @@ src/main/java
 
 ## 🛠️ Requisitos
 
-```bash
+````bash
 ✅ Java 17+
 ✅ Maven
 ✅ Docker (DynamoDB Local)
